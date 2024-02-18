@@ -3,17 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="viewport" content=""width="device-widthn,
-    initial-scale=1.0"
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="styles.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="linkedin.com">
-    <link href="facebook.com">
+    <link rel="stylesheet" href="linkedin.com">
+    <link rel="stylesheet" href="facebook.com">
     <img billede(1).png>
     <img blåbillede.png>
     <img lillebillede.png>
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill/dist/smoothscroll.min.js"></script>
+
 </head>
 
 <body>
@@ -21,11 +22,10 @@
         <a href="#" class="logo">Niklas.</a>
 
         <nav class="navbar">
-            <a href="#" class="active">home</a>
-            <a href="#">about</a>
-            <a href="#">projects</a>
-            <a href="#">videos</a>
-            <a href="#">contact</a>
+            <a href="#home" class="active">home</a>
+            <a href="#about">about</a>
+            <a href="#projects">projects</a>
+            <a href="#videos">videos</a>
         </nav>
     </header>
     <section class="home">
@@ -47,9 +47,10 @@
         </div>
         <span class="home-imgHover"></span>
     </section>
+    <!-- about -->
     <section class="about" id="about">
         <h2 class="headign">about <span>me</span></span></h2>
-            
+
             <div class="about-img">
                 <img src="lillebillede.png">
                 <span class="circle-spin"></span>
@@ -67,8 +68,50 @@
                 <a href="#" class="btn">read more</a>
             </div>
             </div>
-
+    <!-- projects -->
     </section>
+    <section class="projects" id="projects">
+        <div class="projects-row">
+            <div class="projects-column">
+                <h3 class="title">projects</h3>
+                <div class="projects-box">
+                    <div class="projects-content">
+                        <div class="content">
+                            <div class="year"><i class='bx bxl-codepen' ></i>
+                            <h3>project stuff 1</h3>
+                            <p> gormeopgmoeprmgopimerogmpermgormpe</p>
+                        </div>
+                    </div>
+                    <div class="projects-content">
+                        <div class="content">
+                            <div class="year"><i class='bx bxl-codepen' ></i>
+                            <h3>project stuff 2</h3>
+                            <p> gormeopgmoeprmgopimerogmpermgormpe</p>
+                        </div>       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- videos -->
+    <section class="videos" id="videos">
+        <h2 class="heading">videos</h2>
+        <div class="video">
+        </div>
+    </section>
+    <footer class="footer">
+        <div>
+            <p>made by me</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#"><i class='bx bx-caret-up-circle'></i></a>
+        </div>
+    </footer>
+
+    <script src="java.js"></script>
+    <script>
+        smoothscroll.polyfill();
+    </script>
 </body>
 
 </html>
