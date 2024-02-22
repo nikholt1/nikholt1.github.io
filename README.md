@@ -12,9 +12,11 @@ and fades the text.
 section 2 is too small, while section 3 is too big. 
 
 TO DO
-fix link between option box ex"about" to forward to about page etc.
+links have been fixed, but only for the three that are not home.
 make a personal edit on the main picture: ex fade to drawing instead of fade out.
 make sections relative to the main page.
 personalize about pge picture animation.
+make sektions the same size, and change size if its on a phone with a different resolution.
+
 
 
