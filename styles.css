@@ -11,15 +11,28 @@
     box-sizing: Border-box;
     font-family: 'poppins', sans-serif; 
 }
+.container {
+
+}
 
 .section {
-    height: 400px;
+    flex: 1;
+    height: 200px;
+    border: 1px solid black;
+    padding: 10px;
+
+}
+
+@media (min-width: 768px) {
+	.section {
+		flex: 1 1 50%; /* This makes each section take up 50% of the available space on larger screens */
+	}
 }
 
 body {
 
     color: #ededed;
-    background: #001b29;
+    background: #212222;
 }
 
 .header {
@@ -60,7 +73,7 @@ body {
 }
 .navbar a:hover,
 .navbar a.active {
-    color: #2b80bd;
+    color: #390047;
 
 }
 .home {
@@ -71,6 +84,20 @@ body {
     display: flex;
     align-items: center;
     padding: 0 10%;
+}
+
+.home-imgHover {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    width: 650px;
+    height: 100%;
+    transition: 3s;
+}
+
+.home-imgHover:hover {
+    background: #101111;
+    opacity: .5;
 }
 .home-content {
     max-width: 600px;
@@ -106,8 +133,8 @@ body {
     align-items: center;
     width: 150px;
     height: 100%;
-    background: #00abf0;
-    border: 2px solid #00abf0;
+    background: #2c2650;
+    border: 2px solid #61539e;
     border-radius: 8px;
     font-size: 19px;
     color: #001b29;
@@ -200,18 +227,7 @@ body {
     width: 100%;
 }
 
-.home-imgHover {
-    position: absolute;
-    top: 0;
-    right: 30px;
-    width: 650px;
-    height: 100%;
-    transition: 3s;
-}
-.home-imgHover:hover {
-    background: #001b29;
-    opacity: .5;
-}
+
 .about {
     height: 100vh;
     display: flex;
@@ -219,7 +235,7 @@ body {
     align-items: center;
     flex-direction: column;
     gap: 2rem;
-    background: #0a3d61;
+    background: #000000;
     padding-bottom: 6rem;
 }
 .heading {
@@ -248,11 +264,10 @@ body {
     transform: translate(-50%, -50%) rotate(0);
     width: 65%;
     height: 75%;
-    border-radius: 50%;
+    border-radius: 90%;
     border-top: .2rem solid #0a3d61;
     border-bottom: .2rem solid #0a3d61;
-    border-left: .2rem solid #00abf0 ;
-    border-right: .2rem solid #00abf0;
+
 
 }
 .about-content {
@@ -347,7 +362,7 @@ body {
     align-items: center;
     flex-wrap: wrap;
     padding: 2rem 9%;
-    background: #204157;
+    background: #414061;
 }
 .footer-text p {
     font-size: 2rem;
@@ -358,8 +373,8 @@ body {
     justify-content: center;
     align-items: center;
     padding: .8rem;
-    background: #00abf0;
-    border: .2rem solid #00abf0;
+    background: #000000;
+    border: .2rem solid #000000;
     border-radius: .6rem;
 }
 .footer-iconTop a i {
