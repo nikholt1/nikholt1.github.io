@@ -365,38 +365,23 @@ body {
 .videos {
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     min-height: auto;
-    padding-bottom: 5rem;
-}
-.videos .heading {
-    font-size: 2.5rem;
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 2rem 9%;
-    background: #ffeda7;
-}
-.footer-text p {
-    font-size: 2rem;
-}
-.footer-iconTop a {
-    position: left;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: .8rem;
-    background: #fab87e;
-    border: .2rem solid #fab87e;
-    border-radius: .6rem;
-}
-.footer-iconTop a i {
-    font-size: 3rem;
+    padding-bottom: 30rem;
 
 }
+.video .header {
+    font-size: 5rem;
+}
+.video-container {
+    max-width: 100%;
+
+}
+.video-container iframe {
+
+    height: 80vh;
+}
+
+
