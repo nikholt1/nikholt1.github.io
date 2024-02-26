@@ -5,6 +5,8 @@
     }
 }
 
+
+
 * {
     margin: 0;
     padding: 0;
@@ -32,7 +34,7 @@
 body {
 
     color: #ededed;
-    background: #212222;
+    background: #264d59;
 }
 
 .header {
@@ -51,7 +53,7 @@ body {
 .logo {
     position: relative;
     font-size: 50px;
-    color: #ededed;
+    color: #d38069;
     text-decoration: none;
     font-weight: 600;
 }
@@ -73,7 +75,7 @@ body {
 }
 .navbar a:hover,
 .navbar a.active {
-    color: #390047;
+    color: #d38069;
 
 }
 .home {
@@ -96,7 +98,7 @@ body {
 }
 
 .home-imgHover:hover {
-    background: #101111;
+    background: #264d59;
     opacity: .5;
 }
 .home-content {
@@ -109,7 +111,7 @@ body {
 .home-content h3 {
     font-size: 32px;
     font-weight: 700;
-    color: #00abf0;
+    color: #ffeda7;
 }
 .home-content p {
     font-size: 16px;
@@ -133,11 +135,11 @@ body {
     align-items: center;
     width: 150px;
     height: 100%;
-    background: #2c2650;
-    border: 2px solid #61539e;
+    background: #d38069;
+    border: 2px solid #d38069;
     border-radius: 8px;
     font-size: 19px;
-    color: #001b29;
+    color: #264d59;
     text-decoration: none;
     font-weight: 600;
     letter-spacing: 1px;
@@ -147,21 +149,21 @@ body {
 }
 
 .btn-box a:hover {
-    color: #00abf0;
+    color: #ffeda7;
 }
 
 .btn-box a:nth-child(2) {
     background: transparent;
-    color: #00abf0;
+    color: #ffeda7;
 }
 .btn-box a:nth-child(2):hover {
-    color: #081b29;
+    color: #264d59;
 
 }
 
 
 .btn-box a:nth-child(2)::before {
-    background: #00abf0;
+    background: #ffeda7;
     
 }
 .btn-box a::before {
@@ -171,7 +173,7 @@ body {
     left: 0;
     width: 0;
     height: 100%;
-    background: #081b29;
+    background: #264d59;
     z-index: -1;
     transition: .5s;
 
@@ -199,7 +201,7 @@ body {
     border: 2px solid #00abf0;
     border-radius: 50%;
     font-size: 30px;
-    color: #00abf0;
+    color: #ffeda7;
     text-decoration: none;
     z-index: 1;
     overflow: hidden;
@@ -207,7 +209,7 @@ body {
 }
 
 .home-sci a:hover {
-    color: #001b29;
+    color: #264d59;
 }
 
 
@@ -218,7 +220,7 @@ body {
     left: 0;
     width: 0;
     height: 100%;
-    background: #00abf0;
+    background: #ffeda7;
     z-index: -1;
     transition: .3s;
 
@@ -235,7 +237,7 @@ body {
     align-items: center;
     flex-direction: column;
     gap: 2rem;
-    background: #000000;
+    background: #639690;
     padding-bottom: 6rem;
 }
 .heading {
@@ -362,7 +364,7 @@ body {
     align-items: center;
     flex-wrap: wrap;
     padding: 2rem 9%;
-    background: #414061;
+    background: #ffeda7;
 }
 .footer-text p {
     font-size: 2rem;
