@@ -14,10 +14,21 @@
     <img blåbillede.png>
     <img lillebillede.png>
     <script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill/dist/smoothscroll.min.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>    
 </head>
 
 <body>
+    <section class="ip">
+    <h1>IP Address:</h1>
+    <p id="ip-address"></p>
+    <script>
+        $.getJSON('https://ipapi.co/json/', function(data) {
+            $('#ip-address').text(data.ip);
+        });
+    </script>
+    </section>
+
     <header class="header">
         <a href="#" class="logo">Niklas.</a>
 
