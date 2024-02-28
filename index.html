@@ -104,8 +104,34 @@
                                 <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.54/build/spline-viewer.js"></script>
                                 <spline-viewer url="https://prod.spline.design/oFexLO6VEinkRojF/scene.splinecode"></spline-viewer>
                             <div class="year"><i class='bx bxl-codepen' ></i>
-                            <h3>project stuff 2</h3>
-                            <p> gormeopgmoeprmgopimerogmpermgormpe</p>
+                            <h3>DOBBY</h3>
+                            <p>DOBBY is a small raspberry pi zero W powered device, capable of wifi mac sniffing through the kismet program.
+                                The raspberry pi zero W flashed with raspberry Kali Linux version, is soldered with a pimoroni four letter PHAT display.
+                                The device is plugged with a LILYGO LoRa 32 network making it possible to deploy the DOBBY device out of LOS, build so compact
+                                that it can be attached to a drone or another transport device, the LoRa will send a message of how many devices have been found
+                                in the area of where DOBBY is. 
+                                DOBBY "start" runs on a python program that is started through a bash file, keybinded to the far left button, that through the python
+                                program runs kismet and takes the messages that the program returns and counts how many devices it has detected. After processing
+                                the detected devices in a count, the same python program runs a new command in the terminal automatically, sending a message from the LoRa
+                                attached to DOBBY, to the LoRa by the operator.
+                                the Kismet program is by default programmed by me to not decrypt the macaddresses of the devices, making it possible to simply
+                                locate device activity in the area and or through the GPS position time log and device capture time log heatmap the activity with an
+                                after action data review.
+                                With the directional antenna, DOBBY can detect device activity up to around 20km away. The directional antenna is a 2.4 GHz cut copper
+                                antenna with a wifi dongle solderet to it.
+                                THE RUN:
+                                After bootup DOBBY will show a startscreen presenting itself followed by a single dot on the PHAT. The single dot indicates that 
+                                DOBBY is ready for a run. By pressing the far left button DOBBY will display "RUN" followed by "LOAD" and or "ERR" if there are some error 
+                                messages. "LOAD" indicates that the program is running and is being setup to start the wifi dongle in monitor mode.
+                                "FATL" indicates a fatal error, which results in a program shutdown.
+                                After "LOAD" DOBBY will display a count from 1 to (infinite) showing how many devices have been detected.
+                                The program is capable of logging the detected devices in a .kismet or .png file, aswell as the GPS position logged in time.
+                                While DOBBY runs, the LoRa is powered up and if the LoRa is connected to another LoRa (by the operator) it will send the detected devices
+                                count to the remote operatior.
+                                DOBBY
+                                Is a proof of concept, made for wifi activity alerting. DOBBY's perpouse is to find missing people together with a drone and or 
+                                a search party in remote environments.
+                                DOBBY is made entirely by me with help of a few others and is simply a project of interest, not intended for illegal pourposes.</p>
                             </div>
                         </div>       
                     </div>
