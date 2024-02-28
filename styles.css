@@ -362,6 +362,10 @@ body {
     font-size: 1.6rem;
     padding-top: .5rem;
 }
+.dobby-spline {
+	width: 250px;
+	height: 200px;
+}	
 .videos {
     height: 100vh;
     display: flex;
