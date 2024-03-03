@@ -1,18 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.navbar a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
 
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
 
-            if (targetSection) {
-                const targetOffset = targetSection.getBoundingClientRect().top + window.pageYOffset;
-                window.scrollTo({
-                    top: targetOffset,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');  
+        } else {
+            entry.target.classList.remove('show');
+        }
+    })
+})
+
+const hiddenElements = document.querySelectorAll('.hidden');
+hiddenElements.forEach((el) => observer.observe(el));
