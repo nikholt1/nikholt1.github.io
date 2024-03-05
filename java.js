@@ -14,3 +14,13 @@ const observer = new IntersectionObserver((entries) => {
 
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
+
+
+function toggleNav() {
+    var sidenav = document.getElementById("sidenav");
+    if (sidenav.style.left === "-200px") {
+      sidenav.style.left = "0";
+    } else {
+      sidenav.style.left = "-200px";
+    }
+  }
