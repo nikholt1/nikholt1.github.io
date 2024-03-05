@@ -84,6 +84,7 @@ section {
     width: 675px;
     text-align: center;
     text-align: left;
+
 }
 
 .dobbybutton:active {
@@ -95,20 +96,49 @@ section {
     width: 500;
     z-index: -1;
 }
-.intro {
-    text-align: center;
-    font-size: 200px;
-    margin-top: -50px;
-}
-.start {
-    color: #12008E;
-}
+
 .skills {
     font-size: 125px;
 }
 .projects {
     font-size: 125px;
 }
+
+.cert1 {
+    width: 300px;
+    margin-left: -1000px;
+    transition: width 1.5s;
+}
+.code1 {
+    width: 100px;
+    margin-left: -1000px;
+    transition: width 1.5s;
+
+}
+.code1:hover {
+    width: 400px;
+}
+.cert1:hover {
+    width: 700px;
+
+}
+.revilio1 {
+    margin-bottom: 100px;
+    margin-top: 150px;
+
+
+}
+.skillspline {
+    height: 800px;
+    width: 1500px;
+}
+.reviliocontent {
+    display: none;
+    width: 675px;
+    text-align: center;
+    text-align: left;
+}
+
 @media only screen and (max-width: 414px) {
     .text {
         visibility: collapse;
@@ -130,11 +160,35 @@ section {
         width: 400px;
     }
     .breathe {
-
+        height: 400px;
+        width: 400px;
+        margin-left: 10px
     }
-    .intro {
-        text-align: center;
-        font-size: 100px;
-        margin-top: -20px;
+    .projects {
+        font-size: 75px;
+    }
+    .skills {
+        font-size: 75px;
+    }
+    .skillspline {
+        height: 750px;
+        width: 1300px;
+    }
+    .dobbycontent {
+        width: 375px;
+    }
+    .cert1 {
+        width: 300px;
+        margin-left: -900px;
+        transition: width 1.5s;
+    }
+    .cert1:hover {
+        width: 400px;
+    }
+    .code1 {
+        display: none;
+    }
+    .reviliocontent {
+        width: 375px;
     }
 }
