@@ -24,7 +24,9 @@ section {
     transition: all 2s;
     transform: translateX(-100%)
 }
-
+.home {
+    height: 100px;
+}
 .show {
     opacity: 1;
     filter: blur(0);
@@ -169,7 +171,7 @@ h3 {
     padding: 10px;
 }
 .bar{
-    background: #3326ee;
+    background: #0077CC;
     display: block;
     height: 20px;
     border: 1px solid black;
@@ -185,7 +187,7 @@ h3 {
 .bar span{
     height: 20px;
     float: left;
-    background: linear-gradient(135deg, rgba(236, 0, 140, 1)0%, rgba(252, 103, 103, 1)100%);
+    background: #ff0055;
 }
 .python{
     width: 70%;
@@ -222,7 +224,7 @@ h3 {
     width: 700px;
     margin-right: 1100px;
     position: absolute;
-    border-color: #3326ee;
+    border-color: #0077CC;
     border-radius: 10%;
     z-index: -1; 
     margin-bottom: 1000px;
@@ -299,17 +301,18 @@ h3 {
 .icon-facebook,
 .icon-linkedin,
 .icon-github {
-  font-size: 70px; /* Adjust the size as needed */
-  color: #555; /* Adjust the color as needed */
-  transition: color 0.3s ease; /* Optional: Add a transition effect for a smoother color change */
+  font-size: 70px; 
+  color: #555; 
+  transition: color 0.3s ease; 
 }
 
-/* Optionally, you can change the hover color */
+
 .icon-facebook:hover,
 .icon-linkedin:hover,
 .icon-github:hover {
-  color: #0077CC; /* Change the hover color as needed */
+  color: #0077CC; 
 }
+
 @media only screen and (max-width: 414px) {
     .text {
         visibility: collapse;
@@ -413,6 +416,12 @@ h3 {
         padding-right: 0;
         font-size: 20px;
     }
+    .copyright {
+        font-size: 10px;
+        margin-left: 20px;
+    }
+    
+}
 
     
 }
