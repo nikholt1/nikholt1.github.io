@@ -327,7 +327,7 @@ h3 {
     position: absolute;
     margin-top: -300px;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 428px) {
     .text {
         visibility: collapse;
     }
