@@ -24,3 +24,10 @@ function toggleNav() {
       sidenav.style.left = "-200px";
     }
   }
+
+  function toggleContent() {
+    var content = document.querySelector('.content');
+    content.classList.toggle('show-skillphone');
+    content.classList.toggle('show-skillspline');
+}
+
