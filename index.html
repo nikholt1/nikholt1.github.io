@@ -5,9 +5,20 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="java.js"></script>
+    <script defer src="app.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
+
+<div class="sidebar">
+    <a class="active" href="#home">Home</a>
+    <a href="#skills">skills</a>
+    <a href="#projects">projects</a>
+    <a href="#contact">Cont</a>
+</div>
+
+</div>
+
         <div class="text">
             <p>pc</p>
         </div>
@@ -19,8 +30,8 @@
 
     <body>
 
-<section class="hidden">
-<h1 class="headerintro">I am a programmer and device exploiter with a passion for webdesign, webdevelopment and animation</h1>
+<section id="home" class="hidden">
+<h1 class="headerintro">Full stack developer and device exploitation expert with a passion for computer science, webdesign, webdevelopment and animation</h1>
 
 
 <img class="lillebillede" src="lillebillede.png" alt="lillebillede">
@@ -29,21 +40,19 @@
 
 </section>
 
-<section class="hidden">
+<section id="skills" class="hidden">
     <h2 class="skills">Skills</h2>
-<button class="dobbybutton" onclick="toggleContent()">Switch Graf</button>
 <div class="content">
     <spline-viewer class="skillspline" url="https://prod.spline.design/cqmREzmV4BKpqvRt/scene.splinecode"></spline-viewer>
     <div class="skillphone">
-        <h1>skills</h1>
         <ul>
-            <li><h3>Python</h3><span class="bar"><span class="python"></span></span></li>
-            <li><h3>HTML</h3><span class="bar"><span class="HTML"></span></span></li>
-            <li><h3>CSS</h3><span class="bar"><span class="CSS"></span></span></li>
-            <li><h3>Spline</h3><span class="bar"><span class="Spline"></span></span></li>
-            <li><h3>Webflow</h3><span class="bar"><span class="Webflow"></span></span></li>
-            <li><h3>Linux</h3><span class="bar"><span class="Linux"></span></span></li>
-            <li><h3>JavaScript</h3><span class="bar"><span class="Javascript"></span></span></li>
+            <li><h3>Python 70%</h3><span class="bar"><span class="python"></span></span></li>
+            <li><h3>HTML 60%</h3><span class="bar"><span class="HTML"></span></span></li>
+            <li><h3>CSS 50%</h3><span class="bar"><span class="CSS"></span></span></li>
+            <li><h3>Spline 60%</h3><span class="bar"><span class="Spline"></span></span></li>
+            <li><h3>Webflow 10%</h3><span class="bar"><span class="Webflow"></span></span></li>
+            <li><h3>Linux 75%</h3><span class="bar"><span class="Linux"></span></span></li>
+            <li><h3>JavaScript 5%</h3><span class="bar"><span class="Javascript"></span></span></li>
         </ul>
     </div>
 </div>
@@ -54,9 +63,11 @@
         <a href="https://cs50.harvard.edu/certificates/34f37a12-9f02-47fb-a955-c3c1d11b1d7e" class="harvardlink1">Link to certificate</a>
 </section>
 
-<section class="hidden">
+<section id="projects" class="hidden">
     <h2 class="projects">Projects</h2>
-    <div class="dobby">DOBBY</div>
+    <p>Collection of different kinds of projects i have made</p>
+    <div class="dobby"></div>
+    <h1 class="revilio1">DOBBY</h1>
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.55/build/spline-viewer.js"></script>
     <spline-viewer class="dobbyspline" loading-anim-type="spinner-small-dark" url="https://prod.spline.design/oFexLO6VEinkRojF/scene.splinecode"></spline-viewer>
     <p>small portable wifi detector</p>
@@ -125,7 +136,24 @@
             </div>    
 
     </div>
+<section id="contact" class="hidden">
+    <h2 class="contacthead">Contact</h2>
     
     
-</section>
+    <a href="https://www.facebook.com/niklas.h.lau" class="icon-facebook">
+        <i id="facebook" class='bx bxl-facebook-circle'></i>
+      </a>
+      <a href="https://www.linkedin.com/in/niklas-holt-l%C3%A4u-0b06542a4/" class="icon-linkedin">
+        <i id="linedin" class='bx bxl-linkedin-square'></i>
+      </a>
+      <a href="https://github.com/nikholt1" class="icon-github">
+        <i id="github" class='bx bxl-github' ></i>
+      </a>
+    <p>niklas1997@live.dk</p>
+
+</section>    
+    
+<footer class="footer">
+    <h1 class="copy">&#169; Niklas Holt Läu</h1>
+</footer>
 </html>
