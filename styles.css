@@ -77,7 +77,7 @@ section {
 }
 .dobbybutton:hover {
     opacity: 0.4;
-    background-color: #2b2b2b;
+    background-color: #0077CC;
 }
 .dobbycontent {
     display: none;
@@ -236,7 +236,80 @@ h3 {
     margin-bottom: 1500px;
     width: 700px;
 }
+.harvardlink1:hover {
+    color: #0077CC;
+}
+.footer {
+    background-color: #ff0055;
+    padding-right: 1725px;
+    margin-top: 30px;
 
+    
+}
+
+/* The side navigation menu */
+.sidebar {
+    margin-top: -22px;
+    padding: 0;
+    width: 200px;
+    background-color: #242424;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    z-index: 1;
+  }
+  
+  /* Sidebar links */
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  /* Active/current link */
+  .sidebar a.active {
+    background-color: #ff085a;
+    color: white;
+  }
+  
+  /* Links on mouse-over */
+  .sidebar a:hover:not(.active) {
+    background-color: #0077CC;
+    color: white;
+  }
+  
+  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+.copy {
+    margin-left: 300px;
+    padding-bottom: -300px;
+    padding-right: 200px;
+}
+.contacthead {
+    font-size: 70px;
+}
+.face {
+    width: 100px;
+}
+.icon-facebook,
+.icon-linkedin,
+.icon-github {
+  font-size: 70px; /* Adjust the size as needed */
+  color: #555; /* Adjust the color as needed */
+  transition: color 0.3s ease; /* Optional: Add a transition effect for a smoother color change */
+}
+
+/* Optionally, you can change the hover color */
+.icon-facebook:hover,
+.icon-linkedin:hover,
+.icon-github:hover {
+  color: #0077CC; /* Change the hover color as needed */
+}
 @media only screen and (max-width: 414px) {
     .text {
         visibility: collapse;
@@ -292,8 +365,8 @@ h3 {
     }
     .skillphone {
         display: block;
-        width: 300px;
-        margin-right: 710px;
+        width: 290px;
+        margin-right: 840px;
     }
     .skillspline {
         display: none;
@@ -311,4 +384,35 @@ h3 {
         margin-bottom: 1200px;
         width: 400px;
     }
+    .boxpress {
+        display: none;
+    }
+    .harvard1 {
+        margin-left: 150px;
+    }
+    .skills {
+        margin-right: 850px;
+    }
+    .footer {
+        background-color: #ff0055;
+        padding-right: 235px;
+        margin-top: 30px;
+        
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+      }
+      .sidebar a {float: left;}
+      div.content {margin-left: 0;}
+    
+      .copy {
+        margin-left: 0;
+        padding-bottom: 0;
+        padding-right: 0;
+        font-size: 20px;
+    }
+
+    
 }
