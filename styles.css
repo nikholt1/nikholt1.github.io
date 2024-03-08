@@ -40,7 +40,6 @@ section {
     text-align: center;
     font-size: 20px;
     visibility: collapse;
-    font-family: fantasy;
     color: white;
 }
 .dobbydrop button {
@@ -247,7 +246,7 @@ h3 {
     
 }
 
-/* The side navigation menu */
+
 .sidebar {
     margin-top: -22px;
     padding: 0;
@@ -259,7 +258,7 @@ h3 {
     z-index: 1;
   }
   
-  /* Sidebar links */
+
   .sidebar a {
     display: block;
     color: black;
@@ -267,19 +266,19 @@ h3 {
     text-decoration: none;
   }
   
-  /* Active/current link */
+
   .sidebar a.active {
     background-color: #ff085a;
     color: white;
   }
   
-  /* Links on mouse-over */
+
   .sidebar a:hover:not(.active) {
     background-color: #0077CC;
     color: white;
   }
   
-  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+
   div.content {
     margin-left: 200px;
     padding: 1px 16px;
