@@ -77,6 +77,31 @@ section {
 
 
 }
+.active {
+    border-radius: 20px;
+}
+.reviliobutton {
+    color: white;
+    background-color: #181818;
+    border-color: #181818;
+    border-radius: 20px;
+    cursor: pointer;   
+    font-size: 25px; 
+    height: 80px;
+    width: 150px;
+    border-style: solid;
+    transition: background-color 1s;
+}
+.reviliobutton:hover {
+    opacity: 0.4;
+    background-color: #0077CC;
+}
+.reviliobutton:active {
+    opacity: 1;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15)
+}
+
+
 .dobbybutton:hover {
     opacity: 0.4;
     background-color: #0077CC;
@@ -247,7 +272,7 @@ h3 {
     
 }
 
-/* The side navigation menu */
+
 .sidebar {
     margin-top: -22px;
     padding: 0;
@@ -259,7 +284,7 @@ h3 {
     z-index: 1;
   }
   
-  /* Sidebar links */
+
   .sidebar a {
     display: block;
     color: black;
@@ -267,19 +292,19 @@ h3 {
     text-decoration: none;
   }
   
-  /* Active/current link */
+
   .sidebar a.active {
     background-color: #ff085a;
     color: white;
   }
   
-  /* Links on mouse-over */
+
   .sidebar a:hover:not(.active) {
     background-color: #0077CC;
     color: white;
   }
   
-  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+ 
   div.content {
     margin-left: 200px;
     padding: 1px 16px;
@@ -315,7 +340,7 @@ h3 {
     text-align: left;
     width: 800px;
     position: absolute;
-    margin-top: -200px;
+    margin-top: -180px;
 }
 .home {
     height: 100px;
@@ -326,6 +351,17 @@ h3 {
     width: 2000px;
     position: absolute;
     margin-top: -300px;
+}
+.youtube1 {
+    margin-right: 950px;
+}
+.youtube1content {
+    width: 300px;
+    margin-right: 900px;
+    font-size: 18px;
+    text-align: center;
+    text-align: left;
+    text-decoration: none;
 }
 @media only screen and (max-width: 428px) {
     .text {
@@ -447,7 +483,7 @@ h3 {
         text-align: center;
         width: 375px;
         text-align: left;
-        margin-top: 325px;
+        margin-top: 400px;
     }
     .box {
         background-color: #0077CC;
@@ -455,6 +491,10 @@ h3 {
         width: 400px;
         position: absolute;
         margin-top: -10px;
+    }
+    .youtube1 {
+        margin-right: 850px;
+        width: 380px;
     }
 }
 
