@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="java.js"></script>
+    <script defer src="app.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -34,12 +34,11 @@
 <section id="home" class="hidden">
     <h1 class="headerintro">Full stack developer and device exploitation expert with a passion for computer science, webdesign, webdevelopment and animation</h1>
     <div class="box"></div>
-    <strong class="descriptionintro">My name is Niklas Holt Läu
-    I am a creative and hard working person who learns quickly. i am currently learning python, HTML, CSS and Javascript through various courses by the Danish government and online. 
-    
-    I am a educated special reconnaissance expert, with speciality in military grade physical pentesting, various froms of electronic pentesting and red team/ blue team cybersecurity. 
-    
-    I am a strong Linux user, mostly Kali Linux, Ubuntu and Raspbian.</strong>
+    <strong class="descriptionintro">My name is Niklas Holt Läu. I am a creative and hardworking person who learns quickly. I am currently learning Python, HTML, CSS, and JavaScript through various courses provided by the Danish government and online platforms.
+
+        I am an educated special reconnaissance expert, specializing in military-grade physical penetration testing, various forms of electronic penetration testing, and red team/blue team cybersecurity.
+        
+        I am a proficient Linux user, primarily utilizing Kali Linux, Ubuntu, and Raspbian</strong>
 
     <img class="lillebillede" src="lillebillede.png" alt="lillebillede">
 
@@ -66,7 +65,9 @@
     <div class="harvard1">harvard certificate</div>
         <img class="cert1" src="harvardcertpython.PNG" alt="">
         <a href="https://cs50.harvard.edu/certificates/34f37a12-9f02-47fb-a955-c3c1d11b1d7e" class="harvardlink1">Link to certificate</a>
-</section>
+        <iframe class="youtube1" width="400" height="300" src="https://www.youtube.com/embed/-YkQqKhW5B0" title="CS50 FP with Hash" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <strong class="youtube1content">edx CS50 final project. Registration program with password Hashing</strong>
+    </section>
 
 <section id="projects" class="hidden">
     <h2 class="projects">Projects</h2>
@@ -79,33 +80,23 @@
     <div class="dobbydrop">
         <button class="dobbybutton" onclick="toggleDobbyContent()">The Project</button>
         <div class="dobbycontent">
-            <p>DOBBY is a small raspberry pi zero W powered device, capable of wifi mac sniffing through the kismet program.
-                The raspberry pi zero W flashed with raspberry Kali Linux version, is soldered with a pimoroni four letter PHAT display.
-                The device is plugged with a LILYGO LoRa 32 network making it possible to deploy the DOBBY device out of LOS, build so compact
-                that it can be attached to a drone or another transport device, the LoRa will send a message of how many devices have been found
-                in the area of where DOBBY is. 
-                DOBBY "start" runs on a python program that is started through a bash file, keybinded to the far left button, that through the python
-                program runs kismet and takes the messages that the program returns and counts how many devices it has detected. After processing
-                the detected devices in a count, the same python program runs a new command in the terminal automatically, sending a message from the LoRa
-                attached to DOBBY, to the LoRa by the operator.
-                the Kismet program is by default programmed by me to not decrypt the macaddresses of the devices, making it possible to simply
-                locate device activity in the area and or through the GPS position time log and device capture time log heatmap the activity with an
-                after action data review.
-                With the directional antenna, DOBBY can detect device activity up to around 20km away. The directional antenna is a 2.4 GHz cut copper
-                antenna with a wifi dongle solderet to it.</p>
-            <p>THE RUN:
-                After bootup DOBBY will show a startscreen presenting itself followed by a single dot on the PHAT. The single dot indicates that 
-                DOBBY is ready for a run. By pressing the far left button DOBBY will display "RUN" followed by "LOAD" and or "ERR" if there are some error 
-                messages. "LOAD" indicates that the program is running and is being setup to start the wifi dongle in monitor mode.
-                "FATL" indicates a fatal error, which results in a program shutdown.
-                After "LOAD" DOBBY will display a count from 1 to (infinite) showing how many devices have been detected.
-                The program is capable of logging the detected devices in a .kismet or .png file, aswell as the GPS position logged in time.
-                While DOBBY runs, the LoRa is powered up and if the LoRa is connected to another LoRa (by the operator) it will send the detected devices
-                count to the remote operatior.</p>
-            <p>DOBBY
-                Is a proof of concept, made for wifi activity alerting. DOBBY's first perpouse is to find missing people together with a drone and or 
-                a search party in remote environments.
-                DOBBY is made by me with help of a few others and is simply a project of interest, not intended for illegal pourposes.</p>
+            <p><p>DOBBY is a small Raspberry Pi Zero W-powered device, capable of WiFi MAC sniffing through the Kismet program.
+                The Raspberry Pi Zero W, flashed with Raspberry Kali Linux, is soldered with a Pimoroni four-letter PHAT display.
+                The device is plugged with a LILYGO LoRa 32 network, making it possible to deploy the DOBBY device out of LOS. Built so compact that it can be attached to a drone or another transport device, the LoRa will send a message of how many devices have been found in the area where DOBBY is.</p>
+                
+                <p>DOBBY "start" runs on a Python program that is started through a bash file, keybinded to the far-left button. Through the Python program, Kismet is run, and it takes the messages that the program returns and counts how many devices it has detected. After processing the detected devices in a count, the same Python program runs a new command in the terminal automatically, sending a message from the LoRa attached to DOBBY, to the LoRa by the operator.
+                The Kismet program is by default programmed by me to not decrypt the MAC addresses of the devices, making it possible to simply locate device activity in the area and/or through the GPS position time log and device capture time log heatmap the activity with an after-action data review.
+                With the directional antenna, DOBBY can detect device activity up to around 20 km away. The directional antenna is a 2.4 GHz cut copper antenna with a WiFi dongle soldered to it.</p>
+                
+                <p>THE RUN:
+                After bootup, DOBBY will show a start screen presenting itself followed by a single dot on the PHAT. The single dot indicates that DOBBY is ready for a run. By pressing the far-left button, DOBBY will display "RUN" followed by "LOAD" and/or "ERR" if there are some error messages. "LOAD" indicates that the program is running and is being set up to start the WiFi dongle in monitor mode. "FATL" indicates a fatal error, which results in a program shutdown.
+                After "LOAD," DOBBY will display a count from 1 to (infinite) showing how many devices have been detected.
+                The program is capable of logging the detected devices in a .kismet or .png file, as well as the GPS position logged in time.
+                While DOBBY runs, the LoRa is powered up and if the LoRa is connected to another LoRa (by the operator) it will send the detected devices count to the remote operator.</p>
+                
+                <p>DOBBY is a proof of concept, made for WiFi activity alerting. DOBBY's first purpose is to find missing people together with a drone and/or a search party in remote environments.
+                DOBBY is made by me with the help of a few others and is simply a project of interest, not intended for illegal purposes.</p>
+                
         </div>    
     
     </div class="revilio">
@@ -113,31 +104,31 @@
         <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.61/build/spline-viewer.js"></script>
         <spline-viewer class="dobbyspline" url="https://prod.spline.design/AgcttjXoG-foZhRB/scene.splinecode"></spline-viewer>
         <p>portable fake eNodeBs detector</p>    
-        <div class="dobbydrop">
+        <div class="reviliodrop">
 
-            <button class="dobbybutton" onclick="toggleDobbyContent()">The Project</button>
-            <div class="dobbycontent">
-                <p>Revilio is a raspberry Pi 4 powered fake eNodeBs detecter.
-                Revilio runs on raspberry Dragon OS software with Crocodile Hunter 
-                from EFForg installed. Revilios pourpose is to detect and alert the user
-                of fake eNodeBs activity. with the 2.4 ghz directional antenna, Revilio is 
-                capable of detecting direction of the fake eNodeBs aka. stingray.
-                therefore Revilio is also called a Crocodile Hunter. 
-                Revilio is a portable wardriven Crocodile Hunter capable of finding stingray
-                system operators. 
-                With Revilio running, the operator will be able to triangolate the position of 
-                the singray.
-                </p>
-                <p>The Run:
-                Revilio is still in the progress of being build.
-                </p>
-                <p>REVILIO:
-                revilio is still a project to be made. the plan is to run CH from EFF on the DOS system
-                and display it with a small soldered 16bit LCD display. other hardware like usb connected antenna
-                is still being found.
-                the program will most likely be run through python and alerts and other functions will be 
-                displayed on the LCD Display. 
-                  </p>
+            <button class="reviliobutton" onclick="toggleRevilioContent()">The Project</button>
+            <div class="reviliocontent">
+                <p>Revilio is a Raspberry Pi 4-powered fake eNodeBs detector.
+                    Revilio runs on Raspberry Dragon OS software with Crocodile Hunter 
+                    from EFForg installed. Revilio's purpose is to detect and alert the user
+                    of fake eNodeBs activity. With the 2.4 GHz directional antenna, Revilio is 
+                    capable of detecting the direction of the fake eNodeBs, aka. stingray.
+                    Therefore, Revilio is also called a Crocodile Hunter. 
+                    Revilio is a portable wardriven Crocodile Hunter capable of finding stingray
+                    system operators. 
+                    With Revilio running, the operator will be able to triangulate the position of 
+                    the stingray.</p>
+                    
+                    <p>The Run:
+                    Revilio is still in the process of being built.</p>
+                    
+                    <p>REVILIO:
+                    Revilio is still a project to be made. The plan is to run CH from EFF on the DOS system
+                    and display it with a small soldered 16-bit LCD display. Other hardware like USB-connected antennas
+                    are still being found.
+                    The program will most likely be run through Python, and alerts and other functions will be 
+                    displayed on the LCD Display.</p>
+                    
             </div>    
 
     </div>
