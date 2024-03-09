@@ -39,3 +39,10 @@ function toggleDobbyContent() {
       content.style.display = "none";
   }
 }
+function toggleRevilioContent() {
+  var dobbyContent = document.querySelector(".dobbycontent");
+  var revilioContent = document.querySelector(".reviliocontent");
+  
+  revilioContent.style.display = revilioContent.style.display === "none" ? "block" : "none";
+  dobbyContent.style.display = "none";
+}
