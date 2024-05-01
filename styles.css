@@ -4,7 +4,7 @@
     color: white;
 }
 body {
-    background-color: #000000;
+    background-color: #0d0e14;
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     color: #fff;
@@ -160,6 +160,7 @@ section {
 .skillspline {
     height: 800px;
     width: 1500px;
+    display: none;
 }
 .reviliocontent {
     display: none;
@@ -188,7 +189,7 @@ h3 {
     margin: 60px auto;
     color: #ffffff;
     padding: 20px;
-    box-shadow: 0 14px 28px rgba(99, 1, 38, 0.753);
+    box-shadow: 0 14px 28px rgba(71, 71, 71, 0.753);
     display: none;    
 }
 .skillphone li {
@@ -212,7 +213,7 @@ h3 {
 .bar span{
     height: 20px;
     float: left;
-    background: #ff0055;
+    background: #3d3d3d;
 }
 .python{
     width: 70%;
@@ -243,7 +244,7 @@ h3 {
     animation: JavaScript 3s;
 }
 .skillphone {
-    display: none;
+    display: block;
 }
 .lillebillede {
     width: 700px;
@@ -296,7 +297,7 @@ h3 {
   
 
   .sidebar a.active {
-    background-color: #ff085a;
+    background-color: #727272;
     color: white;
   }
   
@@ -522,9 +523,6 @@ h3 {
     .harvardlink1 {
         margin-right: 850px;
         width: 380px;        
-    }
-
-}     
     }
 
 }
