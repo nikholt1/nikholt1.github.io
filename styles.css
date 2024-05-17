@@ -1,18 +1,39 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?");
 
-#loading { outline: none; border: none; background: transparent;
-    color: white;
+.body1 {
+    position: relative;
+    background-color: #000;
+    background-size: 1905px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;   
 }
-body {
-    background-color: #0d0e14;
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    color: #fff;
-    padding: 0;
-    margin: 0;
+/* FOOTER */
+.footer {
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-top: -300px;
+    flex-direction: column;
+    align-items: center;
     
 }
 
+/* body {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+*/
+
+.divcont {
+    margin-top: 50px;
+    height: 100px;
+}
 section {
     display: grid;
     place-items: center;
@@ -20,509 +41,751 @@ section {
     min-height: 100vh;
 }
 
-
-.hidden {
-    opacity: 0;
-    transition: all 2s;
-    transform: translateX(-100%)
-}
-.home {
-    height: 100px;
-}
-.show {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0)
-}
-
-.phone {
-    margin-top: -50px;
-    margin-left: -300;
-    margin-right: auto;
-    text-align: center;
-    font-size: 20px;
-    visibility: collapse;
-    font-family: fantasy;
-    color: white;
-}
-.dobbydrop button {
-    background-color: #000000;
-    color: white;
-    border: none;
-    margin-left:0px;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-}
-
-.dobbydrop button:focus + .dobbycontent {
-    transform: translateY(-10px);
-    transition: opacity 150ms ease-in-out, transform;
-    display: block;
-    word-wrap: break-word;
-  }
-.dobbyspline {
-    height: 500px;
-    width: 800px;
-}
-.dobbybutton {
-    color: white;
-    background-color: #181818;
-    border-color: #181818;
-    border-radius: 20px;
-    cursor: pointer;   
-    font-size: 25px; 
-    height: 80px;
-    width: 150px;
-    border-style: solid;
-    transition: background-color 1s;
-
-
-}
-.active {
-    border-radius: 20px;
-}
-.reviliobutton {
-    color: white;
-    background-color: #181818;
-    border-color: #181818;
-    border-radius: 20px;
-    cursor: pointer;   
-    font-size: 25px; 
-    height: 80px;
-    width: 150px;
-    border-style: solid;
-    transition: background-color 1s;
-}
-.reviliobutton:hover {
-    opacity: 0.4;
-    background-color: #0077CC;
-}
-.reviliobutton:active {
-    opacity: 1;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15)
+/* NAVBAR */
+.topnav {
+  background-color: #41414100;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  position: fixed;
+  margin-top: -10px;
+  margin-right: 1000px;
+  width: 100%;
+  z-index: 5000;
+  font-family: 'Poppins', sans-serif;
+  animation-delay: 4s;
+  animation: fadeIn 1.5s;
+  text-shadow: 2px 2px 20px rgb(0, 199, 199);
+  padding-right: 20px;
 }
 
 
-.dobbybutton:hover {
-    opacity: 0.4;
-    background-color: #0077CC;
-}
-.dobbycontent {
-    display: none;
-    width: 675px;
-    text-align: center;
-    text-align: left;
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 
 }
 
-.dobbybutton:active {
-    opacity: 1;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15)
-}
-.breathe {
-    height: 600;
-    width: 500;
-    z-index: -1;
+
+.topnav a:hover {
+  background-color: rgba(0, 247, 255, 0.336);
+  opacity: 10px;
+  color: black;
+  transition: background-color 0.3s ease;
+  animation: flutter 0.6s linear;
 }
 
-.skills {
-    font-size: 125px;
-}
-.projects {
-    font-size: 125px;
-}
 
-.cert1 {
-    width: 300px;
-    margin-left: 0px;
-    transition: width 1.5s;
+.topnav a.active {
+  background-color: rgb(4, 0, 22);
+  color: white;
 }
-.code1 {
-    width: 100px;
-    margin-left: -1000px;
-    transition: width 1.5s;
-
+/*scrolling bar */
+.updates-container {
+    z-index: 1000;
+    position: fixed;
+    display: grid;
+    margin-top: 50px;
+    font-family: 'Poppins', sans-serif; 
+    animation: fadeIn 5s;
+    text-shadow: 2px 2px 20px rgb(0, 199, 199);
+     
 }
-.code1:hover {
-    width: 400px;
-}
-.cert1:hover {
-    width: 700px;
-
-}
-.revilio1 {
-    margin-bottom: 100px;
-    margin-top: 150px;
-
-
-}
-.skillspline {
-    height: 800px;
-    width: 1500px;
-    display: none;
-}
-.reviliocontent {
-    display: none;
-    width: 675px;
-    text-align: center;
-    text-align: left;
-}
-.harvardlink1 {
-    margin-right: 0px;
-    margin-top: 30px;
-    color: white;
-    text-decoration: none;
-}
-.harvard1 {
-    margin-right: 0px;
-}
-
-h1 {
-    text-align: center;
-}
-h3 {
-    margin: 5px
-}
-.skillphone {
-    width: 800px;
-    margin: 60px auto;
-    color: #ffffff;
-    padding: 20px;
-    box-shadow: 0 14px 28px rgba(71, 71, 71, 0.753);
-    display: none;    
-}
-.skillphone li {
-    margin: 20px 0;
-    padding: 10px;
-}
-.bar{
-    background: #0077CC;
-    display: block;
-    height: 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: black;
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-
-}
-.bar:hover{
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-.bar span{
-    height: 20px;
-    float: left;
-    background: #3d3d3d;
-}
-.python{
-    width: 70%;
-    animation: python 3s;
-}
-.HTML{
-    width: 60%;
-    animation: HTML 3s;
-}
-.CSS{
-    width: 50%;
-    animation: CSS 3s;
-}
-.Spline{
-    width: 60%;
-    animation: Spline 3s;
-}
-.Webflow{
-    width: 10%;
-    animation: Webflow 3s;
-}
-.Linux{
-    width: 75%;
-    animation: Linux 3s;
-}
-.Javascript{
-    width: 5%;
-    animation: JavaScript 3s;
-}
-.skillphone {
-    display: block;
-}
-.lillebillede {
-    width: 700px;
-    margin-right: 1100px;
+.updates-container .update-title {
     position: absolute;
-    border-color: #0077CC;
-    border-radius: 10%;
-    z-index: -1; 
-    margin-bottom: 1000px;
+    background: rgb(4, 0, 22);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    color:white;
+    margin-left: -20px;
+    z-index: 200;
+    border-radius: 10px;
 }
+.updates-container ul {
+    display: flex;
+    list-style: none; 
+    margin: 0;
+    animation: scroll 30s infinite linear;
 
-.headerintro {
-    margin-bottom: 1200px;
-    width: 700px;
 }
-.headerintro2 {
-    margin-bottom: 1500px;
-    width: 700px;
+.updates-container ul li {
+    white-space: nowrap;
+    padding: 10px 25px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.842);
+    text-shadow: 2px 2px 20px rgb(0, 199, 199);
 }
-.harvardlink1:hover {
-    color: #0077CC;
+.updates-container ul li::after {
+    content: "";
+    width: 2px;
+    height: 100%;
+    background-color: rgb(128, 128, 128);
 }
-.footer {
-    background-color: #ff0055;
-    padding-right: 1725px;
-    margin-top: 30px;
-
+.updates-container ul li:last-child::after {
+    display: none;
+}
+.scroll1 {
+    background-color: rgba(255, 153, 0, 0.432);
+    border-radius: 10px;
+}
+@keyframes scroll {
+    from {
+        transform: translateX(130%);
+    }
+    to {
+        transform: translateX(-1600px);
+    }
+}
+.cloudserverbar {
+    color: red;
+}
+.updates-container1 {
+    position: fixed;
+    display: grid;
+    margin-top: 80px;
+    font-family: 'Poppins', sans-serif;  
+    animation: fadeIn 5s;
+    text-shadow: 2px 2px 20px rgb(0, 199, 199);
+    z-index: 1000;
     
 }
-
-
-.sidebar {
-    margin-top: -22px;
-    padding: 0;
-    width: 200px;
-    background-color: #242424;
-    position: fixed;
+.updates-container1 .update-title {
+    position: absolute;
+    background: rgb(4, 0, 22);
     height: 100%;
-    overflow: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    color:white;
+    z-index: 3;
+    margin-left: -20px;
+}
+.updates-container1 ul {
+    display: flex;
+    list-style: none; 
+    margin: 0;
+    animation: scroll 20s infinite linear;
+    background-color: rgba(255, 196, 0, 0);
+
+}
+.updates-container1 ul li {
+    white-space: nowrap;
+    padding: 10px 25px;
+    position: relative;
+    color: white;
+    text-shadow: 2px 2px 20px rgb(0, 199, 199);
+}
+.updates-container1 ul li::after {
+    content: "";
+    width: 2px;
+    height: 100%;
+    background-color: rgb(39, 0, 23);
+}
+.updates-container1 ul li:last-child::after {
+    display: none;
+}
+
+/* spline */
+.spline {
+    position: absolute;
+    margin-top: -270px;
+    z-index: 1000;
+}
+/* ABOUT */
+.about {
+    height: 1200px;
+    display: grid;
+    z-index: 1000;
+}
+.aboutcontent {
+    z-index: 1000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    background-position: center;
+    margin-left: px;
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    animation-delay: 3s;
+    animation: fadeIn 4s;
+ }   
+.nameblack {
+    color: black;
+}
+.aboutspline {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    margin-left: -10px;
+    margin-top: -10px;
+
+}
+ @keyframes fadeIn {
+    0% { opacity: 0; }
+    25% {opacity: 0; }
+    50% {opacity: 0; }
+    75% {opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+.facepic {
+    width: 350px
+}
+.abouttext {
+    margin-top: -300px;
+
+}
+.aboutheader{
+    font-size: 50px;
+    transition: 1s opacity 1;
+}
+.aboutstuff {
+    text-decoration: none;
+    margin-left: 120px;
+}
+.container {
+    display: grid;
+    align-items: center; 
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5px;
+   }
+   
+img {
+    max-width: 300px;
+    max-height:100%;
+}
+   
+   .text {
+     font-size: 70px;
+   }
+
+.video1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    
+    
+}
+.youtubelive {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    
+}
+.dot {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: rgb(134, 0, 0);
+    display: inline-block;
+    margin-left: 150px;
+    margin-top: -250px; 
+    z-index: 1000;  
+    opacity: 0.8; 
+}
+@media only screen and (max-width: 500px) {
+    body {
+        background-size: 1750px;
+        
+    }
+    .aboutheader {
+        font-size: 30px;
+        margin-left: 100px;
+        margin-top: 500px;
+    }
+    
+    .text {
+        font-size: 50px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .projectsheader {
+        display: none;
+    }
+    .projectscontainer {
+        margin-top: 800px;
+        height: 2000px;
+    }
+    .updates-container {
+        margin-top: 90px;
+        font-size: 10px;
+    }
+    .updates-container1 {
+        margin-top: 120px;
+        font-size: 10px;
+    }
+    .aboutcontent{
+        margin-top: -120px;
+        margin-right: 60px
+    }
+    .topnav a {
+        font-size: 10px;
+        font-size: 11px;
+    }
+    .topnav {
+        margin-top: 0px;
+        background-color: black;
+    }
+    .dot {
+        margin-top: -1px;
+    }
+    .projectsheader {
+        margin-right: 350px;
+    }
+    .gif1 {
+        width: 300px;
+    }
+    .video-foreground,
+    .video-background iframe {
+        margin-top: 1px;
+    }
+    .dot {
+        height: 50px;
+        width: 50px;
+    }
+    
+    .text {
+        font-size: 50px;
+        display: none;
+    }
+    .skylineimg {
+        display: none;
+    }
+    .dobbycontainer {
+        display: flex;
+        width: 400px;
+        margin-left: -100px;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        align-content: flex-end;
+        gap: 4em;
+        background: rgb(14, 14, 14);
+    }
+    .morecontainer {
+        margin-left: -40px;
+    }
+    .text2 {
+        position: fixed;
+        top: 50%; /* Position text at the vertical center */
+        left: 50%; /* Position text at the horizontal center */
+        transform: translate(-50%, -50%); /* Center text both vertically and horizontally */
+        text-align: center;
+        color: white;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-style: italic;
+        font-size: 100px;
+        z-index: 1;
+        text-shadow: 10px 10px 5px rgb(199, 0, 93);
+        margin-top: 0px;
+    }
+    .aboutcontainer {
+        display: flex;
+        margin-top: 100px;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        align-content: flex-end;
+        gap: 0em;
+        background: rgb(44, 44, 44);
+        color: white;
+        box-shadow: 8px 8px 11px #000000;
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .aboutspline {
+
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+    .aboutcontainer {
+        width: 75%;
+        padding-left: 10px;
+        padding-right: 20px;
+    }
+    .aboutitem1img {
+        width: 240px;
+    }
+}
+
+
+
+
+* {
+    box-sizing: border-box;
+  }
+  .video-background {
+    background: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -99;
+    animation: fadeIn 2s;
+  }
+  .video-foreground,
+  .video-background iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    margin-top: 10px;
     z-index: 1;
   }
   
-
-  .sidebar a {
-    display: block;
-    color: black;
-    padding: 16px;
-    text-decoration: none;
+  @media (min-aspect-ratio: 16/9) {
+    .video-foreground {
+      height: 300%;
+      top: -100%;
+    }
   }
-  
+  @media (max-aspect-ratio: 16/9) {
+    .video-foreground {
+      width: 300%;
+      left: -100%;
+    }
+  }
+  @media all and (max-width: 600px) {
+    .vid-info {
+      width: 50%;
+      padding: 0.5rem;
+    }
+    .vid-info h1 {
+      margin-bottom: 0.2rem;
+    }
+  }
+  @media all and (max-width: 500px) {
+    .vid-info .acronym {
+      display: none;
+    }
+  }
 
-  .sidebar a.active {
-    background-color: #727272;
+  .project1container {
+    margin-top: -220px;
+    z-index: 1000;
     color: white;
-  }
-  
+    position: absolute;
+    top: 50%; /* Position from the top edge of the positioned parent */
+    left: 50%; /* Position from the left edge of the positioned parent */
+    transform: translate(-50%, -50%); /* Center the element both horizontally and vertically */
 
-  .sidebar a:hover:not(.active) {
-    background-color: #0077CC;
+}
+
+.projectsheader {
     color: white;
-  }
-  
- 
-  div.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
-  }
-.copy {
-    margin-left: 300px;
-    padding-bottom: -300px;
-    padding-right: 200px;
-}
-.contacthead {
-    font-size: 70px;
-}
-.face {
-    width: 100px;
-}
-.icon-facebook,
-.icon-linkedin,
-.icon-github {
-  font-size: 70px; 
-  color: #555; 
-  transition: color 0.3s ease; 
-}
-
-
-.icon-facebook:hover,
-.icon-linkedin:hover,
-.icon-github:hover {
-  color: #0077CC; 
-}
-.descriptionintro {
-    text-align: center;
-    text-align: left;
-    width: 800px;
-    position: absolute;
-    margin-top: -180px;
-}
-.home {
-    height: 100px;
-}
-.box {
-    background-color: #0077CC;
-    height: 100px;
-    width: 2000px;
-    position: absolute;
-    margin-top: -300px;
-}
-.youtube1 {
-    margin-right: 0px;
-}
-.youtube1content {
-    width: 300px;
-    margin-right: 0px;
-    font-size: 18px;
-    text-align: center;
-    text-align: left;
-    text-decoration: none;
-}
-.youtube2content {
-    width: 300px;
-    margin-right: 0px;
-    font-size: 18px;
-    text-align: center;
-    text-align: left;
-    text-decoration: none;
-}
-@media only screen and (max-width: 428px) {
-    .text {
-        visibility: collapse;
-    }
-    .phone {
-        visibility: visible;
-    }
-    .home h1 {
-        margin-top: 0px;
-        margin-left: -250px;
-        margin-right: auto;
-        text-align: center;
-        font-size: 50px;
-        font-family: fantasy;
-        color: white;
-    }
-    .dobbyspline {
-        height: 800px;
-        width: 400px;
-    }
-    .breathe {
-        height: 400px;
-        width: 400px;
-        margin-left: 10px
-    }
-    .projects {
-        font-size: 75px;
-    }
-    .skills {
-        font-size: 75px;
-    }
-    .skillspline {
-        height: 750px;
-        width: 1300px;
-    }
-    .dobbycontent {
-        width: 375px;
-    }
-    .cert1 {
-        width: 300px;
-        margin-left: -900px;
-        transition: width 1.5s;
-    }
-    .cert1:hover {
-        width: 400px;
-        
-    }
-    .code1 {
-        display: none;
-    }
-    .reviliocontent {
-        width: 375px;
-    }
-    .skillphone {
-        display: block;
-        width: 290px;
-        margin-right: 840px;
-    }
-    .skillspline {
-        display: none;
-    }
-    .lillebillede {
-        width: 500px;
-        margin-right: 200px;
-        position: absolute;
-        border-color: #3326ee;
-        border-radius: 10%;
-        z-index: -1; 
-        margin-bottom: 500px;
-    }
-    .headerintro {
-        margin-bottom: 1200px;
-        width: 400px;
-        text-align: left;
-    }
-    .boxpress {
-        display: none;
-    }
-    .harvard1 {
-        margin-left: 150px;
-    }
-    .skills {
-        margin-right: 850px;
-    }
-    .footer {
-        background-color: #ff0055;
-        padding-right: 235px;
-        margin-top: 30px;
-        
-    }
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: fixed;
-      }
-      .sidebar a {float: left;}
-      div.content {margin-left: 0;}
+    animation: fadeIn 1.7s;
+    font-size: 40px;
+    margin-top: -350px;
     
-      .copy {
-        margin-left: 0;
-        padding-bottom: 0;
-        padding-right: 0;
-        font-size: 20px;
+}
+.background1 {
+    background-color: black;
+    position: relative;
+    height: 1000px;
+    width: 2000px;
+    margin-top: 900px;
+    display: inline-block;
+    animation: fadeInIn 2s;
+    opacity: 0.8;
+    z-index: 1000;
+}
+.projectsitem1 {
+    animation: fadeIn 2s;
+    white-space: 20px;
+}
+.projectsitem1:hover {
+    opacity: 0.4;
+}
+.projectscontainer {
+        display: flex;
+        margin-top: 500px;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        align-content: flex-end;
+        gap: 1em;
+
+}
+@keyframes fadeInIn {
+    0% { opacity: 0; }
+    25% {opacity: 0; }
+    50% {opacity: 0; }
+    75% {opacity: 0; }
+    100% { opacity: 0.8; }
+  }
+
+
+
+.content {
+    position: relative; /* Set the content as relative for absolute positioning of child elements */
+    z-index: 1000;
+}
+
+.text {
+    position: fixed;
+    top: 50%; /* Position text at the vertical center */
+    left: 50%; /* Position text at the horizontal center */
+    transform: translate(-50%, -50%); /* Center text both vertically and horizontally */
+    text-align: center;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: italic;
+    font-size: 200px;
+    z-index: 1;
+    text-shadow: 10px 10px 5px rgb(199, 0, 93);
+    margin-top: 0px;
+}
+
+.dobbymp4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Set z-index to position the video behind other content */
+}
+.dobbystuff {
+    height: calc(150vh - 200px); /* Adjust the height based on the margin-top value */
+    background-color: rgb(14, 14, 14);
+    position: absolute;
+    align-items: center; /* or flex-start */
+    justify-content: center; /* Center horizontally */
+    top: 0; /* Position the section at the top of the viewport */
+    left: 0; /* Ensure the section starts from the left side */
+    width: 100vw; /* Set width to 100% of the viewport width */
+    z-index: -2; /* Ensure .dobbystuff is positioned behind the video */
+}
+.skylineimg {
+    max-width: 110%;
+    margin-top: -115px;
+    z-index: 9000;
+}
+
+.aboutdobby {
+    background-color: rgb(14, 14, 14);
+    z-index: 4000; /* Set a very high z-index value to ensure it's on the top layer */
+    width: 50vw;
+    color: white;
+    margin-top: 1000px;
+    position: absolute; /* Fixed positioning to keep it visible during scrolling */
+    top: 50%; /* Position the section at the vertical center */
+    left: 50%; /* Position the section at the horizontal center */
+    transform: translate(-50%, -50%); /* Center the section both vertically and horizontally */
+    text-align: left; /* Center align text */
+    font-family: 'Poppins', sans-serif;
+}
+.backgrounddobby {
+    background-color: rgb(14, 14, 14);
+}
+
+.dobbycontainer {
+    display: flex;
+    margin-top: -100px;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    gap: 4em;
+    background: rgb(14, 14, 14);
+
+
+}
+.item1 {
+
+}
+.item2 {
+    
+}
+.item3 {
+
+}
+
+
+/* ABOUT part */
+.aboutbody {
+    background-color: #141414;
+    font-family: 'Poppins', sans-serif;
+    animation: fadeIn 0.5s;
+}
+
+.aboutcontainer {
+        display: flex;
+        margin-top: 100px;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        align-content: flex-end;
+        gap: 4em;
+        background: rgb(44, 44, 44);
+        color: white;
+        box-shadow: 15px 15px 11px #000000;
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        opacity: 0.9;
+
+}
+@keyframes grow-and-shrink {
+    0% {
+      transform: scale(1);
     }
-    .copyright {
-        font-size: 10px;
-        margin-left: 20px;
+    100% {
+      transform: scale(1.1);
     }
-      /* Sidebar links */
-    .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-        font-size: 13px;
+  }
+.aboutcontainer:hover {
+    animation: grow-and-shrink 2000ms forwards;
+}
+.aboutcontainer:not(:hover) {
+
+    animation: shrink-and-grow 2000ms forwards;
+}
+.aboutitem1 {
+    margin-left: 10px;
+}
+.aboutitem1img {
+    opacity: 1;
+}
+.aboutitem2 {
+    width: 150px;
+}
+.aboutcontainer2 {
+    display: flex;
+    margin-top: 150px;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    gap: 4em;
+    border-radius: 10px;
+    animation: fadeIn 1s;
+}
+.aboutitem12 {
+    background: rgb(44, 44, 44);
+    color: white;
+    box-shadow: 15px 15px 11px #000000;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: .7;
+}
+.aboutitem22 {
+    background: rgb(44, 44, 44);
+    color: white;
+    box-shadow: 15px 15px 11px #000000;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: .7;
+}
+.aboutitem32 {
+    background: rgb(44, 44, 44);
+    color: white;
+    box-shadow: 15px 15px 11px #000000;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: .7;
+}
+.aboutitem42 {
+    background: rgb(44, 44, 44);
+    color: white;
+    box-shadow: 15px 15px 11px #000000;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: .7;
+}
+.aboutitem52 {
+    background: rgb(44, 44, 44);
+    color: white;
+    box-shadow: 15px 15px 11px #000000;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: .7;
+}
+
+.aboutitem12:hover {
+    animation: grow-and-shrink 1000ms forwards;
+}
+.aboutitem22:hover {
+    animation: grow-and-shrink 1000ms forwards;
+}
+.aboutitem32:hover {
+    animation: grow-and-shrink 1000ms forwards;
+}
+.aboutitem42:hover {
+    animation: grow-and-shrink 1000ms forwards;
+}
+.aboutitem52:hover {
+    animation: grow-and-shrink 1000ms forwards;
+}
+
+@keyframes slide-in {
+    from {
+      transform: translateX(-100%);
     }
-    .descriptionintro {
-        text-align: center;
-        width: 375px;
-        text-align: left;
-        margin-top: 400px;
+    to {
+      transform: translateX(0%);
     }
-    .box {
-        background-color: #0077CC;
-        height: 100px;
-        width: 400px;
-        position: absolute;
-        margin-top: -10px;
+  }
+  @keyframes shrink-and-grow {
+    0% {
+      transform: scale(1.1);
     }
-    .youtube1 {
-        margin-right: 850px;
-        width: 380px;
+    100% {
+      transform: scale(1);
     }
-    .youtube2 {
-        margin-right: 859px;
-        width: 380px;
-        margin-top: 30px;
-    }
-    .youtube2content {
-        margin-right: 850px;
-        width: 380px;
-    }
-    .youtube1content {
-        margin-right: 850px;
-        width: 380px;
-    }
-    .harvardlink1 {
-        margin-right: 850px;
-        width: 380px;        
-    }
+}
+
+.aboutitem12:not(:hover) {
+    /* Apply shrink animation on hover out */
+    animation: shrink-and-grow 2000ms forwards;
+}
+.aboutitem22:not(:hover) {
+    /* Apply shrink animation on hover out */
+    animation: shrink-and-grow 2000ms forwards;
+}
+.aboutitem32:not(:hover) {
+    /* Apply shrink animation on hover out */
+    animation: shrink-and-grow 2000ms forwards;
+}
+.aboutitem42:not(:hover) {
+    /* Apply shrink animation on hover out */
+    animation: shrink-and-grow 2000ms forwards;
+}
+.aboutitem52:not(:hover) {
+    /* Apply shrink animation on hover out */
+    animation: shrink-and-grow 2000ms forwards;
+}
+  .box {
+    animation: slide-in 1000ms;
+    animation-timing-function: linear;
+  }
+.aboutspline {
+        position: fixed;
+        width: 100%;
+        height: 105%;
 
 }
