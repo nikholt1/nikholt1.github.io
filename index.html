@@ -21,7 +21,11 @@
         <a href="#bout">Photography</a>
         <a href="cloudserver.html">Cloud server</a>
     </div>
-
+    <div class="containerhome">
+        <div class="item1"><p>Server Connection stable</p></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+    </div>
     <div class="news-bar">
         <div class="news-content">
             <span class="news-item">WEBSITE UNDER DEVELOPMENT</span>
@@ -30,7 +34,8 @@
             <span class="news-item">WEBSITE UNDER DEVELOPMENT</span>
         </div>
     </div>
-    <h1 class="headerhome">Niklas Holt Läu</h1>
+    <h1 class="headerhome">Niklas Holt Läu <p class="HUB"><strong class="H">H</strong>UB</p></h1>
+
 </body>
 <style>
     .body1 {
@@ -44,13 +49,17 @@
         margin-top: -10px;
         position: fixed;
     }
-
+    .containerhome {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .headerhome {
         display: flex;
         justify-content: center;
         align-content: center;
         position: fixed;
-        margin-top: 300px;
+        margin-top: 200px;
         color: white;
         text-shadow: 10px 10px 20px black;
         display: none;
@@ -81,6 +90,14 @@
     white-space: nowrap;
     background-color: yellow;
     color: black;
+}
+.HUB {
+    margin-top: 10px;
+    font-size: 20px;
+}
+.H {
+    color: rgb(114, 0, 0);
+    font-size: 30px;
 }
 @keyframes fadeIn {
     0% { opacity: 0; }
