@@ -46,14 +46,10 @@
 </section>
 
 <section class="indhold" id="intro">
-    <div class="autoShow">
-        <div class="intro1">
-            <h2 class="intro2" >Niklas Holt Läu</h2>
-            <img class="imgprof" width="200px" src="IMG_7582.JPG" alt="">
-            <a class="backtotop" href="contact.html">Kontakt</a>
-
-            
-        </div>
+    <div class="indholdintro">
+        <div class="introitem"><h2 class="overskriftintro">Niklas Holt Läu</h2></div>
+        <div class="introitem"><img class="imgprof" width="200px" src="IMG_7582.JPG" alt=""></div>
+        <div class="introitem"><a class="backtotop" href="contact.html">Kontakt</a></div>
     </div>
 
     <div class="one">
@@ -461,14 +457,11 @@
         justify-content: center;
         align-items: center;
     }
-    .intro {
+    .indholdintro{
         display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        font-size: 25px;
+        flex-direction: column;
     }
-    .intro2{
+    .overskriftintro{
         font-size: 30px;
     }
     </style>
@@ -524,4 +517,5 @@
     </script>
 </body>
 </html>
+
 
