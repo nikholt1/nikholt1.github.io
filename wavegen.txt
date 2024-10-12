@@ -1,0 +1,194 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import sys
+
+def main():
+    director()
+
+
+
+def director():
+    decision = input('1. sound | 2. wavemake | 3. interference | 4. light | 5. atom | 6. astronomical light: ')
+    if '1' in decision:
+        sound()
+    if '2' in decision:
+        wavemake()
+    if '3' in decision:
+        interference()
+    if '4' in decision:
+        light()
+    if '5' in decision:
+        
+def sound(): # bølgeformel: v = f*λ
+    print('v = f*λ')
+    calcfor = input('calc for: 1. f (Hz) | 2. v (wave velocity) | 3. λ (wavelength) | 4. T (period): ')
+    if '1' in calcfor:
+        fform = input('do you know T? y/n: ')
+        if 'n' in fform:      
+            print('f = v/λ')
+            v = float(input('v = '))
+            λ = float(input('λ = '))
+            print(f'f = {v}/{λ}')
+            res = v / λ
+            print(f'{res} Hz')
+            main()
+        if 'y' in fform:
+            print('f = 1/T')
+            T = float(input('T = '))
+            print(f'f = 1/{T}')
+            res = 1/T
+            print(f'{res} Hz')
+            main()
+        else:
+            sys.exit(0)
+    if '2' in calcfor:
+        print('v = f*λ')
+        f = float(input('f = '))
+        λ = float(input('λ = '))
+        print(f'v = {f}/{λ}')
+        res = f * λ
+        print(f'{res} m/s')
+        main()
+    if '3' in calcfor:
+        print('λ = v/f')
+        v = float(input('v = '))
+        f = float(input('f = '))
+        print(f'λ = {v}/{f}')
+        res = v / f
+        print(f'{res} m')
+        main()
+    if '4' in calcfor:
+        print('Time from wavetop to wavetop ')
+        print('T = 1/f')
+        f = float(input('f = '))
+        res = 1 / f
+        print(f'f = 1/{f}')
+        print(f'{res} s')
+        main()
+
+def interference(): #interference calculation
+
+    print('yres = y1 + y2')
+    y1 = float(input('y1 = '))
+    y2 = float(input('y2 = '))
+    yres = y1 + y2
+    print(yres, 'amplitude')
+    main()
+
+def light():
+    print('light is fotons but can also be describet as linear parallel waves.')
+    print('just like sound waves and waterwaves light still has properties like wavelength, frequency and amplitude. ')
+    choice = input('1. intefererence | 2. electromagnetic radiation | 3. heatradiation | 4. electromagnetic radiationenergy: ')
+    if '1' in choice:
+        print('calculate for sin of θ or θn')
+        interferencechoice = input('1. sin θ = λ/d | 2. sinθn= (n*λ)/d | calc for orders: 3. n ≤ d/λ: ')
+        if '1' in interferencechoice:
+            λ = float(input('λ = '))
+            d = float(input('d in m = '))
+            res = λ / d
+            print(f'sin θ = {λ}/{d}')
+            print(f'{res}°')
+            main()
+        if '2' in interferencechoice:
+            λ = float(input('λ = '))
+            d = float(input('d in m = '))
+            n = float(input('n = '))
+            res = (n*λ) / d
+            print(f'sin θn = {n}*{λ}/{d}')
+            print(f'{res}°')
+            main()
+        if '3' in interferencechoice:
+            print('n ≤ d/λ:')
+            d = float(input('d in m = '))           
+            λ = float(input('λ = '))
+            res = d / λ
+            print(f'n ≤ {d}/{λ}')
+            print(res)
+    if '2' in choice:
+        print('electromagnetic radiotion')   
+        print('Energy waves with electric and magnetic fields, propagating through space.')
+        electricchoice = input('1. frq wavelength relationship c = λ/f | 2. energy photon E = h*f | 3. radiation intensity I = P/A | 4. electric field intesity E = (k*Q)/r^2 | 5. magnetic field intensity B = (μ0*I)/2π*r: ')            
+        if '1' in electricchoice:
+            choice = input('1. c = λ*f | 2. λ = c/f | 3. f = c/λ: ')
+            if '1' in choice:
+                print('c = λ*f')
+                λ = float(input('λ = '))           
+                f = float(input('f = '))
+                res = λ * f
+                print(f'c = {λ}*{f}')
+                print(res)
+                main()
+            if '2' in choice:
+                print('λ = c/f')
+                c = float(input('c = '))           
+                f = float(input('f = '))
+                res = c / f
+                print(f'λ = {c}/{f}')
+                print(res)
+                main()
+            if '3' in choice:
+                print('f = c/λ')
+                c = float(input('c = '))           
+                λ = float(input('λ = '))
+                res = c / λ
+                print(f'f = {c}/{λ}')
+                print(res)                
+                main()
+
+
+
+def wavemake():
+    amplitude = float(input('amplitude = '))
+    frequency = float(input('f = '))
+    period = float(input('T = '))
+
+    sampling_rate = 44100
+    print(period, frequency, amplitude)
+
+    t = np.linspace(0, period, int(period * sampling_rate), endpoint=False)
+    sine_wave = amplitude * np.sin(2 * np.pi * frequency * t)
+    plt.plot(t, sine_wave)
+    plt.xlabel('Time (s)')
+    plt.ylabel('Amplitude')
+    plt.show()
+    main()
+    
+def astronomical():
+    print('we can calculate light and distance, aswell as movement relative to us because of light')
+    input('')
+
+def atom():
+    input('')
+
+def bargraph():
+    print('Enter values for eV and n. Type "end" to finish.')
+
+    eV = []
+    n = []
+
+    while True:
+        eV_input = input("eV =  ")
+        if eV_input == "end":
+            break
+        else:
+            eV.append(float(eV_input))
+            n_input = input("Enter value for n corresponding to {}: ".format(eV_input))
+            n.append(float(n_input))
+
+    plt.barh(n, eV, color='skyblue')
+
+    plt.title('Bar Graph of eV vs n')
+    plt.xlabel('eV')
+    plt.ylabel('n')
+
+    plt.show()
+    
+
+
+
+
+
+
+if __name__ == "__main__":
+    main()
+
