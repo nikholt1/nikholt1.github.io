@@ -311,11 +311,14 @@
 
         .container3 {
             display: flex;
-            justify-content: center;
-            text-align: left;
-            
+            justify-content: center; /* Centers the container itself horizontally */
+            align-items: flex-start; /* Aligns items to the top inside the container */
+            text-align: left; /* Ensures text inside is left-aligned */
             color: white;
             padding: 30px;
+            max-width: 800px; /* Optional: Control the width of the text block */
+            margin: 0 auto; /* Ensures the container stays in the center */
+            flex-direction: column; /* Stack items vertically */
         }
         .reviliobillede{
             max-width: 60%;
@@ -356,3 +359,4 @@
     </script>
 </body>
 </html>
+
