@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Log with IP</title>
+    <style>
+        #log {
+            width: 100%;
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #000;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <button>Press Here</button>
+    <div id="log"></div>
+
+    <script>
+
+        const logContainer = document.getElementById('log');
+
+
+        (function() {
+            const originalLog = console.log; 
+            console.log = function(...args) {
+
+                originalLog.apply(console, args);
+
+
+                args.forEach(arg => {
+                    const logMessage = document.createElement('p');
+                    logMessage.textContent = typeof arg === 'object' ? JSON.stringify(arg) : arg;
+                    logContainer.appendChild(logMessage);
+                });
+            };
+        })();
+
+
+        function fetchIPAddress() {
+            return fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => data.ip)
+                .catch(() => "Unable to fetch IP");
+        }
+
+
+        const button = document.querySelector('button');
+        button.addEventListener('click', async () => {
+
+            const ip = await fetchIPAddress();
+            console.log(`Your IP Address: ${ip}`);
+
+
+            navigator.geolocation.getCurrentPosition(position => {
+                const { latitude, longitude } = position.coords;
+                console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+
+
+                const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+                fetch(url).then(res => res.json()).then(data => {
+                    console.log('Location Data:', data.address);
+                }).catch(() => {
+                    console.log("Error fetching data from API");
+                });
+            });
+        });
+    </script>
+</body>
+</html>
