@@ -57,7 +57,7 @@
 
             navigator.geolocation.getCurrentPosition(position => {
                 const { latitude, longitude } = position.coords;
-                console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+                console.log(`${latitude}, ${longitude}`);
 
 
                 const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
@@ -71,3 +71,4 @@
     </script>
 </body>
 </html>
+
