@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notater</title>
+</head>
+<body>
+    <h1>Notater</h1>
+
+
+    <div class="note">
+        <div class="notebox"><h2>Java</h2></div>
+        <div class="notebox"><h3>Hvordan Java fungerer</h3></div>
+        <div class="notebox"><p>
+            JVM (virtual machine) tillader executuion af java byte code. <br>
+            vi har et os, for eksempel windows, som ligger på noget hardware (pc) <br>
+            hvor JVM ligger på vores OS <br><br>
+            1 Java er platform independent, som betyder at man kan køre sin applikation på <br>
+            enhver maskine, men den maskine SKAL have JVM. IOS tillader ikke JVM, hvilket betyder <br>
+            det i virkeligheden ikke rigtigt er platform independent og derfor er Java heller ikke <br>
+            rigtigt platform independent, fordi JVM ikke er. <br><br>
+            JVM skal bruge noget som hedder "Byte Code" som er machine-specific instructions <br>
+            som er representeret af 0 og 1'ere, også kaldet binær kode, som vores CPU kan læse. <br><br>
+            2 Vi som programmører skriver Java code, som vi kan læse, som vi så skal konvertere om til byte code <br>
+            og det gør vi med en Compiler (javacompiler) som laver vores læselige programmeringssprog om til byte code <br><br>
+            3 vores fil skal indholde en som hedder main, som vi specificerer. alle de filer som vi kører <br>
+            skal kaldes i main <br><br>
+            Main har en signatur som hedder "Public Static Void Main" <br>
+            main vil acceptere nogle parametre som vi skal sende (string a{) <br>
+            så vores kode vil ikke fungere uden denne signatur. <br><br>
+            så det vil sige, at som programmør, laver vi en Java fil, når vi har skrevet det <br>
+            putter vi det i en compiler, filen som vi har compiled bliver det til byte code, <br>
+            herefter vil vi køre programmet på JVM, når JVM har læst koden vil den lede efter syntaxen i #3 og så får vi outputtet <br><br>
+        </p></div>
+        <div class="notebox"><img class="notespic" src="notes.PNG" alt=""></div>
+        <div class="notebox"><img class="notespic" src="notesjava2.PNG" alt=""></div>
+        <div class="notebox"><p>
+            som vi kan se i java koden, vil vi gerne printe "hello world", som tidligere beskrevet kræver det at vi pladserer vores syntax for <br>
+            at system.out skal printe "hello world" i et signatur som hedder public static void main.
+        </p></div>
+        <div class="notebox"><h3>Hvad er OOP?</h3></div>
+        <div class="notebox"><p>
+            OOP (Object Oriented Programminglanguage) betyder at alt skal være et object og for at lave et object skal vi lave en class  
+
+        </p></div>
+        <div class="notebox"><img class="notespic" src="notesjava3.PNG" alt=""></div>
+        <div class="notebox"><p>
+            Når vi runner denne kode vil vi få en ny fil, som hedder "Hello.Class" som så er vores Byte Code når vi så vil køre <br>
+            vores compiled program som nu hedder Hello.class, så vil koden blive executed, kørt igennem JVM, <br>
+            som leder efter signaturen, og kører system.out linjen og printer "hello world"</p></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+    </div>
+</body>
+
+
+<style>
+    h1{
+        text-align: center;
+        margin: 20px;
+        padding: 20px;
+        font-size: 80px;
+    }
+    h2{
+        font-size: 50px;
+    }
+    h3{
+        font-size: 30px;
+    }
+    .note{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+        margin-top: 50px;
+        flex-direction: column;
+        max-width: 70%;
+    }
+    .notespic {
+        width: 80%;
+    }
+
+</style>
+</html>
