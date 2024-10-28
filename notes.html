@@ -7,11 +7,27 @@
 </head>
 <body>
     <h1>Notater</h1>
-
-
     <div class="note">
-        <div class="notebox"><h2>Java</h2></div>
-        <div class="notebox"><h3>Hvordan Java fungerer</h3></div>
+        <div class="notebox"><h3>Indholds fortegnelse:</h3></div>
+        <div class="notebox"><a href="#java">Java</a>.............................................................................1 <br>
+            1. <a href="#hvordanfungererjava">Hvordan Java Fungerer</a>
+            <br>
+            2. <a href="#hvaderoop">Hvad er OOP?</a> <br>
+            3. <a href="#JRE">JRE</a></div>
+        <div class="notebox"><a href="#cybersecurity">Cybersecurity</a>..............................................................2 <br>
+            1. <a href="harvardfinalprojectnotater">HM Surf <br> &nbsp &nbsp 1. <a href="theexploit">The Exploit</a> </a> 
+            <br> &nbsp &nbsp 1. <a href="#theexploit">The Exploit</a>
+            <br> &nbsp &nbsp 2. <a href="#whatthatmeanstomacos">What the vulnerability means to macOS</a>
+            <br> &nbsp &nbsp 3. <a href="#whattheattackercanuseitfor">What the Attacker can use "HM Surf" for</a>
+            <br> &nbsp &nbsp 4. <a href="#preventedinthefuture">How can this be prevented in the future</a>
+        </div>  
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+    </div>
+    <div class="note">
+        <div class="notebox" id="java"><h2>Java</h2></div>
+        <div class="notebox" id="hvordanfungererjava"><h3>Hvordan Java fungerer</h3></div>
         <div class="notebox"><p>
             JVM (virtual machine) tillader executuion af java byte code. <br>
             vi har et os, for eksempel windows, som ligger på noget hardware (pc) <br>
@@ -39,7 +55,7 @@
             som vi kan se i java koden, vil vi gerne printe "hello world", som tidligere beskrevet kræver det at vi pladserer vores syntax for <br>
             at system.out skal printe "hello world" i et signatur som hedder public static void main.
         </p></div>
-        <div class="notebox"><h3>Hvad er OOP?</h3></div>
+        <div class="notebox" id="hvaderoop"><h3>Hvad er OOP?</h3></div>
         <div class="notebox"><p>
             OOP (Object Oriented Programminglanguage) betyder at alt skal være et object og for at lave et object skal vi lave en class  
 
@@ -49,7 +65,7 @@
             Når vi runner denne kode vil vi få en ny fil, som hedder "Hello.Class" som så er vores Byte Code når vi så vil køre <br>
             vores compiled program som nu hedder Hello.class, så vil koden blive executed, kørt igennem JVM, <br>
             som leder efter signaturen, og kører system.out linjen og printer "hello world"</p></div>
-        <div class="notebox"><h3>JRE</h3></div>
+        <div class="notebox" id="JRE"><h3>JRE</h3></div>
         <div class="notebox"><p> JRE (Java Runtime Environment) er hvor vi har nogle Libraries, JVM er en del af JRE <br>
             så hver gang vi vil run noget, er det i virkeligheden inden i JRE, hvor hvis vi caller et library for at gøre vores liv lettere 
             så søger den først i JRE, og derefter er JVM ansvarlig for at køre programmet. </p></div>
@@ -63,6 +79,93 @@
         <div class="notebox"></div>
 
     </div>
+
+
+
+    <div class="note">
+        <div class="notebox"><h2>Cybersecurity</h2></div>
+        <div class="notebox"><h3>HM Surf</h3></div>
+        <div class="notebox"><p>HM Surf <br>
+            CVE: CVE-2024-44133 <br>
+            score: 5.5 <br><br><br>
+            
+             <br>
+            Invovles: <br> 
+            mac OS vulnerable code <br>
+            safari browser <br>
+            safari home library <br><br>
+            <iframe width="400" height="300" src="https://www.youtube.com/embed/5vvWcyBq_Z0" title="edX Cybersecurity Final Project: HM Surf" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="notebox" id="theexploit"><h3>The Exploit</h3></div>
+        <div class="notebox"><p>The exploit: <br>
+            removing TCC ( Transparency content and control) from Safari browser directory, <br> and configuring the browser directory file, to gain access to users: 
+            <br>
+            - Browsed Pages <br>
+            - Devices Camera <br>
+            - Devices Microphone <br>
+            - Devices Location <br><br>
+            How its done: <br>
+            - changing the home directory of the current users with dscl utility (Dynamical systems and control laboratory) which allows the user to view and modify Directory service nodes, this however requires TCC access in macOS sonama. <br>
+            - when having access the exploiter modifies sensitive files “(PerSitePreferences.db)” within the ~/Library/Safari directory in the users home directory. <br>
+            - after modification, changing the directory back, with the modified file implemented  <br>
+            - launching Safari to open a webpage that takes a snapshot via the devices camera and grabs the location <br><br>
+            Links: <br> 
+            <a href="https://thehackernews.com/2024/10/microsoft-reveals-macos-vulnerability.html">https://thehackernews.com/2024/10/microsoft-reveals-macos-vulnerability.html</a> <br>
+            
+            </div>
+        <div class="notebox" id="whatthatmeanstomacos"><h3>What the vulnerability means to macOS</h3></div>
+        <div class="notebox"><p>First and foremost, the attacker must have access to the devices files, that means that the user must have been compromised somehow. this could include: <br>
+        <br>
+        - Malware <br>
+        - Physical access to the device <br>
+        - Social engineering and phishing <br><br>
+        Since TCC is designed to prevent anyone from accessing sensitive resources like the camera, microphone and especially the location of the device, The attacker should have an elevated admin access to the device. <br>
+        <br>
+        Microsoft Threat Intelligence, uncovered that the TCC on macOS, could be completely bypassed in the private entitlements to applications, where prefixes such as com.apple.private. <br>
+        Microsoft discovered that com.apple.private.tcc.allow entitlement allows the entitled app to completely bypass TCC. <br>
+        once they had access, they where able to modify various files under ~/Library/Safari as mentioned before. <br>
+        <br>
+        Links: <br>
+        <a href="https://www.microsoft.com/en-us/security/blog/2024/10/17/new-macos-vulnerability-hm-surf-could-lead-to-unauthorized-data-access/">https://www.microsoft.com/en-us/security/blog/2024/10/17/new-macos-vulnerability-hm-surf-could-lead-to-unauthorized-data-access/</a></p></div>
+        <div class="notebox" id="whattheattackercanuseitfor"><h3>What the Attacker can use "HM Surf" for</h3></div>
+        <div class="notebox"><p>The attacker could possibly obtain other vulnerable information about the user, by bypassing the TCC, when opening the browser, such as Cookies, passwords and usernames through autofill data saves (if not fourther encrypted), they could in the modified file make the user (by implementing more advanced code) be redirected to malicious sites, Display fake ads or warnings to trick the user into “bying” new updates or well-intented give the attacker other valuable information about the users privacy and more.
+            furthermore since TCC is bypassed, an attacker could possibly obtain information about the user, not only through safari, but possibly implement malicious modifications to other applications on the device. 
+            <br><br>With other words, this vulnerability together with Malware giving the attacker access to the computers files, could become very unsafe for the user of macOS since they would be able to bypass the TCC, and with DSCL write executable code into the files that are being run on the browser. 
+            </p></div>
+        <div class="notebox" id="preventedinthefuture"><h3>How can this be prevented in the future</h3></div>
+        <div class="notebox"><p>Microsoft implemented vulnerability management and behavioral monitoring, through behavioral analytics and machinelearning to detect anomalous modifications of the Preference files. 
+            <br><br>
+            but
+            
+            If we start from that the user has already been compromised through malware, how could we make TCC harder to bypass.
+            
+            in the course Harvards edX introduction to Cybersecurity, David Malan mentioned 
+            
+            <br><br>
+            we could implement that every time a modification to the PerSitePreferences.db has been made, another file, that is non accessible through software entitlement, which only can be accessed with a dongle, that keeps a key, to open the file. <br>
+            
+            so the non-midificational file on macOS, should have a hashed password to access it, as we in Introduction to Cybersecurity learned is one way, and the only way for it to be modified, would be through a dongle (Maybe a HSM (Hardware Security Module) holding the matching hashed password, for the file to gain access to that file. <br><br> That way, Apple would be the only ones with access to that file otherwise the file would be encrypted. 
+            
+            now the file should hold a private key and every time a modification to PerSitePreferences.db, or other files, has been changed, hold a passkey, so the user has to input a fingerprint or a facialrecognition, that then generates a public key for Apples own hosted website or app that automatically opens, when the files in the ~/Library/Safari have been changed , 
+            
+            the Users device, then sends a public key to that new website, along with the user id, and the passkey confirmation for it to then, and only then let the user apply the changes made to the PerSitePreferences.db otherwise, it should be changed back to default.
+            </p></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+
+
+
+    </div>
 </body>
 
 
@@ -73,6 +176,7 @@
         padding: 20px;
         font-size: 80px;
     }
+
     h2{
         font-size: 50px;
     }
@@ -81,20 +185,33 @@
     }
     .note{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        text-align: left;
-        margin-top: 50px;
-        flex-direction: column;
-        max-width: 600px;
-        margin: 10%;
+
+    }
+    .notebox {
+        max-width: 700px;
+        min-width: ;
     }
     .notespic {
         width: 80%;
     }
+    .iframe-container {
+        width: 100%;
+        max-width: 700px;
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+    }
 
-</style>
-</html>
-
+    .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 </style>
 </html>
