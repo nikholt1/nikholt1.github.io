@@ -6,6 +6,17 @@
     <title>Notater</title>
 </head>
 <body>
+
+    <nav>
+        <div class="navbox">
+            <div><a href="index.html">Home</a></div>
+            <div><a href="projects.html">Projects</a></div>
+            <div><a href="contact.html">Contact</a></div>
+        </div>
+
+
+    </nav>
+
     <h1>Notater</h1>
     <div class="note">
         <div class="notebox"><h3>Indholds fortegnelse:</h3></div>
@@ -183,6 +194,14 @@
     h3{
         font-size: 30px;
     }
+    nav{
+        color: black;
+        position: fixed;
+    }
+    .navbox{
+        display: flex;
+        gap: 20px;
+    }
     .note{
         display: flex;
         flex-direction: column;
@@ -192,7 +211,6 @@
     }
     .notebox {
         max-width: 700px;
-        min-width: ;
     }
     .notespic {
         width: 80%;
