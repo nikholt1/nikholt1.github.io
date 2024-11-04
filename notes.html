@@ -24,13 +24,34 @@
             1. <a href="#hvordanfungererjava">Hvordan Java Fungerer</a>
             <br>
             2. <a href="#hvaderoop">Hvad er OOP?</a> <br>
-            3. <a href="#JRE">JRE</a></div>
+            3. <a href="#JRE">JRE</a> <br>
+            4. Udemy Java Course Notes: 
+            <br> &nbsp &nbsp 1. <a href="#keywords">Keywords</a>
+            <br> &nbsp &nbsp 2. <a href="#variables">Variables</a>
+            <br> &nbsp &nbsp 3. <a href="#expressions">Expressions</a>
+            <br> &nbsp &nbsp 4. <a href="#operators">Operators</a>
+            <br> &nbsp &nbsp 5. <a href="#primitivetypes">Primitive Types</a>
+            <br> &nbsp &nbsp 6. <a href="#classes">Classes</a>
+            <br> &nbsp &nbsp 6. <a href="#casting">Casting</a>
+
+
+
+            </div>
+            
+
         <div class="notebox"><a href="#cybersecurity">Cybersecurity</a>..............................................................2 <br>
             1. <a href="harvardfinalprojectnotater">HM Surf <br> &nbsp &nbsp 1. <a href="theexploit">The Exploit</a> </a> 
             <br> &nbsp &nbsp 1. <a href="#theexploit">The Exploit</a>
             <br> &nbsp &nbsp 2. <a href="#whatthatmeanstomacos">What the vulnerability means to macOS</a>
             <br> &nbsp &nbsp 3. <a href="#whattheattackercanuseitfor">What the Attacker can use "HM Surf" for</a>
             <br> &nbsp &nbsp 4. <a href="#preventedinthefuture">How can this be prevented in the future</a>
+
+        
+        
+        
+        
+        
+        
         </div>  
         <div class="notebox"></div>
         <div class="notebox"></div>
@@ -81,15 +102,151 @@
             så hver gang vi vil run noget, er det i virkeligheden inden i JRE, hvor hvis vi caller et library for at gøre vores liv lettere 
             så søger den først i JRE, og derefter er JVM ansvarlig for at køre programmet. </p></div>
         <div class="notebox"><img class="notespic" src="notesjava4.PNG" alt=""></div>
-        <div class="notebox"></div>
-        <div class="notebox"></div>
-        <div class="notebox"></div>
-        <div class="notebox"></div>
-        <div class="notebox"></div>
+        <div class="notebox" id="keywords"><h3>Keywords</h3></div>
+        <div class="notebox"><p>Nummer eller et reserveret ord, som er blevet prædefineret. alt kode er case-sensitive, hvilket inkluderer keywords <br> for eksempel: <br>
+            int i lover case er ikke det samme som Int med stort I. <br>
+            <br>
+            Alle keywords: <br>
+            <a href="https://www.geeksforgeeks.org/list-of-all-java-keywords/">https://www.geeksforgeeks.org/list-of-all-java-keywords/</a></p></div>
+        <div class="notebox" id="variables"><h3>Variables</h3></div>
+        <div class="notebox">Variabler er en metode for at gemme information på computeren <br>
+            Variablersom vi definerer i et program, kan blive accessed ved navnet vi har givet dem og så finder computeren ud af hvad der er gemt i variablen et sted i computerens RAM (random access memory) <br><br>
+            for at lave en variable, så skriver vi en "decleration statement" hvor vi definerer variablen, ved at indikere den data type og navn, og så kan vi hvis vi vil sætte variablen til en specifik value:
+            eksempel:
+            "int myFirstNumber = 5;"
+            vi sætter data typen til "int" eller interger, da dataen skal være et nummer, hvilket interger er
+            så angiver vi hvad variablen skal hedde: "myFirstNumber"
+            når vi kører dette "program" får vi outputtet:
+            "myFirstNumber ==> 5"
+            da Jshell her fortæller os dataen som variablen holder.  <br><br>
+            at nu har vi i vores computers RAM sat en variabel som hedder "myFirstNumber" med data typen "interger" til at have værdien "5".
+            <br>
+            <br>
+            hvis vi så går tilbage og siger vi gerne vil finde den information frem igen med en anden syntax, så kan vi skrive:
+            "System.out.print(myFirstNumber);"
+            hvilket giver os værdien "5".
+            det fortæller os at vi giver vores computer instruktionen "System.out.print" til at finde "(myFirstNumber)" variablen, og give os værdien som den holder, hvilket er "5" 
+            <br><br>
+            ÆNDRING AF DATA I VARIABEL
+            hvis vi gerne vil ændre værdien i vores variabel fra 5 til 10, kan vi gøre det ved bare at skrive: 
+            "myFirstNumber = 10" hvilket ved et "System.out.print(myFirstNumber)" vil give os værdi
+            en 10, 
+            da myFirstNumber" variablen allerede er sat til at holde en interger. 
+            hvis vi på anden måde ingiver "myFirstNumber = "hll";" uden at angive at vi vil ændre data typen, så får vi en error "incompatible types". 
+            <br><br>
+            I variabler er det dog vigtigt at forstå at, en re-declaring af en variable hvilket inkluderer at re-declare den datatype normalt ikke kan gøre 2 gange for samme variable. dog tillader Jshell at vi gør det uden at thow an error. 
+
+ </div>
+
+
+        <div class="notebox" id="expressions"><h3>Expressions</h3></div>
+        <div class="notebox"><p>coding construct, som evalueres til en singulær value. 
+            i eksemplet: int myFirstNumber = (10 + 5) + (2 * 10); vil expressions være det til højre for data sætningen.
+            så det vil sige for det første er "(10 + 5) + (2 * 10)" en expression, men faktisk er det to, da både "(10 + 5)" og  "(2 * 10)" er expressions, delt op af en operator. 
+            </p></div>
+
+
+        <div class="notebox" id="operators"><h3>Operators</h3></div>
+        <div class="notebox"><p>alle operators: </p><a href="https://www.w3schools.com/java/java_operators.asp">https://www.w3schools.com/java/java_operators.asp</a> 
+            <p>Operators er symboler, som bliver brugt til at udføre operationer på variabler, og manipulerer de values som er i de operands. hver operator som for exempel (+ - * /) og flere udfører specifikke manipulationer ved de values der er i variablerne.</p></div>
+        <div class="notebox" id="primitivetypes"><h3>Primitive Types</h3></div>
+        <div class="notebox"><p>Whole Numbers: <br>
+            byte <br>
+            short <br>
+            int <br>
+            long <br><br>
+        
+            Real Nmbers: <br>
+            float <br>
+            double <br>
+            <br>
+            <br>    
+            Single Character: <br>
+            char <br><br>
+        
+            Boolean Value: <br>
+            boolean <br><br>
+            
+        
+            --- disse er byggestenene for data manipulation, man skal huske dem som en "placeholder i en memory for en value" <br><br>
+        
+            </p></div>
+
+
+
+        <div class="notebox" id="classes"><h3>Classes</h3></div>
+        <div class="notebox"><p>en Class er en byggesten, der for OOP (Object oriented programming), tillader os at bygge “custom” data typer. <br><br><br>
+            – Wrapper Class <br>
+            Java bruger et koncept der hedder “Warpper Class” for alle otte Primitive data typer.                 en Wrapper calss, tillader os at lave simple operationer, og giver basic information om den primitive dat atype, som ikke kan blive lejret i den primitive selv.
+            <br><br>
+            for eksempel, ligesom interger, så har vi en minimum og en maxiumum valie, hvis vi skriver Interger.MIN_VALUE; vil vi få informationen om hvad minimum value for en interger er.
+        </p></div>
+        <div class="notebox"><img class="notespic" src="classestable.PNG" alt=""></div>
+        <div class="notebox"><p>hvis vi tager Interger wrapper class som exempel 
+            vi er i stand til at se hvad minimum og maximum value er for den primitive data type, ved hjælp af dens wrapper class, ved at skrive “Interger.MIN_VALUE” som giver os en værdi:
+            </p></div>
+        <div class="notebox"><img class="notespic" src="classestable2.PNG" alt=""></div>
+        <div class="notebox"><p>“OVERFLOW”: <br>
+            hvis vi prøver at give vores vores data type, interger for exempel en for høj value, sker der noget som hedder en overflow, og går fra sin range ned til start. 
+            </p></div>
+        <div class="notebox"><img class="notespic" src="classestable3.PNG" alt=""></div>
+        <div class="notebox"><p>som vi kunne se tidligere, så i teorien skulle vi have en value på “2147483648” men da vores max range er én mindre end dette, tillader den det ikke og derved har vi en overflow, og “mister” alt vores værdi, ned til minimum rangen. <br><br> det samme vil ske ved minimum hvor vi giver den 1 mindre, hvilket resulterer i at vi ryger op i max range. 
+        
+        <br><br><br>
+        BYTE, SHORT, INT, LONG:</p></div>
+        <div class="notebox"><img class="notespic" src="classestable4.PNG" alt=""></div>
+        <div class="notebox"><p>BYTE: <br>
+            vi kan finde bytes range ved at bruge en Wrapper class expression til at printe det </p></div>
+        <div class="notebox"><img class="notespic" src="classestable5.PNG" alt=""></div>
+        <div class="notebox"><p>her kan vi se at rangen for byte er meget lille. 
+            <br><br>
+            SHORT: <br>
+            vi kan finde Shorts range ved at bruge Wrapper Class expression til at printe det:
+        </p></div>
+        <div class="notebox"><img class="notespic" src="classestable6.PNG" alt=""></div>
+        <div class="notebox"><p> <br><br> LONG: <br> vi kan finde Shorts range ved at bruge Wrapper Class expression til at printe det:</p></div>
+        <div class="notebox"><img class="notespic" src="classestable7.PNG" alt=""></div>
+        <div class="notebox"><p>her kan vi se at long data typen har en meget højere range end interger. 
+            ved brugen af long, er det også vigtigt at vide, at hvis det tal der bliver brugt, overstiler Int’s range, så skal man bruge suffixen “L” bag på tallet man assigner til variablen, for at fortælle Java at man gerne vil bruge long, selvom man har angivet det ved data type.
+            </p></div>
+        <div class="notebox"><img class="notespic" src="classestabl8.PNG" alt=""></div>
+        <div class="notebox"><p>Størrelse af primitive Types: <br>
+            grundet til at bruge de forskellige typer, kan have noget at gøre med hvor meget “space” de bruger</p></div>
+        <div class="notebox"><img class="notespic" src="classestable9.PNG" alt=""></div>
+        
+        
+        <div class="notebox" id="casting"><h3>Casting</h3></div>
+        <div class="notebox"><p>Casting er en metode, der tillader os at angive flere variabler i én command</p></div>
+        <div class="notebox"><img class="notespic" src="casting1.PNG" alt=""></div>
+        <div class="notebox"><p>dog er det vigtigt at forstå at: <br> 
+            - man kan ikke angve variabler med forskellige data typer i en statement derfor skal de opdeles med “;” og så angive data typen fra ny, i samme command. <br>
+            - hvis man angiver flere variabler for den samme data type i én statement, skal man kun specificere den data type en gang:</p></div>
+        <div class="notebox"><img class="notespic" src="casting2.PNG" alt=""></div>
+        <div class="notebox"><p>så Casting betyder at vi “treater” eller behandler og konverterer et nummer, fra en type til en anden, så vi sætter den type som vi gerne vil have vores nye value skal være i ind i parantheser</p></div>
+        <div class="notebox"><img class="notespic" src="casting3.PNG" alt=""></div>
+        <div class="notebox"><p>vi kan se at vi får en error i første command, fordi at “2” er en interger, så når vi caster angiver vi at vi vil have det som byte.</p></div>
+        <div class="notebox"><p>dog tillader Java at hvis vi bruger: <br>
+        "short valueNew = 2 + 2; <br>
+        valueNew ==> 4" <br><br> 
+        fordi Java her ved at 4 passer in i byte width af short data type, ellers have den smidt den gået fra max range til min range. 
+        men når vi bruger en allerede angivet variabel, så skal vi angive igen, hvis vi gerne vil bruge en bestemt data type.
+        </p></div>
         <div class="notebox"></div>
         <div class="notebox"></div>
 
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
