@@ -32,7 +32,16 @@
             <br> &nbsp &nbsp 4. <a href="#operators">Operators</a>
             <br> &nbsp &nbsp 5. <a href="#primitivetypes">Primitive Types</a>
             <br> &nbsp &nbsp 6. <a href="#classes">Classes</a>
-            <br> &nbsp &nbsp 6. <a href="#casting">Casting</a>
+            <br> &nbsp &nbsp 7. <a href="#casting">Casting</a>
+            <br> &nbsp &nbsp 8. <a href="#floatdoubleprimitives">Float and Double primitives</a>
+            <br> &nbsp &nbsp 9. <a href="#floatandprecision">Floating and pointprecision</a>
+            <br> &nbsp &nbsp 10. <a href="#floatellerdouble">Float eller Double</a>
+            <br> &nbsp &nbsp 11. <a href="#charandbooleanprimitivedatatypes">Char and boolean primitive data types</a>
+            <br> &nbsp &nbsp 12. <a href="#unicode">Unicode</a>
+            <br> &nbsp &nbsp 13. <a href="#boolean">boolean</a>
+            <br> &nbsp &nbsp 14. <a href="#handlingdatainjava">Handling data in Java</a>
+            <br> &nbsp &nbsp 15. <a href="#string">String</a>
+            <br> &nbsp &nbsp 16. <a href="#operatorsoperandsandexpressions">Operators, Operands and Expressions</a>
 
 
 
@@ -40,7 +49,7 @@
             
 
         <div class="notebox"><a href="#cybersecurity">Cybersecurity</a>..............................................................2 <br>
-            1. <a href="harvardfinalprojectnotater">HM Surf <br> &nbsp &nbsp 1. <a href="theexploit">The Exploit</a> </a> 
+            1. <a href="harvardfinalprojectnotater">HM Surf</a> 
             <br> &nbsp &nbsp 1. <a href="#theexploit">The Exploit</a>
             <br> &nbsp &nbsp 2. <a href="#whatthatmeanstomacos">What the vulnerability means to macOS</a>
             <br> &nbsp &nbsp 3. <a href="#whattheattackercanuseitfor">What the Attacker can use "HM Surf" for</a>
@@ -231,8 +240,257 @@
         fordi Java her ved at 4 passer in i byte width af short data type, ellers have den smidt den gået fra max range til min range. 
         men når vi bruger en allerede angivet variabel, så skal vi angive igen, hvis vi gerne vil bruge en bestemt data type.
         </p></div>
+
+
+
+
+        <div class="notebox" id="floatdoubleprimitives"><h3>Float and Double primitives</h3></div>
+        <div class="notebox">pfloating point numbers, er ikke lige som whole numbers, da de har en floating point som man kalder en fractional part. 
+        </div>
+        <div class="notebox"><img class="notespic" src="fandp1.PNG" alt=""></div>
+        <div class="notebox"><p>floating point number, bruger vi til at være mere præcise udregninger eller hvis vi skal bruge mere præcis data.
+            <br><br>
+            Javas Data types for floating point numre: <br>
+            Float <br>
+            Double <br><br>
+        
+            Double er Javas default type for alle decimal eller “roal numbers” <br><br>
+        
+            “Præcision” <br>
+            referer til den format og mængden af “space” som bliver optaget for den relevante type.
+            </p></div>
+        <div class="notebox"><img class="notespic" src="fandp2.PNG" alt=""></div>
+        <div class="notebox"><p>
+            det rød markerede i tabellen er også kaldet notation, ligesom man bruger i fysik ved store tal. som også kan skrives som <br><br>
+
+            1.4E-45 er det samme som 1.4 * 10^-45 og 3.4E38 er det samme som 3.4 * 10^38
+            dette viser også at float og double er meget mere præcis end whole numbers <br><br>
+
+            hvis vi med System.out.print() med en wrapper class for float og double, kan vi vise max og min inde i Jshell for eksempel 
+
+        </p></div>
+        <div class="notebox"><img class="notespic" src="fandp3.PNG" alt=""></div>
+        <div class="notebox"><p>
+            det viser også at double er meget større end float, og derved også er mere præcis, og derfor tager double også 64 bits space istedet for float’s 32 bits <br><br>
+
+            Java bruger som sagt Double som default, da den er mere præcis, men hvis man skal tænke over det space som man bruger i RAM, kan man vælge at bruge float.
+
+        </p></div>
+        <div class="notebox"><img class="notespic" src="fandp4.PNG" alt=""></div>
+        <div class="notebox"><p>
+            som vi kan se, hvis vi gerne vil angive at et mere specificeret tal i Java skal være en float, så går Java stadig ud fra at vi bruger default data type for float point som er double.
+            <br><br>
+
+            en metode er at angive data typen, og efter tallet skrive “f”
+            eller bruge casting som set i sidste exempel. 
+            dog skal vi huske at float ikke behøver at blive brugt i medmind
+            <br>
+            mange bits vi bruger, hvilket sjældent er tilfældet.
+        </p></div>
+        <div class="notebox" id="floatandprecision"><h3>Floating and point precision</h3></div>
+        <div class="notebox"><img class="notespic" src="fandprecis1.PNG" alt=""></div>
+        <div class="notebox"><p>
+            ud fra dette eksempel, kan vi se at hvis vi bruger en int, til at dividere og få et output, så får vi kun det hele tal som er rundet op eller ned. 
+            hvis vi derimod bruger float, så får vi 7 symboler efter første værdi
+            og vi kan se at double giver os et længere mere præcist tal. 
+            <br><br>
+            på sidste linje kan vi se ekemplet på at talle som default vil være angivet i double, da Javas floating point data type er double. så siden vi angiver det som en double med 3.00 og 5.00 ved Java at det er double, medmindre at vi med casting eller suffixen (f) angiver at det skal være float. 
+
+        </p></div>
+        <div class="notebox" id="floatellerdouble"><h3>Float eller Double?</h3></div>
+        <div class="notebox"><p>
+            double er hurtigere for de fleste moderne computere at process
+            fordi computere på chip levet, har den functionalitet til at håndtere double numre hurtigere end float.
+            <br>
+            de Java Libraries som oftes bliver brugt i forbindelse med matematiske problemer, ofte bliver skrevet med double istedet for floats. så hvis vi gerne vil bruge dem, og vores data ikke stemmer overens med librariens data som er double og hvis vi regner i float, vil vi få en error.
+            <br>
+            <br>
+            Så som tildigere sagt, bliver double brugt mere.
+        </p></div>
+        <div class="notebox" id="charandbooleanprimitivedatatypes"><h3>Char and boolean primitive data types:</h3></div>
+        <div class="notebox"><p>
+            ved brugen af char, er det vigtigt at vide at det er anderledes end en string som vi har brugt før til at printe “hello world”
+        </p></div>
+        <div class="notebox"><img class="notespic" src="charandboolprim1.PNG" alt=""></div>
+        <div class="notebox"><p>
+            hvad kan man bruge en char til?:
+            <br>
+            - man kan for eksempel bruge char til at “store” keys pressed, hvis vi bruger et spil eller en program der har brugt for det for eksempel i en array
+            <br>
+            - et andet eksempel kunne være at lave en loop igennem alle bogstaver i alphabetet. 
+            <br><br>
+            
+            en char bruger to bytes altså 16 bits width i memory
+            fordi Java ser det ikke som en enkelt byte, da char bliver stored som et 2 byte “number” ligesom en short data type. 
+            <br><br>
+            med chars er det vigtigt at huske, at hvis vi anvender en operator i en print statement, så får vi de numeriske indhold af den char, som vi for
+            <br>
+            A og B for eksempel er 65 og 66.
+            <br>
+            eksempel 1: <br>
+            System.out.print(firstChar + sencondChar); 
+            <br>
+            <br>
+            dette vil outputte “131” da 2 byte numbers i firs og second Char som er A og B er 66 og 65 som tilsammen giver 131.
+            <br><br>
+
+            hvis vi gerne vil print char A + B hvor “+” operatoren er en concatenation operator så vi får outputtet “AB” for de chars, kan vi concatenate dem til en string.
+            <br><br>
+            eksempel 2: <br>
+            System.out.print(“” + firstChar + secondChar);
+
+            <br><br>
+            her vil char A og B blive concatenated med den string som vi har angivet med double quotes
+            som gælder efter det der er forklaret under STRING
+
+        </p></div>
+
+
+
+        <div class="notebox" id="unicode"><h3>Unicode</h3></div>
+        <div class="notebox"><p>
+            er en international encoding standard, som bliver brugt til forskellige sprog og scripts, som for hver bogstav, digit og symbol, har en assigned unik numerisk value som bliver brugt over flere platforme og programmer 
+            <br>
+            i engelsk har vi A til Z, imens at andre sprog har flere 
+            <br>
+            Unicode tillader at ved brugen af 2 bytes kan den representere alle af 65535 forskellige characters
+            <br><br>
+
+        </p></div>
+        <div class="notebox"><a href="symbl.cc">symbl.cc</a></div>
+        <div class="notebox"><p>
+            herunder kan vi se at “D” har unicode character der hedder U+0044
+        </p></div>
+        <div class="notebox"><img class="notespic" src="unicode1.PNG" alt=""></div>
+        <div class="notebox"><p>
+            dette tillader os at bruge at alle unicode symboler og characters i vores kode. 
+            derudover kan vi bruge en integer value til at assigne vores char til et bogstav, som vi kan se er 68.
+
+        </p></div>
+
+
+
+        <div class="notebox" id="boolean"><h3>boolean</h3></div>
+        <div class="notebox"><p>
+            en boolean tillader to modsatte valg, “True og False, Yes og No og One og Zero”
+            i Java har vi en boolean primitive type, og vi kan sætte to values True or False
+            <br><br>
+            som oftest når vi bruger Boolean vil vores variable gerne være skrevet som et spørgsmål
+            som for eksempel
+            <br>
+            “isCustomerValid” <br>
+            “isNumberAWholeNumber”
+        </p></div>
+
+
+
+        <div class="notebox" id="handlingdatainjava"><h3>Handling data in Java</h3></div>
+        <div class="notebox"><img class="notespic" src="handlingdatainjava1.PNG" alt=""></div>
+        <div class="notebox"><p>vi bruger primitives til at håndtere og manipulere dataen
+            vi bruger Javas built in classes, til yderligere specificere manipulationen
+            string: er bliver brugt lidt anderledes, som giver os tilladelse til at gøre noget vi normalt ikke
+            <br>
+            kan, som at printe eller store data i en “string”
+            <br>
+            ligeledes vores egne classes, hvis vi skal noget specifikt
+            og nogle andres classes, for at gøre det nemmere for os selv, så vi ikke selv behøver at opfinde den dybe tallerken.
+
+        </p></div>
+
+
+
+        <div class="notebox" id="string"><h3>String</h3></div>
+        <div class="notebox"><img class="notespic" src="string1.PNG" alt=""></div>
+        <div class="notebox"><p>
+
+            som vi kan se kan vi bruge String til at sætte data typen for en variable, men ligeledes hvis vi i print statementen skrev “ …print(“this is a string: “ + myString);” den expression som er omsluttet af double quotes også blive kaldt en string.
+            <br>
+            vi skal huske at hvis vi vil sætte en variable til at være string, skal vi skrive String med stort S.
+            <br>
+            vi kan også se at hvis vi til variablen myString giver den extra information efter i form af en “string” så bliver det “concatinated”(tilføjet) til den allerede existerende String variable.
+            <br><br>
+
+            som udgangspunkt er en String “immutable” hvilket betyder at den ikke kan blive ændret, 
+            men man kan contatenate til dens value, og tal håldige data, kan blive ændret til string value, hvis det bliver appended.
+            <br><br>
+
+            StringBuilder: <br>
+            String er immutable, men StringBuilder class er mutable, så den kan blive ændret, men har desværre ikke de samme specielle features som String har. så man kan for eksempel ikke assign den en String literal, eller bruve “+” contatenation operator (som det hedder hvis det bliver brugt til at “append” “contatenate”)
+
+        </p></div>
+
+
+
+
+        <div class="notebox" id="operatorsoperandsandexpressions"><h3>Operators, Operands and Expressions</h3></div>
+        <div class="notebox"><p>
+            OPERATORS:
+        </p></div>
+        <div class="notebox"><a href="https://www.w3schools.com/java/java_operators.asp">https://www.w3schools.com/java/java_operators.asp</a></div>
+        <div class="notebox"><p>
+            Er symboler som udfører specifikke “operations” i en, to eller tre “operands” and “returner” så et result. <br>
+            eksempel 1: <br>
+            Long longTotal = 50000L + 10L * (byteValue + shortValue + intValue); <br><br>
+
+            her kan vi se at operatoren “+” bliver først brugt til at regne summen matematisk sammen af den værdi som de tre variables holder, og mellem de tre varaibles tager den siden de er byte, short og integer data type, som holder numeriske tal, de tal og regner sammen.
+            <br><br>
+            de fleste operators gør som man forventer, * ganger, + plusser eller contenates, - minusser osv. en interesant er % “remainder”. <br>
+            10 / 5 = 2, hvor remainder = 10 % 5 = 0, da 10 kan blive divideret even med 5, så der er ingen remainder. 
+            <br>
+            hvor
+            10/3 = 3, men 10 % 3 = 1, da 10 ikke kan blive divideret med 3, og giver os 9, så vi har 1 remainer.
+
+        </p></div>
+        <div class="notebox"><img class="notespic" src="operatorsoperandsexpressions1.PNG" alt=""></div>
+        <div class="notebox"><p>
+            <br><br>
+            OPERAND: <br>
+            en operand er et term der bliver brugt til at beskrive et object som bliver “manipuleret” af en operator. <br>
+            eksempel 2: <br>
+            int myVar = 15 + 12; <br>
+            “+” er her en operator, og de to hele tal er operands, siden det er dem der bliver manipuleret af operatoren “+”. <br><br>
+            så som set i eksempel 1, så er variablerne “byteValue, shortValue …” operands.
+
+            <br><br>
+            EXPRESSION: <br>
+            en expression bliver lavet ved at kombinere variabler, literals, method return values osv. 
+            det er en måde at forme og kombinere values i variabler osv. for at skabe et resultat. 
+            som i eksempel 2, så er alt efter operatoren “=” en expression som holder værdien 27, da 15+12 = 27.
+
+        </p></div>
         <div class="notebox"></div>
         <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        <div class="notebox"></div>
+        
+
 
     </div>
 
