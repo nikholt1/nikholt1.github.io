@@ -2,23 +2,29 @@
 
 body {
     background: #ffe6b0;
+
 }
 #nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-
+    position: relative; /* or just remove position entirely */
     width: 100%;
 
     display: flex;
-    justify-content: center; /* center horizontally */
-    align-items: center;     /* center vertically within nav */
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
 
-    padding: 15px 0;
+    padding: 15px 40px;
 }
 
+.nav-center {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.hidden {
+    display: none; !important;
+}
 .rulesContainer {
+    margin-top: 100px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -93,12 +99,55 @@ body {
 
 /* text */
 .ruleText {
-    display: flex;
-    flex-direction: column;
     text-align: left;
     margin: 0;
     z-index: 1;
+
+    max-height: 200px;   /* adjust as needed */
+    overflow-y: auto;    /* vertical scroll */
 }
 .header {
 
+}
+
+.wheel-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin: auto;
+}
+
+/* POINTER (DOWNWARD) */
+.pointer {
+
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 25px solid #000000; /* 👈 flipped DOWN */
+    z-index: 10;
+}
+
+/* WHEEL (TRUE CIRCLE) */
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+
+    /* REAL SEGMENTS */
+    background: conic-gradient(
+            #3498db 0deg 60deg,
+            #f1c40f 60deg 120deg,
+            #2ecc71 120deg 180deg,
+            #e74c3c 180deg 240deg,
+            #9b59b6 240deg 300deg,
+            #1abc9c 300deg 360deg
+    );
 }
