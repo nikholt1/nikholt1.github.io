@@ -1,0 +1,89 @@
+
+
+body {
+    background: #ffe6b0;
+}
+.rulesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.ruleCard {
+    background: #fdf5e5;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+    width: 300px;
+    height: 400px;
+    padding: 20px;
+    box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 0.53);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Hover glow */
+.ruleCard:hover {
+    box-shadow: 0 0 12px 4px rgba(255, 215, 0, 0.35),
+    2px 2px 8px 2px rgb(0 0 0 / 0.53);
+}
+
+/* ✨ Magical wavy border layer */
+.ruleCard::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 22px;
+    border: 3px dashed rgba(120, 80, 20, 0.5);
+    pointer-events: none;
+
+    /* Wonka-ish golden glow */
+    box-shadow:
+            0 0 8px rgba(255, 215, 0, 0.25),
+            inset 0 0 10px rgba(255, 200, 80, 0.15);
+
+    /* slight wobble feel */
+    transform: rotate(-0.3deg);
+}
+
+/* ✨ Second playful floating outline */
+.ruleCard::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 180, 80, 0.35);
+    pointer-events: none;
+
+    /* soft floating look */
+    filter: blur(0.3px);
+    transform: rotate(0.4deg);
+}
+
+/* number styling */
+.number {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4rem;
+    font-family: "Ole", cursive;
+    letter-spacing: 2px;
+}
+
+/* text */
+.ruleText {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 0;
+    z-index: 1;
+}
+.header {
+
+}
