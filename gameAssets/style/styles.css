@@ -3,6 +3,21 @@
 body {
     background: #ffe6b0;
 }
+#nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically within nav */
+    gap: 20px;
+
+    padding: 15px 0;
+}
+
 .rulesContainer {
     display: flex;
     flex-wrap: wrap;
