@@ -1,0 +1,2556 @@
+#inspector-container {
+    width: 100%;
+    max-width: 1000px;
+    height: 500px;
+    margin: 2rem auto;
+    overflow: hidden;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    background: #0c1422;
+}
+
+#inspector-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/* =====================================================
+   REPOSITORY INTELLIGENCE DASHBOARD
+===================================================== */
+
+#inspector-container {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    margin: 2rem auto;
+    overflow: visible;
+    background: transparent;
+    border: 0;
+}
+
+.inspector {
+    overflow: hidden;
+    color: #cbd5e1;
+    background: #080d16;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
+.inspector a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+.inspector a:hover {
+    color: #7dd3fc;
+}
+
+.inspector button,
+.inspector input {
+    font: inherit;
+}
+
+.inspector-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1.2rem;
+    background: #0c1422;
+    border-bottom: 1px solid #1e293b;
+    font: 0.68rem monospace;
+}
+
+.inspector-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #94a3b8;
+}
+
+.inspector-status-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 10px #34d39955;
+}
+
+.inspector-repo-form {
+    padding: 1.2rem;
+    background: #0a111e;
+    border-bottom: 1px solid #1e293b;
+}
+
+.inspector-repo-form label {
+    display: block;
+    margin-bottom: 0.6rem;
+    color: #64748b;
+    font: 0.67rem monospace;
+    letter-spacing: 0.1em;
+}
+
+.inspector-url-row {
+    display: flex;
+    gap: 0.7rem;
+}
+
+.inspector-url-row input {
+    box-sizing: border-box;
+    flex: 1;
+    min-width: 0;
+    padding: 0.8rem 0.9rem;
+    color: #e2e8f0;
+    background: #080d16;
+    border: 1px solid #29384d;
+    border-radius: 6px;
+    outline: none;
+}
+
+.inspector-url-row input:focus,
+.inspector-search:focus {
+    border-color: #38bdf8;
+}
+
+.inspector-url-row button,
+.inspector-graph-actions button {
+    padding: 0.75rem 0.9rem;
+    color: #080d16;
+    background: #38bdf8;
+    border: 1px solid #38bdf8;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.inspector-url-row button:hover {
+    background: #7dd3fc;
+}
+
+.inspector-url-row button:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+.inspector-help {
+    margin: 0.65rem 0 0;
+    color: #64748b;
+    font-size: 0.7rem;
+    line-height: 1.6;
+}
+
+.inspector-project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.inspector-eyebrow {
+    color: #38bdf8;
+    font: 0.67rem monospace;
+    letter-spacing: 0.12em;
+}
+
+.inspector-project h2 {
+    margin: 0.6rem 0;
+    color: #e2e8f0;
+    font-size: 1.8rem;
+}
+
+.inspector-project p {
+    max-width: 650px;
+    margin: 0;
+    color: #94a3b8;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.inspector-branch {
+    flex: 0 0 auto;
+    padding: 0.5rem 0.65rem;
+    color: #94a3b8;
+    border: 1px solid #29384d;
+    border-radius: 5px;
+    font: 0.65rem monospace;
+}
+
+.inspector-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+}
+
+.inspector-metric {
+    min-width: 0;
+    padding: 1rem 1.2rem;
+    border-right: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+}
+
+.inspector-metric:nth-child(4n) {
+    border-right: 0;
+}
+
+.inspector-metric:nth-last-child(-n+4) {
+    border-bottom: 0;
+}
+
+.inspector-metric span {
+    display: block;
+    color: #64748b;
+    font: 0.62rem monospace;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.inspector-metric strong {
+    display: block;
+    margin-top: 0.55rem;
+    color: #e2e8f0;
+    font-size: 1.35rem;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.inspector-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    min-height: 450px;
+}
+
+.inspector-graph-panel {
+    min-width: 0;
+    border-right: 1px solid #1e293b;
+}
+
+.inspector-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem;
+}
+
+.inspector-panel-heading h3,
+.inspector-details h3,
+.inspector-analytics-card h3 {
+    margin: 0.45rem 0 0;
+    color: #e2e8f0;
+    font-size: 1rem;
+}
+
+.inspector-graph-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.7rem;
+}
+
+.inspector-graph-actions button {
+    padding: 0.4rem 0.6rem;
+    color: #cbd5e1;
+    background: #101a2a;
+    border-color: #29384d;
+    font-size: 0.68rem;
+}
+
+.inspector-graph-actions button:hover {
+    background: #1e293b;
+}
+
+.inspector-graph-actions > span {
+    color: #64748b;
+    font: 0.62rem monospace;
+}
+
+.inspector-graph-wrap {
+    position: relative;
+    height: 440px;
+    margin: 0 1rem;
+    overflow: hidden;
+    background: #0c1422;
+    border: 1px solid #1e293b;
+    border-radius: 7px;
+}
+
+#inspector-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    touch-action: none;
+}
+
+#inspector-canvas:active {
+    cursor: grabbing;
+}
+
+#inspector-graph-empty {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    color: #64748b;
+    font: 0.75rem monospace;
+    text-align: center;
+    line-height: 1.7;
+    pointer-events: none;
+}
+
+#inspector-graph-empty[hidden] {
+    display: none;
+}
+
+.inspector-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    padding: 1rem 1.2rem 0;
+    color: #94a3b8;
+    font-size: 0.68rem;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 0.35rem;
+    border-radius: 50%;
+}
+
+.legend-js {
+    background: #facc15;
+}
+
+.legend-java {
+    background: #fb923c;
+}
+
+.legend-python {
+    background: #34d399;
+}
+
+.legend-other {
+    background: #64748b;
+}
+
+.inspector-details {
+    min-width: 0;
+    padding: 1.3rem;
+    background: #0a111e;
+}
+
+.inspector-details h3 {
+    overflow-wrap: anywhere;
+}
+
+#detail-path {
+    color: #64748b;
+    font-size: 0.73rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.inspector-detail-divider {
+    height: 1px;
+    margin: 1.2rem 0;
+    background: #1e293b;
+}
+
+.inspector-detail-label {
+    margin: 1.2rem 0 0.4rem;
+    color: #64748b;
+    font: 0.63rem monospace;
+    letter-spacing: 0.08em;
+}
+
+#detail-type,
+#detail-lines,
+#detail-outgoing,
+#detail-incoming,
+#detail-todos {
+    color: #cbd5e1;
+    overflow-wrap: anywhere;
+}
+
+.inspector-findings {
+    display: grid;
+    gap: 0.6rem;
+    padding-left: 1rem;
+    color: #94a3b8;
+    font-size: 0.73rem;
+    line-height: 1.6;
+}
+
+.inspector-file-link {
+    display: inline-block;
+    margin-top: 1.3rem;
+    font: 0.66rem monospace;
+}
+
+.inspector-analytics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: #1e293b;
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+}
+
+.inspector-analytics-card {
+    min-width: 0;
+    padding: 1.3rem;
+    background: #080d16;
+}
+
+.inspector-analytics-card h3 {
+    margin-bottom: 1.2rem;
+}
+
+.language-bars {
+    display: grid;
+    gap: 1rem;
+}
+
+.language-row {
+    min-width: 0;
+}
+
+.language-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-bottom: 0.4rem;
+    color: #94a3b8;
+    font-size: 0.72rem;
+}
+
+.language-label span:first-child {
+    overflow-wrap: anywhere;
+}
+
+.language-track {
+    height: 5px;
+    overflow: hidden;
+    background: #1e293b;
+    border-radius: 999px;
+}
+
+.language-fill {
+    height: 100%;
+    min-width: 2px;
+    border-radius: 999px;
+}
+
+.finding {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #1e293b;
+}
+
+.finding:last-child {
+    border-bottom: 0;
+}
+
+.finding strong {
+    display: block;
+    color: #cbd5e1;
+    font-size: 0.76rem;
+}
+
+.finding p {
+    margin: 0.4rem 0 0;
+    color: #64748b;
+    font-size: 0.72rem;
+    line-height: 1.6;
+}
+
+.finding-warning strong {
+    color: #fb923c;
+}
+
+.finding-good strong {
+    color: #34d399;
+}
+
+.finding-info strong {
+    color: #38bdf8;
+}
+
+.dependency-item,
+.largest-file {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #1e293b;
+    font-size: 0.72rem;
+}
+
+.dependency-item span:first-child,
+.largest-file span {
+    min-width: 0;
+    color: #cbd5e1;
+    overflow-wrap: anywhere;
+}
+
+.dependency-item span:last-child {
+    flex: 0 0 auto;
+    color: #38bdf8;
+    font: 0.6rem monospace;
+}
+
+.largest-file strong {
+    flex: 0 0 auto;
+    color: #38bdf8;
+    font: 0.65rem monospace;
+}
+
+.inspector-muted {
+    color: #64748b;
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+.inspector-files-panel {
+    padding: 0 1.2rem 1.2rem;
+    border-top: 1px solid #1e293b;
+}
+
+.inspector-search {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.8rem 0.9rem;
+    color: #e2e8f0;
+    background: #0c1422;
+    border: 1px solid #29384d;
+    border-radius: 6px;
+    outline: none;
+}
+
+.inspector-file-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem;
+    margin-top: 0.8rem;
+}
+
+.inspector-file {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+    padding: 0.7rem;
+    color: #cbd5e1;
+    text-align: left;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.inspector-file:hover,
+.inspector-file.is-selected {
+    background: #0c1422;
+    border-color: #29384d;
+}
+
+.inspector-file-icon {
+    flex: 0 0 auto;
+    color: #38bdf8;
+    font: 0.6rem monospace;
+    text-transform: uppercase;
+}
+
+.inspector-file-name {
+    min-width: 0;
+    overflow: hidden;
+    color: #94a3b8;
+    font: 0.7rem monospace;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.inspector-file-size {
+    flex: 0 0 auto;
+    margin-left: auto;
+    color: #475569;
+    font: 0.6rem monospace;
+}
+
+.inspector-footnote {
+    padding: 0.9rem 1.2rem;
+    color: #64748b;
+    background: #0c1422;
+    border-top: 1px solid #1e293b;
+    font-size: 0.69rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 850px) {
+    .inspector-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .inspector-graph-panel {
+        border-right: 0;
+    }
+
+    .inspector-details {
+        border-top: 1px solid #1e293b;
+    }
+
+    .inspector-graph-wrap {
+        height: 380px;
+    }
+}
+
+@media (max-width: 600px) {
+    .inspector-toolbar,
+    .inspector-project {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .inspector-url-row {
+        flex-direction: column;
+    }
+
+    .inspector-url-row button {
+        width: 100%;
+    }
+
+    .inspector-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .inspector-metric:nth-child(2n) {
+        border-right: 0;
+    }
+
+    .inspector-metric:nth-child(4n) {
+        border-right: 0;
+    }
+
+    .inspector-metric:nth-last-child(-n+4) {
+        border-bottom: 1px solid #1e293b;
+    }
+
+    .inspector-metric:nth-last-child(-n+2) {
+        border-bottom: 0;
+    }
+
+    .inspector-analytics,
+    .inspector-file-list {
+        grid-template-columns: 1fr;
+    }
+
+    .inspector-graph-wrap {
+        height: 320px;
+        margin: 0 0.6rem;
+    }
+
+    .inspector-legend {
+        gap: 0.65rem;
+    }
+
+    .inspector-panel-heading {
+        align-items: flex-start;
+    }
+
+    .inspector-graph-actions {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+
+.inspector-bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin-top: 18px;
+    min-width: 0;
+}
+
+.inspector-bar-row {
+    display: grid;
+    grid-template-columns: minmax(80px, 1.2fr) minmax(40px, 2fr) 42px;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.inspector-bar-label {
+    overflow: hidden;
+    color: #94a3b8;
+    font: 11px monospace;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.inspector-bar-track {
+    height: 7px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #1e293b;
+}
+
+.inspector-bar-fill {
+    height: 100%;
+    min-width: 2px;
+    border-radius: inherit;
+    background: #38bdf8;
+    transition: width 250ms ease;
+}
+
+.inspector-bar-complexity {
+    background: #a78bfa;
+}
+
+.inspector-bar-value {
+    color: #cbd5e1;
+    font: 11px monospace;
+    text-align: right;
+}
+
+
+
+
+const DEFAULT_REPOSITORY = "https://github.com/nikholt1/Refract";
+
+const MAX_GRAPH_FILES = 100;
+const MAX_ANALYZED_FILES = 150;
+const MAX_FILE_BYTES = 500_000;
+
+const COLORS = {
+    background: "#0c1422",
+    panel: "#080d16",
+    border: "#1e293b",
+    text: "#cbd5e1",
+    muted: "#64748b",
+    accent: "#38bdf8",
+    green: "#34d399",
+    orange: "#fb923c",
+    red: "#fb7185",
+    purple: "#a78bfa"
+};
+
+let canvas;
+let ctx;
+let graphNodes = [];
+let graphEdges = [];
+let selectedNode = null;
+let repositoryFiles = [];
+let analysisResults = [];
+let resizeObserver;
+let currentRepository = null;
+let loadSequence = 0;
+
+const camera = { x: 0, y: 0, zoom: 1 };
+let cameraInitialized = false;
+let activePointer = null;
+let pointerMode = null;
+let lastPointer = { x: 0, y: 0 };
+let dragOffset = { x: 0, y: 0 };
+let movedPointer = false;
+
+const NODE_WIDTH = 176;
+const NODE_HEIGHT = 62;
+
+const SOURCE_EXTENSIONS = new Set([
+    "js", "jsx", "mjs", "cjs",
+    "ts", "tsx",
+    "py",
+    "java",
+    "c", "h", "cpp", "hpp", "cc",
+    "cs",
+    "go",
+    "rs",
+    "php",
+    "rb",
+    "swift",
+    "kt", "kts",
+    "scala",
+    "vue", "svelte"
+]);
+
+const EXTENSION_LANGUAGES = {
+    js: "JavaScript",
+    jsx: "JavaScript",
+    mjs: "JavaScript",
+    cjs: "JavaScript",
+    ts: "TypeScript",
+    tsx: "TypeScript",
+    py: "Python",
+    java: "Java",
+    c: "C",
+    h: "C/C++",
+    cpp: "C++",
+    hpp: "C++",
+    cc: "C++",
+    cs: "C#",
+    go: "Go",
+    rs: "Rust",
+    php: "PHP",
+    rb: "Ruby",
+    swift: "Swift",
+    kt: "Kotlin",
+    kts: "Kotlin",
+    scala: "Scala",
+    html: "HTML",
+    htm: "HTML",
+    css: "CSS",
+    scss: "SCSS",
+    sass: "Sass",
+    less: "Less",
+    json: "JSON",
+    xml: "XML",
+    yaml: "YAML",
+    yml: "YAML",
+    md: "Markdown",
+    sql: "SQL",
+    sh: "Shell",
+    bash: "Shell",
+    ps1: "PowerShell",
+    dockerfile: "Dockerfile"
+};
+
+export function intializeInspecter() {
+    const container = document.getElementById("inspector-container");
+
+    if (!container) {
+        console.error("Inspector container not found.");
+        return;
+    }
+
+    container.innerHTML = `
+        <div class="inspector">
+            <div class="inspector-toolbar">
+                <div class="inspector-brand">
+                    <span class="inspector-status-dot"></span>
+                    <span id="inspector-status">READY</span>
+                </div>
+
+                <a id="inspector-repo-link"
+                   href="https://github.com/nikholt1/Refract"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    OPEN ON GITHUB ↗
+                </a>
+            </div>
+
+            <form id="inspector-repo-form" class="inspector-repo-form">
+                <label for="inspector-repo-url">
+                    REPOSITORY URL
+                </label>
+
+                <div class="inspector-url-row">
+                    <input
+                        id="inspector-repo-url"
+                        type="url"
+                        placeholder="https://github.com/owner/repository"
+                        value="${DEFAULT_REPOSITORY}"
+                        required
+                    >
+
+                    <button type="submit" id="inspector-load-button">
+                        Inspect repository ↗
+                    </button>
+                </div>
+
+                <p class="inspector-help">
+                    Public GitHub repositories are supported. No access token is required.
+                </p>
+            </form>
+
+            <div class="inspector-project">
+                <div>
+                    <div class="inspector-eyebrow">REPOSITORY INTELLIGENCE</div>
+                    <h2 id="inspector-title">
+                        Refract<span class="brand-dot">.</span>
+                    </h2>
+                    <p id="inspector-description">
+                        Enter a repository URL to begin.
+                    </p>
+                </div>
+
+                <div class="inspector-branch" id="inspector-branch">
+                    BRANCH / —
+                </div>
+            </div>
+
+            <div class="inspector-metrics">
+                ${metric("Files", "metric-files")}
+                ${metric("Directories", "metric-directories")}
+                ${metric("Source files", "metric-source")}
+                ${metric("Local links", "metric-imports")}
+                ${metric("Lines of code", "metric-lines")}
+                ${metric("Test files", "metric-tests")}
+                ${metric("TODO / FIXME", "metric-todos")}
+                ${metric("Largest file", "metric-largest")}
+            </div>
+
+            <div class="inspector-workspace">
+                <div class="inspector-graph-panel">
+                    <div class="inspector-panel-heading">
+                        <div>
+                            <div class="inspector-eyebrow">01 / ARCHITECTURE</div>
+                            <h3>Dependency graph</h3>
+                        </div>
+
+                        <div class="inspector-graph-actions">
+                            <button type="button" id="graph-reset">Reset view</button>
+                            <span id="graph-count">0 NODES</span>
+                        </div>
+                    </div>
+
+                    <div class="inspector-graph-wrap">
+                        <canvas id="inspector-canvas"></canvas>
+
+                        <div id="inspector-graph-empty">
+                            Loading repository structure...
+                        </div>
+                    </div>
+
+                    <div class="inspector-legend">
+                        <span><i class="legend-dot legend-js"></i> JavaScript / TypeScript</span>
+                        <span><i class="legend-dot legend-java"></i> Java</span>
+                        <span><i class="legend-dot legend-python"></i> Python</span>
+                        <span><i class="legend-dot legend-other"></i> Other source</span>
+                    </div>
+
+                    <p class="inspector-help">
+                        Drag documents to move them. Drag empty space to pan.
+                        Use the scroll wheel to zoom. Click a document to inspect its relationships.
+                    </p>
+                </div>
+
+                <aside class="inspector-details">
+                    <div class="inspector-eyebrow">02 / MODULE INSPECTOR</div>
+                    <h3 id="detail-title">Repository overview</h3>
+                    <p id="detail-path">
+                        Select a document in the graph or file explorer.
+                    </p>
+
+                    <div class="inspector-detail-divider"></div>
+
+                    <div class="inspector-detail-label">LANGUAGE / TYPE</div>
+                    <div id="detail-type">Repository</div>
+
+                    <div class="inspector-detail-label">LINES OF CODE</div>
+                    <div id="detail-lines">—</div>
+
+                    <div class="inspector-detail-label">OUTGOING IMPORTS</div>
+                    <div id="detail-outgoing">—</div>
+
+                    <div class="inspector-detail-label">IMPORTED BY</div>
+                    <div id="detail-incoming">—</div>
+
+                    <div class="inspector-detail-label">TODO / FIXME</div>
+                    <div id="detail-todos">—</div>
+
+                    <div class="inspector-detail-label">ANALYSIS NOTES</div>
+                    <ul id="detail-findings" class="inspector-findings">
+                        <li>Repository metrics will appear after inspection.</li>
+                    </ul>
+
+                    <a id="detail-link"
+                       class="inspector-file-link"
+                       href="https://github.com/nikholt1/Refract"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        OPEN FILE ON GITHUB ↗
+                    </a>
+                </aside>
+            </div>
+
+            <section class="inspector-analytics-card">
+                <div class="inspector-eyebrow">08 / CODE VOLUME</div>
+                <h3>Largest source files</h3>
+                <p class="inspector-muted">
+                    Lines of code in the largest analyzed files.
+                </p>
+                <div id="code-volume-chart"></div>
+            </section>
+
+            <section class="inspector-analytics-card">
+                <div class="inspector-eyebrow">09 / COMPLEXITY</div>
+                <h3>Branching indicators</h3>
+                <p class="inspector-muted">
+                    Approximate conditional and logical operator counts.
+                </p>
+                <div id="complexity-chart"></div>
+            </section>
+            <div class="inspector-analytics">
+                <section class="inspector-analytics-card">
+                    <div class="inspector-eyebrow">03 / LANGUAGES</div>
+                    <h3>Codebase distribution</h3>
+                    <div id="language-chart"></div>
+                </section>
+
+                <section class="inspector-analytics-card">
+                    <div class="inspector-eyebrow">04 / FINDINGS</div>
+                    <h3>Potential areas to review</h3>
+                    <div id="repository-findings">
+                        <p class="inspector-muted">Waiting for repository analysis.</p>
+                    </div>
+                </section>
+
+                <section class="inspector-analytics-card">
+                    <div class="inspector-eyebrow">05 / DEPENDENCIES</div>
+                    <h3>Detected manifests</h3>
+                    <div id="dependency-summary">
+                        <p class="inspector-muted">Waiting for repository analysis.</p>
+                    </div>
+                </section>
+
+                <section class="inspector-analytics-card">
+                    <div class="inspector-eyebrow">06 / LARGEST FILES</div>
+                    <h3>Files by line count</h3>
+                    <div id="largest-files">
+                        <p class="inspector-muted">Waiting for repository analysis.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="inspector-files-panel">
+                <div class="inspector-panel-heading">
+                    <div>
+                        <div class="inspector-eyebrow">07 / CODEBASE</div>
+                        <h3>Repository files</h3>
+                    </div>
+                    <span id="file-count">0 FILES</span>
+                </div>
+
+                <input
+                    id="inspector-search"
+                    class="inspector-search"
+                    type="search"
+                    placeholder="Search files and directories..."
+                    aria-label="Search repository files"
+                >
+
+                <div id="inspector-file-list" class="inspector-file-list"></div>
+            </div>
+
+            <div id="inspector-footnote" class="inspector-footnote">
+                Metrics are calculated from accessible repository files.
+                Import detection and complexity indicators are approximate.
+            </div>
+        </div>
+    `;
+
+    canvas = document.getElementById("inspector-canvas");
+    ctx = canvas.getContext("2d");
+
+    document.getElementById("inspector-repo-form")
+        .addEventListener("submit", event => {
+            event.preventDefault();
+
+            const input = document.getElementById("inspector-repo-url");
+            inspectRepository(input.value);
+        });
+
+    document.getElementById("inspector-search")
+        .addEventListener("input", event => {
+            renderFileList(event.target.value);
+        });
+
+    document.getElementById("graph-reset")
+        .addEventListener("click", () => {
+            cameraInitialized = false;
+            drawGraph();
+        });
+
+    canvas.addEventListener("pointerdown", handlePointerDown);
+    canvas.addEventListener("pointermove", handlePointerMove);
+    canvas.addEventListener("pointerup", handlePointerUp);
+    canvas.addEventListener("pointercancel", handlePointerUp);
+
+    canvas.addEventListener("wheel", handleWheel, {
+        passive: false
+    });
+
+    if (resizeObserver) resizeObserver.disconnect();
+
+    resizeObserver = new ResizeObserver(() => drawGraph());
+    resizeObserver.observe(canvas.parentElement);
+
+    window.addEventListener("resize", drawGraph);
+
+    inspectRepository(DEFAULT_REPOSITORY);
+}
+
+function metric(label, id) {
+    return `
+        <div class="inspector-metric">
+            <span>${label}</span>
+            <strong id="${id}">—</strong>
+        </div>
+    `;
+}
+
+/* -------------------------------------------------------
+   REPOSITORY LOADING
+------------------------------------------------------- */
+
+async function inspectRepository(input) {
+    const sequence = ++loadSequence;
+
+    let repository;
+
+    try {
+        repository = parseGitHubUrl(input);
+    } catch (error) {
+        setStatus(error.message);
+        return;
+    }
+
+    currentRepository = repository;
+
+    repositoryFiles = [];
+    analysisResults = [];
+    graphNodes = [];
+    graphEdges = [];
+    selectedNode = null;
+    cameraInitialized = false;
+
+    resetMetrics();
+    renderFileList();
+    drawGraph();
+
+    document.getElementById("inspector-graph-empty").hidden = false;
+    document.getElementById("inspector-graph-empty").textContent =
+        "Fetching repository tree...";
+
+    document.getElementById("inspector-load-button").disabled = true;
+    setStatus("FETCHING REPOSITORY");
+
+    try {
+        const repoResponse = await fetch(
+            `https://api.github.com/repos/${repository.owner}/${repository.repo}`
+        );
+
+        if (!repoResponse.ok) {
+            throw new Error(githubErrorMessage(repoResponse.status));
+        }
+
+        const repo = await repoResponse.json();
+
+        if (sequence !== loadSequence) return;
+
+        repository.branch = repo.default_branch;
+
+        document.getElementById("inspector-title").textContent =
+            repo.name || repository.repo;
+
+        document.getElementById("inspector-description").textContent =
+            repo.description || "Repository source and dependency inspection.";
+
+        document.getElementById("inspector-branch").textContent =
+            `BRANCH / ${repo.default_branch}`;
+
+        document.getElementById("inspector-repo-link").href = repo.html_url;
+
+        const treeUrl =
+            `https://api.github.com/repos/${repository.owner}/${repository.repo}` +
+            `/git/trees/${encodeRef(repo.default_branch)}?recursive=1`;
+
+        setStatus("FETCHING FILE TREE");
+
+        const treeResponse = await fetch(treeUrl);
+
+        if (!treeResponse.ok) {
+            throw new Error(
+                `Could not fetch repository tree (HTTP ${treeResponse.status}).`
+            );
+        }
+
+        const treeData = await treeResponse.json();
+
+        if (sequence !== loadSequence) return;
+
+        repositoryFiles = (treeData.tree || [])
+            .filter(item => item.type === "blob")
+            .map(item => ({
+                path: item.path,
+                sha: item.sha,
+                size: item.size || 0,
+                extension: getExtension(item.path),
+                url: `${repo.html_url}/blob/${encodeRef(repo.default_branch)}/${item.path
+                    .split("/")
+                    .map(encodeURIComponent)
+                    .join("/")}`
+            }));
+
+        const directorySet = new Set();
+
+        for (const file of repositoryFiles) {
+            const parts = file.path.split("/");
+
+            for (let i = 1; i < parts.length; i++) {
+                directorySet.add(parts.slice(0, i).join("/"));
+            }
+        }
+
+        const sourceFiles = repositoryFiles
+            .filter(file => SOURCE_EXTENSIONS.has(file.extension))
+            .slice(0, MAX_ANALYZED_FILES);
+
+        setText("metric-files", repositoryFiles.length);
+        setText("metric-directories", directorySet.size);
+        setText("metric-source", sourceFiles.length);
+
+        setStatus(`ANALYZING ${sourceFiles.length} SOURCE FILES`);
+
+        const results = await mapWithConcurrency(
+            sourceFiles,
+            6,
+            async file => {
+                try {
+                    const rawUrl =
+                        `https://raw.githubusercontent.com/${repository.owner}/${repository.repo}/` +
+                        `${encodeRef(repo.default_branch)}/` +
+                        file.path.split("/").map(encodeURIComponent).join("/");
+
+                    const response = await fetch(rawUrl);
+
+                    if (!response.ok) {
+                        return {
+                            ...file,
+                            content: "",
+                            accessible: false
+                        };
+                    }
+
+                    const content = await response.text();
+
+                    if (new Blob([content]).size > MAX_FILE_BYTES) {
+                        return {
+                            ...file,
+                            content: "",
+                            accessible: false,
+                            skippedReason: "File exceeds analysis size limit"
+                        };
+                    }
+
+                    return {
+                        ...file,
+                        content,
+                        accessible: true
+                    };
+                } catch {
+                    return {
+                        ...file,
+                        content: "",
+                        accessible: false
+                    };
+                }
+            }
+        );
+
+        if (sequence !== loadSequence) return;
+
+        analysisResults = results.map(analyzeSourceFile);
+
+        buildGraph(analysisResults);
+        populateAnalytics(repo, treeData.truncated);
+        
+        renderFileList();
+        updateSelection(null);
+        drawGraph();
+
+        document.getElementById("inspector-graph-empty").hidden =
+            graphNodes.length > 0;
+
+        if (graphNodes.length === 0) {
+            document.getElementById("inspector-graph-empty").textContent =
+                "No supported source files were available for graph analysis.";
+        }
+
+        setStatus(
+            treeData.truncated
+                ? "PARTIAL TREE — GITHUB LIMIT"
+                : "INSPECTION COMPLETE"
+        );
+    } catch (error) {
+        if (sequence !== loadSequence) return;
+
+        console.error("Repository inspection failed:", error);
+        setStatus("INSPECTION FAILED");
+
+        document.getElementById("inspector-graph-empty").hidden = false;
+        document.getElementById("inspector-graph-empty").textContent =
+            error.message;
+
+        document.getElementById("inspector-description").textContent =
+            "Unable to complete repository inspection.";
+    } finally {
+        if (sequence === loadSequence) {
+            document.getElementById("inspector-load-button").disabled = false;
+        }
+    }
+}
+
+function parseGitHubUrl(input) {
+    let url;
+
+    try {
+        url = new URL(input.trim());
+    } catch {
+        throw new Error("Enter a valid GitHub repository URL.");
+    }
+
+    if (url.hostname.toLowerCase() !== "github.com") {
+        throw new Error("Please enter a URL from github.com.");
+    }
+
+    const parts = url.pathname.split("/").filter(Boolean);
+
+    if (parts.length < 2) {
+        throw new Error("Use a repository URL like https://github.com/owner/repo.");
+    }
+
+    const owner = parts[0];
+    const repo = parts[1].replace(/\.git$/i, "");
+
+    if (!/^[\w.-]+$/.test(owner) || !/^[\w.-]+$/.test(repo)) {
+        throw new Error("The repository owner or name is invalid.");
+    }
+
+    return { owner, repo };
+}
+
+function encodeRef(ref) {
+    return ref.split("/").map(encodeURIComponent).join("/");
+}
+
+function githubErrorMessage(status) {
+    if (status === 401 || status === 403) {
+        return "GitHub denied the request or its API rate limit was reached. Try again later.";
+    }
+
+    if (status === 404) {
+        return "Repository not found. It may be private, deleted, or incorrectly named.";
+    }
+
+    if (status === 409) {
+        return "This repository does not currently have a Git tree to inspect.";
+    }
+
+    return `GitHub returned HTTP ${status}.`;
+}
+
+async function mapWithConcurrency(items, concurrency, callback) {
+    const results = new Array(items.length);
+    let nextIndex = 0;
+
+    async function worker() {
+        while (true) {
+            const index = nextIndex++;
+
+            if (index >= items.length) return;
+
+            results[index] = await callback(items[index]);
+        }
+    }
+
+    await Promise.all(
+        Array.from(
+            { length: Math.min(concurrency, items.length) },
+            () => worker()
+        )
+    );
+
+    return results;
+}
+
+/* -------------------------------------------------------
+   SOURCE ANALYSIS
+------------------------------------------------------- */
+
+function analyzeSourceFile(file) {
+    const content = file.content || "";
+    const lines = content ? content.split(/\r?\n/) : [];
+
+    const codeLines = lines.filter(line => {
+        const trimmed = line.trim();
+
+        return trimmed.length > 0 &&
+            !trimmed.startsWith("//") &&
+            !trimmed.startsWith("*") &&
+            !trimmed.startsWith("#") &&
+            !trimmed.startsWith("<!--");
+    });
+
+    const todos = [...content.matchAll(/\b(TODO|FIXME|XXX|HACK)\b/gi)]
+        .map(match => match[1].toUpperCase());
+
+    const complexityIndicators = countComplexityIndicators(content, file.extension);
+
+    return {
+        ...file,
+        lineCount: lines.length,
+        codeLines: codeLines.length,
+        blankLines: lines.filter(line => line.trim() === "").length,
+        todoCount: todos.length,
+        todoTypes: todos,
+        complexityIndicators,
+        imports: [],
+        importedBy: [],
+        language: EXTENSION_LANGUAGES[file.extension] || "Other"
+    };
+}
+
+function countComplexityIndicators(content, extension) {
+    if (!content) return 0;
+
+    let count = 0;
+
+    if (["js", "jsx", "mjs", "cjs", "ts", "tsx", "java", "cs", "go", "cpp", "c", "rs", "php"].includes(extension)) {
+        const patterns = [
+            /\bif\s*\(/g,
+            /\bfor\s*\(/g,
+            /\bwhile\s*\(/g,
+            /\bcase\s+/g,
+            /\bcatch\s*\(/g,
+            /&&/g,
+            /\|\|/g,
+            /\?\?/g,
+            /\?(?![.?])/g
+        ];
+
+        for (const pattern of patterns) {
+            count += [...content.matchAll(pattern)].length;
+        }
+    } else if (extension === "py") {
+        const patterns = [
+            /^\s*if\b/gm,
+            /^\s*elif\b/gm,
+            /^\s*for\b/gm,
+            /^\s*while\b/gm,
+            /^\s*except\b/gm,
+            /\band\b/g,
+            /\bor\b/g
+        ];
+
+        for (const pattern of patterns) {
+            count += [...content.matchAll(pattern)].length;
+        }
+    }
+
+    return count;
+}
+
+function extractImports(content, extension) {
+    const imports = new Set();
+
+    if (!content) return imports;
+
+    const patterns = [];
+
+    if (["js", "jsx", "mjs", "cjs", "ts", "tsx"].includes(extension)) {
+        patterns.push(
+            /\bimport\s+(?:[\s\S]*?\s+from\s+)?["']([^"']+)["']/g,
+            /\bexport\s+[\s\S]*?\s+from\s+["']([^"']+)["']/g,
+            /\brequire\s*\(\s*["']([^"']+)["']\s*\)/g,
+            /\bimport\s*\(\s*["']([^"']+)["']\s*\)/g
+        );
+    } else if (extension === "py") {
+        patterns.push(
+            /^\s*from\s+([\w.]+)\s+import/gm,
+            /^\s*import\s+([\w.]+)/gm
+        );
+    } else if (extension === "java" || extension === "kt" || extension === "kts") {
+        patterns.push(
+            /^\s*import\s+(?:static\s+)?([\w.*]+)/gm
+        );
+    } else if (extension === "go") {
+        patterns.push(
+            /^\s*import\s+"([^"]+)"/gm
+        );
+    } else if (extension === "php") {
+        patterns.push(
+            /^\s*use\s+([\w\\]+)/gm,
+            /\brequire_once?\s*\(?\s*["']([^"']+)["']/g,
+            /\binclude_once?\s*\(?\s*["']([^"']+)["']/g
+        );
+    } else if (extension === "cs") {
+        patterns.push(
+            /^\s*using\s+([\w.]+);/gm
+        );
+    }
+
+    for (const pattern of patterns) {
+        for (const match of content.matchAll(pattern)) {
+            if (match[1]) imports.add(match[1]);
+        }
+    }
+
+    return imports;
+}
+
+function buildGraph(analysis) {
+    const graphSource = analysis
+        .filter(file => file.accessible)
+        .slice(0, MAX_GRAPH_FILES);
+
+    const sourcePaths = new Set(graphSource.map(file => file.path));
+    const byPath = new Map();
+
+    graphNodes = graphSource.map((file, index) => {
+        const node = {
+            ...file,
+            index,
+            x: 0,
+            y: 0,
+            radius: 8
+        };
+
+        byPath.set(node.path, node);
+
+        return node;
+    });
+
+    graphEdges = [];
+
+    for (const node of graphNodes) {
+        const imports = extractImports(node.content, node.extension);
+
+        for (const importPath of imports) {
+            const resolved = resolveLocalImport(
+                node.path,
+                importPath,
+                sourcePaths,
+                node.extension
+            );
+
+            const target = resolved ? byPath.get(resolved) : null;
+
+            if (!target || target.path === node.path) continue;
+            if (node.imports.includes(target.path)) continue;
+
+            node.imports.push(target.path);
+            target.importedBy.push(node.path);
+
+            graphEdges.push({
+                source: node.path,
+                target: target.path
+            });
+        }
+    }
+
+    // Initialize positions with a deterministic spread.
+    const radius = Math.max(220, Math.sqrt(graphNodes.length) * 80);
+
+    graphNodes.forEach((node, index) => {
+        const angle =
+            (index / Math.max(graphNodes.length, 1)) * Math.PI * 2;
+
+        node.x = Math.cos(angle) * radius;
+        node.y = Math.sin(angle) * radius;
+    });
+
+    layoutGraph();
+
+    cameraInitialized = false;
+
+    setText("metric-imports", graphEdges.length);
+    setText("graph-count", `${graphNodes.length} NODES`);
+}
+
+function resolveLocalImport(sourcePath, importPath, sourcePaths, extension) {
+    const candidates = [];
+
+    if (importPath.startsWith(".")) {
+        const parent = sourcePath.split("/").slice(0, -1).join("/");
+        const base = normalizePath(`${parent}/${importPath}`);
+
+        candidates.push(base);
+
+        for (const ext of SOURCE_EXTENSIONS) {
+            candidates.push(`${base}.${ext}`);
+        }
+
+        for (const indexName of [
+            "index.js", "index.jsx", "index.ts", "index.tsx",
+            "__init__.py"
+        ]) {
+            candidates.push(`${base}/${indexName}`);
+        }
+    } else if (extension === "py") {
+        const modulePath = importPath.replaceAll(".", "/");
+
+        candidates.push(
+            `${modulePath}.py`,
+            `${modulePath}/__init__.py`
+        );
+    } else if (["java", "kt", "kts"].includes(extension)) {
+        const modulePath = importPath.replaceAll(".", "/");
+
+        candidates.push(
+            `${modulePath}.java`,
+            `${modulePath}.kt`,
+            `${modulePath}.kts`
+        );
+    }
+
+    return candidates.find(candidate => sourcePaths.has(candidate)) || null;
+}
+
+function normalizePath(path) {
+    const parts = [];
+
+    for (const part of path.split("/")) {
+        if (!part || part === ".") continue;
+
+        if (part === "..") parts.pop();
+        else parts.push(part);
+    }
+
+    return parts.join("/");
+}
+
+function layoutGraph() {
+    const nodes = graphNodes;
+    const count = nodes.length;
+
+    if (count < 2) return;
+
+    const nodeByPath = new Map(nodes.map(node => [node.path, node]));
+
+    const edges = graphEdges
+        .map(edge => ({
+            source: nodeByPath.get(edge.source),
+            target: nodeByPath.get(edge.target)
+        }))
+        .filter(edge => edge.source && edge.target);
+
+    // A bounded force-directed layout for a useful initial arrangement.
+    for (let iteration = 0; iteration < 160; iteration++) {
+        const forces = nodes.map(() => ({ x: 0, y: 0 }));
+
+        for (let i = 0; i < count; i++) {
+            for (let j = i + 1; j < count; j++) {
+                const a = nodes[i];
+                const b = nodes[j];
+
+                const dx = b.x - a.x;
+                const dy = b.y - a.y;
+                const distance = Math.max(1, Math.hypot(dx, dy));
+
+                const force = 3600 / (distance * distance);
+
+                const fx = dx / distance * force;
+                const fy = dy / distance * force;
+
+                forces[i].x -= fx;
+                forces[i].y -= fy;
+                forces[j].x += fx;
+                forces[j].y += fy;
+            }
+        }
+
+        for (const edge of edges) {
+            const a = edge.source;
+            const b = edge.target;
+
+            const dx = b.x - a.x;
+            const dy = b.y - a.y;
+            const distance = Math.max(1, Math.hypot(dx, dy));
+
+            const force = (distance - 190) * 0.012;
+            const fx = dx / distance * force;
+            const fy = dy / distance * force;
+
+            forces[a.index].x += fx;
+            forces[a.index].y += fy;
+            forces[b.index].x -= fx;
+            forces[b.index].y -= fy;
+        }
+
+        const cooling = 1 - iteration / 160;
+
+        for (let i = 0; i < count; i++) {
+            nodes[i].x += forces[i].x * cooling;
+            nodes[i].y += forces[i].y * cooling;
+        }
+    }
+}
+
+/* -------------------------------------------------------
+   CANVAS RENDERING AND INTERACTION
+------------------------------------------------------- */
+
+function drawGraph() {
+    if (!canvas || !ctx) return;
+
+    const rect = canvas.getBoundingClientRect();
+
+    if (!rect.width || !rect.height) return;
+
+    const dpr = window.devicePixelRatio || 1;
+
+    canvas.width = Math.round(rect.width * dpr);
+    canvas.height = Math.round(rect.height * dpr);
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const width = rect.width;
+    const height = rect.height;
+
+    ctx.fillStyle = COLORS.background;
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.strokeStyle = "rgba(100, 116, 139, 0.10)";
+    ctx.lineWidth = 1;
+
+    for (let x = 0; x < width; x += 28) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+    }
+
+    for (let y = 0; y < height; y += 28) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+    }
+
+    if (!cameraInitialized && graphNodes.length) {
+        fitGraphToCanvas(width, height);
+    }
+
+    ctx.setTransform(
+        dpr * camera.zoom,
+        0,
+        0,
+        dpr * camera.zoom,
+        dpr * camera.x,
+        dpr * camera.y
+    );
+
+    const nodeMap = new Map(
+        graphNodes.map(node => [node.path, node])
+    );
+
+    const connected = new Set();
+
+    if (selectedNode) {
+        connected.add(selectedNode.path);
+
+        selectedNode.imports.forEach(path => connected.add(path));
+        selectedNode.importedBy.forEach(path => connected.add(path));
+    }
+
+    
+    for (const edge of graphEdges) {
+        const source = nodeMap.get(edge.source);
+        const target = nodeMap.get(edge.target);
+
+        if (!source || !target) continue;
+
+        // Always render every dependency edge.
+        // Highlight only edges directly connected to the selected node.
+        const highlighted = selectedNode &&
+            (edge.source === selectedNode.path ||
+            edge.target === selectedNode.path);
+
+        ctx.strokeStyle = highlighted
+            ? "rgba(56, 189, 248, 0.95)"
+            : "rgba(100, 116, 139, 0.28)";
+
+        ctx.lineWidth = highlighted ? 2.2 : 1;
+
+        ctx.beginPath();
+        ctx.moveTo(source.x, source.y);
+        ctx.lineTo(target.x, target.y);
+        ctx.stroke();
+
+        // Direction arrow: source imports target.
+        const angle = Math.atan2(
+            target.y - source.y,
+            target.x - source.x
+        );
+
+        const arrowOffset = NODE_WIDTH / 2 + 3;
+        const arrowX = target.x -
+            Math.cos(angle) * arrowOffset;
+        const arrowY = target.y -
+            Math.sin(angle) * arrowOffset;
+
+        const arrowSize = highlighted ? 7 : 5;
+
+        ctx.fillStyle = highlighted
+            ? "rgba(56, 189, 248, 0.95)"
+            : "rgba(100, 116, 139, 0.45)";
+
+        ctx.beginPath();
+        ctx.moveTo(arrowX, arrowY);
+        ctx.lineTo(
+            arrowX - Math.cos(angle - 0.45) * arrowSize,
+            arrowY - Math.sin(angle - 0.45) * arrowSize
+        );
+        ctx.lineTo(
+            arrowX - Math.cos(angle + 0.45) * arrowSize,
+            arrowY - Math.sin(angle + 0.45) * arrowSize
+        );
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    for (const node of graphNodes) {
+        drawDocumentNode(node, selectedNode, connected);
+    }
+}
+
+function fitGraphToCanvas(width, height) {
+    const minX = Math.min(...graphNodes.map(node => node.x - NODE_WIDTH));
+    const maxX = Math.max(...graphNodes.map(node => node.x + NODE_WIDTH));
+    const minY = Math.min(...graphNodes.map(node => node.y - NODE_HEIGHT));
+    const maxY = Math.max(...graphNodes.map(node => node.y + NODE_HEIGHT));
+
+    const graphWidth = Math.max(1, maxX - minX);
+    const graphHeight = Math.max(1, maxY - minY);
+
+    camera.zoom = Math.max(
+        0.25,
+        Math.min(
+            1.1,
+            (width - 60) / graphWidth,
+            (height - 60) / graphHeight
+        )
+    );
+
+    camera.x = width / 2 - ((minX + maxX) / 2) * camera.zoom;
+    camera.y = height / 2 - ((minY + maxY) / 2) * camera.zoom;
+
+    cameraInitialized = true;
+}
+
+function drawDocumentNode(node, selected, connected) {
+    const x = node.x - NODE_WIDTH / 2;
+    const y = node.y - NODE_HEIGHT / 2;
+
+    const isSelected = selected?.path === node.path;
+    const isConnected = selected && connected.has(node.path);
+
+    const accent = languageColor(node.language);
+
+    ctx.fillStyle = isSelected ? "#142d42" : "#101a2a";
+
+    ctx.strokeStyle = isSelected
+        ? COLORS.accent
+        : isConnected
+            ? "rgba(56, 189, 248, 0.65)"
+            : "#29384d";
+
+    ctx.lineWidth = isSelected ? 2 : 1;
+
+    roundedRect(ctx, x, y, NODE_WIDTH, NODE_HEIGHT, 7);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = accent;
+    ctx.fillRect(x + 1, y + 8, 3, NODE_HEIGHT - 16);
+
+    // Folded document corner.
+    ctx.beginPath();
+    ctx.moveTo(x + NODE_WIDTH - 18, y + 1);
+    ctx.lineTo(x + NODE_WIDTH - 1, y + 18);
+    ctx.lineTo(x + NODE_WIDTH - 18, y + 18);
+    ctx.closePath();
+    ctx.fillStyle = "#26364a";
+    ctx.fill();
+
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+    ctx.font = "12px monospace";
+    ctx.fillStyle = isSelected ? "#ffffff" : COLORS.text;
+
+    ctx.fillText(
+        truncateText(node.path.split("/").pop(), 20),
+        x + 13,
+        y + 22
+    );
+
+    const parent = node.path.includes("/")
+        ? node.path.split("/").slice(0, -1).join("/")
+        : "root";
+
+    ctx.font = "10px monospace";
+    ctx.fillStyle = COLORS.muted;
+
+    ctx.fillText(
+        truncateText(parent, 22),
+        x + 13,
+        y + 43
+    );
+
+    ctx.textAlign = "right";
+    ctx.fillStyle = accent;
+
+    ctx.fillText(
+        `${node.imports.length} →`,
+        x + NODE_WIDTH - 10,
+        y + 43
+    );
+}
+
+function truncateText(text, maxLength = 40) {
+    const value = String(text ?? "");
+
+    if (value.length <= maxLength) {
+        return value;
+    }
+
+    return `${value.slice(0, maxLength - 3)}...`;
+}
+
+function roundedRect(ctx, x, y, width, height, radius) {
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + width - radius, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+    ctx.lineTo(x + width, y + height - radius);
+    ctx.quadraticCurveTo(
+        x + width, y + height,
+        x + width - radius, y + height
+    );
+    ctx.lineTo(x + radius, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
+}
+
+function screenToWorld(screenX, screenY) {
+    return {
+        x: (screenX - camera.x) / camera.zoom,
+        y: (screenY - camera.y) / camera.zoom
+    };
+}
+
+function getNodeAt(worldX, worldY) {
+    for (let i = graphNodes.length - 1; i >= 0; i--) {
+        const node = graphNodes[i];
+
+        if (
+            worldX >= node.x - NODE_WIDTH / 2 &&
+            worldX <= node.x + NODE_WIDTH / 2 &&
+            worldY >= node.y - NODE_HEIGHT / 2 &&
+            worldY <= node.y + NODE_HEIGHT / 2
+        ) {
+            return node;
+        }
+    }
+
+    return null;
+}
+
+function handlePointerDown(event) {
+    if (event.button !== 0) return;
+
+    const rect = canvas.getBoundingClientRect();
+
+    const screenX = event.clientX - rect.left;
+    const screenY = event.clientY - rect.top;
+    const world = screenToWorld(screenX, screenY);
+    const node = getNodeAt(world.x, world.y);
+
+    activePointer = event.pointerId;
+    lastPointer = { x: screenX, y: screenY };
+    movedPointer = false;
+
+    canvas.setPointerCapture(event.pointerId);
+
+    if (node) {
+        pointerMode = "node";
+        selectedNode = node;
+
+        dragOffset = {
+            x: world.x - node.x,
+            y: world.y - node.y
+        };
+
+        updateSelection(node);
+    } else {
+        pointerMode = "pan";
+    }
+
+    drawGraph();
+}
+
+function handlePointerMove(event) {
+    const rect = canvas.getBoundingClientRect();
+    const screenX = event.clientX - rect.left;
+    const screenY = event.clientY - rect.top;
+
+    if (activePointer !== event.pointerId || !pointerMode) {
+        const world = screenToWorld(screenX, screenY);
+        canvas.style.cursor = getNodeAt(world.x, world.y)
+            ? "grab"
+            : "grab";
+        return;
+    }
+
+    const dx = screenX - lastPointer.x;
+    const dy = screenY - lastPointer.y;
+
+    if (Math.abs(dx) + Math.abs(dy) > 2) movedPointer = true;
+
+    if (pointerMode === "node" && selectedNode) {
+        const world = screenToWorld(screenX, screenY);
+
+        selectedNode.x = world.x - dragOffset.x;
+        selectedNode.y = world.y - dragOffset.y;
+    } else if (pointerMode === "pan") {
+        camera.x += dx;
+        camera.y += dy;
+    }
+
+    lastPointer = { x: screenX, y: screenY };
+
+    drawGraph();
+}
+
+function handlePointerUp(event) {
+    if (activePointer !== event.pointerId) return;
+
+    activePointer = null;
+    pointerMode = null;
+    canvas.style.cursor = "grab";
+
+    if (canvas.hasPointerCapture(event.pointerId)) {
+        canvas.releasePointerCapture(event.pointerId);
+    }
+}
+
+function handleWheel(event) {
+    event.preventDefault();
+
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    const worldBefore = screenToWorld(mouseX, mouseY);
+
+    camera.zoom = Math.max(
+        0.2,
+        Math.min(2.5, camera.zoom * Math.exp(-event.deltaY * 0.001))
+    );
+
+    camera.x = mouseX - worldBefore.x * camera.zoom;
+    camera.y = mouseY - worldBefore.y * camera.zoom;
+
+    drawGraph();
+}
+
+/* -------------------------------------------------------
+   SELECTION AND FILE EXPLORER
+------------------------------------------------------- */
+
+function updateSelection(node) {
+    selectedNode = node;
+
+    setText("detail-title", node ? node.path.split("/").pop() : "Repository overview");
+    setText("detail-path", node ? node.path : "Select a document in the graph or file explorer.");
+    setText("detail-type", node ? node.language : "Repository");
+    setText("detail-lines", node ? node.lineCount : "—");
+    setText("detail-outgoing", node ? node.imports.length : "—");
+    setText("detail-incoming", node ? node.importedBy.length : "—");
+    setText("detail-todos", node ? node.todoCount : "—");
+
+    const link = document.getElementById("detail-link");
+
+    if (link) {
+        link.href = node?.url ||
+            `https://github.com/${currentRepository.owner}/${currentRepository.repo}`;
+    }
+
+    const findings = [];
+
+    if (node) {
+        if (node.lineCount > 500) {
+            findings.push("Large source file: consider whether responsibilities can be separated.");
+        }
+
+        if (node.complexityIndicators > 30) {
+            findings.push("Many branching indicators were detected. Review complex methods manually.");
+        }
+
+        if (node.imports.length > 10) {
+            findings.push("Many outgoing imports. Review whether the module has too many dependencies.");
+        }
+
+        if (node.importedBy.length > 10) {
+            findings.push("Many incoming imports. Changes to this module may affect multiple consumers.");
+        }
+
+        if (node.todoCount > 0) {
+            findings.push(`${node.todoCount} TODO/FIXME-style markers detected.`);
+        }
+
+        if (!findings.length) {
+            findings.push("No basic threshold warnings detected for this file.");
+        }
+    } else {
+        findings.push("Select a source file to inspect its metrics and relationships.");
+    }
+
+    renderTextList("detail-findings", findings);
+    renderFileList(document.getElementById("inspector-search")?.value || "");
+}
+
+function renderFileList(query = "") {
+    const list = document.getElementById("inspector-file-list");
+    if (!list) return;
+
+    const normalized = query.trim().toLowerCase();
+
+    const files = repositoryFiles
+        .filter(file => file.path.toLowerCase().includes(normalized))
+        .slice(0, 250);
+
+    list.innerHTML = files.map(file => `
+        <button type="button"
+                class="inspector-file ${selectedNode?.path === file.path ? "is-selected" : ""}"
+                data-file-path="${escapeHtml(file.path)}">
+            <span class="inspector-file-icon">${escapeHtml(file.extension || "FILE")}</span>
+            <span class="inspector-file-name">${escapeHtml(file.path)}</span>
+            <span class="inspector-file-size">${formatBytes(file.size)}</span>
+        </button>
+    `).join("");
+
+    list.querySelectorAll("[data-file-path]").forEach(button => {
+        button.addEventListener("click", () => {
+            const path = button.dataset.filePath;
+            const node = graphNodes.find(item => item.path === path);
+
+            if (node) {
+                updateSelection(node);
+                drawGraph();
+            } else {
+                const file = repositoryFiles.find(item => item.path === path);
+
+                if (file) {
+                    setText("detail-title", file.path.split("/").pop());
+                    setText("detail-path", file.path);
+                    setText("detail-type", file.extension.toUpperCase() || "FILE");
+                    setText("detail-lines", "Not analyzed");
+                    setText("detail-outgoing", "—");
+                    setText("detail-incoming", "—");
+                    setText("detail-todos", "—");
+
+                    const link = document.getElementById("detail-link");
+                    link.href = file.url;
+
+                    renderTextList("detail-findings", [
+                        "This file is present in the repository tree but is not included in the source graph analysis."
+                    ]);
+                }
+            }
+        });
+    });
+
+    setText("file-count", `${files.length} SHOWN`);
+}
+
+/* -------------------------------------------------------
+   ANALYTICS
+------------------------------------------------------- */
+
+function populateAnalytics(repo, treeTruncated) {
+    const analyzed = analysisResults.filter(file => file.accessible);
+
+    const totalLines = analyzed.reduce((sum, file) => sum + file.lineCount, 0);
+    const totalTodos = analyzed.reduce((sum, file) => sum + file.todoCount, 0);
+
+    const tests = repositoryFiles.filter(file =>
+        /(^|\/)(__tests__|tests?|specs?)(\/|$)|\.(test|spec)\./i.test(file.path)
+    );
+
+    const largest = [...analyzed]
+        .sort((a, b) => b.lineCount - a.lineCount)[0];
+
+    setText("metric-source", analysisResults.length);
+    setText("metric-lines", totalLines.toLocaleString());
+    setText("metric-tests", tests.length);
+    setText("metric-todos", totalTodos);
+    setText("metric-largest", largest ? `${largest.lineCount} LOC` : "—");
+
+    renderLanguages(analyzed);
+    renderRepositoryFindings(analyzed, tests.length, treeTruncated);
+    renderDependencies();
+    renderLargestFiles(analyzed);
+
+    renderCodeVolumeChart(analyzed);
+    renderComplexityChart(analyzed);
+    const footnote = document.getElementById("inspector-footnote");
+
+    footnote.textContent =
+        `Analyzed ${analyzed.length} accessible source files. ` +
+        `${repositoryFiles.length} repository files were discovered. ` +
+        "Language distribution is based on file counts, not byte-weighted language statistics. " +
+        "Complexity indicators are approximate and are not formal cyclomatic complexity.";
+}
+
+function renderLanguages(files) {
+    const counts = new Map();
+
+    for (const file of files) {
+        counts.set(file.language, (counts.get(file.language) || 0) + 1);
+    }
+
+    const sorted = [...counts.entries()]
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 8);
+
+    const total = sorted.reduce((sum, item) => sum + item[1], 0) || 1;
+
+    document.getElementById("language-chart").innerHTML = sorted.length
+        ? `
+            <div class="language-bars">
+                ${sorted.map(([language, count]) => `
+                    <div class="language-row">
+                        <div class="language-label">
+                            <span>${escapeHtml(language)}</span>
+                            <span>${count} files</span>
+                        </div>
+                        <div class="language-track">
+                            <div class="language-fill"
+                                 style="width:${(count / total) * 100}%; background:${languageColor(language)}">
+                            </div>
+                        </div>
+                    </div>
+                `).join("")}
+            </div>
+        `
+        : `<p class="inspector-muted">No source files were available to analyze.</p>`;
+}
+
+function renderRepositoryFindings(files, testCount, treeTruncated) {
+    const findings = [];
+
+    const largeFiles = files.filter(file => file.lineCount > 500);
+    const todoCount = files.reduce((sum, file) => sum + file.todoCount, 0);
+    const highBranchFiles = files.filter(file => file.complexityIndicators > 30);
+
+    const incoming = graphNodes
+        .map(node => ({ path: node.path, count: node.importedBy.length }))
+        .sort((a, b) => b.count - a.count);
+
+    if (largeFiles.length) {
+        findings.push({
+            type: "warning",
+            title: `${largeFiles.length} large source file(s)`,
+            detail: "Files over 500 lines may be worth reviewing for separation of responsibilities."
+        });
+    }
+
+    if (highBranchFiles.length) {
+        findings.push({
+            type: "warning",
+            title: `${highBranchFiles.length} file(s) with many branching indicators`,
+            detail: "These are rough counts of conditional constructs, not formal complexity scores."
+        });
+    }
+
+    if (todoCount) {
+        findings.push({
+            type: "info",
+            title: `${todoCount} TODO/FIXME markers`,
+            detail: "Review outstanding notes to determine whether they represent actionable work."
+        });
+    }
+
+    if (testCount === 0) {
+        findings.push({
+            type: "warning",
+            title: "No obvious test files detected",
+            detail: "The filename heuristic found no common test/spec paths. Tests may exist under other naming conventions."
+        });
+    } else {
+        findings.push({
+            type: "good",
+            title: `${testCount} possible test file(s)`,
+            detail: "Detected by filename and directory patterns; this does not prove that tests pass."
+        });
+    }
+
+    if (incoming[0]?.count > 10) {
+        findings.push({
+            type: "info",
+            title: "Highly referenced module detected",
+            detail: `${incoming[0].path} has ${incoming[0].count} detected incoming imports within the analyzed graph.`
+        });
+    }
+
+    if (treeTruncated) {
+        findings.push({
+            type: "warning",
+            title: "GitHub returned a truncated tree",
+            detail: "Some files may be missing from this inspection."
+        });
+    }
+
+    if (!findings.length) {
+        findings.push({
+            type: "good",
+            title: "No threshold warnings detected",
+            detail: "This is not a guarantee of code quality or correctness."
+        });
+    }
+
+    document.getElementById("repository-findings").innerHTML =
+        findings.map(item => `
+            <div class="finding finding-${item.type}">
+                <strong>${escapeHtml(item.title)}</strong>
+                <p>${escapeHtml(item.detail)}</p>
+            </div>
+        `).join("");
+}
+
+function renderDependencies() {
+    const manifests = repositoryFiles.filter(file =>
+        /(^|\/)(package\.json|pom\.xml|build\.gradle(\.kts)?|requirements\.txt|pyproject\.toml|Cargo\.toml|go\.mod|composer\.json|Gemfile|Package\.swift)$/i.test(file.path)
+    );
+
+    const source = manifests.map(file => `
+        <a class="dependency-item"
+           href="${file.url}"
+           target="_blank"
+           rel="noopener noreferrer">
+            <span>${escapeHtml(file.path)}</span>
+            <span>OPEN ↗</span>
+        </a>
+    `);
+
+    if (!source.length) {
+        source.push(
+            `<p class="inspector-muted">No common dependency manifests were detected.</p>`
+        );
+    }
+
+    document.getElementById("dependency-summary").innerHTML =
+        source.join("");
+}
+
+function renderLargestFiles(files) {
+    const largest = [...files]
+        .sort((a, b) => b.lineCount - a.lineCount)
+        .slice(0, 8);
+
+    document.getElementById("largest-files").innerHTML = largest.length
+        ? largest.map(file => `
+            <a class="largest-file"
+               href="${file.url}"
+               target="_blank"
+               rel="noopener noreferrer">
+                <span>${escapeHtml(file.path)}</span>
+                <strong>${file.lineCount.toLocaleString()} LOC</strong>
+            </a>
+        `).join("")
+        : `<p class="inspector-muted">No accessible source files to compare.</p>`;
+}
+
+/* -------------------------------------------------------
+   UTILITIES
+------------------------------------------------------- */
+
+function resetMetrics() {
+    [
+        "metric-files",
+        "metric-directories",
+        "metric-source",
+        "metric-imports",
+        "metric-lines",
+        "metric-tests",
+        "metric-todos",
+        "metric-largest"
+    ].forEach(id => setText(id, "—"));
+
+    setText("graph-count", "0 NODES");
+    setText("file-count", "0 FILES");
+
+   
+[
+    "language-chart",
+    "repository-findings",
+    "dependency-summary",
+    "largest-files",
+    "code-volume-chart",
+    "complexity-chart"
+].forEach(id => {
+    const element = document.getElementById(id);
+
+    if (element) {
+        element.innerHTML =
+            '<p class="inspector-muted">Waiting for repository analysis.</p>';
+    }
+});
+}
+
+function languageColor(language) {
+    const colors = {
+        JavaScript: "#facc15",
+        TypeScript: "#60a5fa",
+        Java: "#fb923c",
+        Python: "#34d399",
+        "C#": "#a78bfa",
+        "C++": "#38bdf8",
+        C: "#38bdf8",
+        Go: "#22d3ee",
+        Rust: "#f97316",
+        HTML: "#f97316",
+        CSS: "#a78bfa",
+        SCSS: "#e879f9",
+        JSON: "#94a3b8",
+        PHP: "#818cf8",
+        Ruby: "#fb7185",
+        Kotlin: "#a78bfa"
+    };
+
+    return colors[language] || "#64748b";
+}
+
+function getExtension(path) {
+    const filename = path.split("/").pop().toLowerCase();
+
+    if (filename === "dockerfile") return "dockerfile";
+
+    const index = filename.lastIndexOf(".");
+    return index > 0 ? filename.slice(index + 1) : "";
+}
+
+function formatBytes(bytes) {
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function setStatus(message) {
+    setText("inspector-status", message.toUpperCase());
+}
+
+function setText(id, value) {
+    const element = document.getElementById(id);
+
+    if (element) element.textContent = String(value);
+}
+
+function renderTextList(id, items) {
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    element.innerHTML = items
+        .map(item => `<li>${escapeHtml(item)}</li>`)
+        .join("");
+}
+
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[character]);
+}
+
+
+function renderCodeVolumeChart(files) {
+    const container = document.getElementById("code-volume-chart");
+    if (!container) return;
+
+    const largest = [...files]
+        .sort((a, b) => b.lineCount - a.lineCount)
+        .slice(0, 10);
+
+    const maxLines = Math.max(
+        1,
+        ...largest.map(file => file.lineCount)
+    );
+
+    if (!largest.length) {
+        container.innerHTML =
+            '<p class="inspector-muted">No source files available.</p>';
+        return;
+    }
+
+    container.innerHTML = `
+        <div class="inspector-bar-chart">
+            ${largest.map(file => `
+                <div class="inspector-bar-row">
+                    <div class="inspector-bar-label"
+                         title="${escapeHtml(file.path)}">
+                        ${escapeHtml(file.path)}
+                    </div>
+                    <div class="inspector-bar-track">
+                        <div class="inspector-bar-fill"
+                             style="width:${file.lineCount / maxLines * 100}%">
+                        </div>
+                    </div>
+                    <strong class="inspector-bar-value">
+                        ${file.lineCount.toLocaleString()}
+                    </strong>
+                </div>
+            `).join("")}
+        </div>
+    `;
+}
+
+function renderComplexityChart(files) {
+    const container = document.getElementById("complexity-chart");
+    if (!container) return;
+
+    const largest = [...files]
+        .sort((a, b) =>
+            b.complexityIndicators - a.complexityIndicators
+        )
+        .slice(0, 10);
+
+    const maxComplexity = Math.max(
+        1,
+        ...largest.map(file => file.complexityIndicators)
+    );
+
+    if (!largest.length) {
+        container.innerHTML =
+            '<p class="inspector-muted">No source files available.</p>';
+        return;
+    }
+
+    container.innerHTML = `
+        <div class="inspector-bar-chart">
+            ${largest.map(file => `
+                <div class="inspector-bar-row">
+                    <div class="inspector-bar-label"
+                         title="${escapeHtml(file.path)}">
+                        ${escapeHtml(file.path)}
+                    </div>
+                    <div class="inspector-bar-track">
+                        <div class="inspector-bar-fill inspector-bar-complexity"
+                             style="width:${file.complexityIndicators / maxComplexity * 100}%">
+                        </div>
+                    </div>
+                    <strong class="inspector-bar-value">
+                        ${file.complexityIndicators}
+                    </strong>
+                </div>
+            `).join("")}
+        </div>
+    `;
+}
