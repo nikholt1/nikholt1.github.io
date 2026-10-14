@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Latest Font Awesome (Free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <link rel="icon" href="images/blop.gif" type="image/png">
+    <title>Refract</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: red;
+        }
+        a:hover {
+            color: rgb(86, 135, 155);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #0d0d10  0%, #000000 100%);
+            color: white;
+        }
+
+        nav {
+            background-color: #181a1b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .R-logo {
+            width: 180px;
+            
+        }
+
+        .burger {
+            font-size: 2rem;
+            cursor: pointer;
+            color: white;
+            background: none;
+            border: none;
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            right: 0px;
+            height: 100vh;
+            background-color: #161b22;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            z-index: 1002;
+        }
+
+        .nav-links a {
+            padding: 1rem;
+            text-align: left;
+            text-decoration: none;
+            color: white;
+            display: block;
+            width: 300px;
+        }
+
+        .nav-links a:hover {
+            background-color: #334155;
+        }
+
+        .nav-links.show {
+            display: flex;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1rem;
+            min-height: 92vh;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 2rem;
+            text-align: left;
+            margin-left: -200px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: #cbd5e1;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        pre {
+            background-color:  #161b22;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            color: #e1e4e8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .profilePicture {
+            width: 50px; /* Adjust size as needed */
+            height: 50px;
+            border-radius: 50%; /* Circular image */
+            object-fit: cover;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center; /* Vertically center the text */
+            gap: 10px;           /* Space between image and text */
+        }
+        .springbootLogo {
+            max-width: 100%;
+        }
+
+        .profilename {
+            margin: 0;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+
+        button {
+            background-color: #161b22;
+            color: white;
+            padding: 10px;
+        }
+
+        .sticky-sidebar {
+            position: fixed;
+            top: 300px; /* distance from the top of the screen */
+            right: 10px;
+            width: 500px;
+            background-color: #161b22;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            z-index: 1000;
+        }
+        .navStrong {
+            padding: 10px;
+            font-size: 25px;
+        }
+        .custom-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .custom-list li::before {
+            content: "•"; /* Or you can use other symbols like "🔵" or "★" */
+            color: white; /* Change this to white for the bullet point color */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-right: 0.5em;
+        }
+
+        .custom-list a {
+            color: white; /* Make the link text white */
+            text-decoration: none; /* Optional: removes underline from the link */
+        }
+
+        .custom-list a:hover {
+            text-decoration: underline; /* Optional: add underline on hover for better visibility */
+        }
+        .video-container {
+    position: relative;
+    padding-bottom: 50%; /* 400 / 800 = 0.5 (for 16:8 aspect ratio) */
+    height: 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .neuralimage {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto; /* optional centering and spacing */
+}
+
+  .image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto; /* optional centering and spacing */
+}
+.background-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.5; /* Optional: keeps the image dim */
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+        pre {
+            background-color:  #161b22;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            color: #e1e4e8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+
+.tableOfContents ul {
+    list-style-type: disc; /* show dots */
+    padding-left: 20px; /* GitHub style indentation */
+}
+
+.tableOfContents ul ul {
+    list-style-type: disc; /* nested dots */
+    padding-left: 20px; /* further indentation */
+}
+
+.tableOfContents a {
+    text-decoration: none;
+    color: #0366d6; /* GitHub link color */
+    font-weight: 500;
+}
+
+.tableOfContents a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.tableOfContents li {
+    margin-bottom: 4px; /* small spacing like GitHub */
+}
+
+
+.projectPlan ul {
+    list-style-type: none; /* no bullets */
+    padding-left: 0;
+}
+
+.projectPlan ul ul {
+    padding-left: 20px; /* indentation for sub-items */
+}
+
+.projectPlan li {
+    color: #cbd5e1;
+    margin-bottom: 6px;
+}
+
+.projectPlan strong {
+    color: #007acc;
+    font-size: 1.1em;
+}
+
+
+        @media (max-width: 1400px) {
+            section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sticky-sidebar {
+                position: relative;
+                top: auto;
+                max-width: 100%;
+                margin-top: 2rem;
+                left: 5px;
+            }
+        }
+        @media (max-width: 1000px) {
+            .content {
+                max-width: 800px;
+                width: 100%;
+                margin-bottom: 2rem;
+                text-align: left;
+                margin-left: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+
+
+<section>
+    <div class="content">
+        <img src="https://raw.githubusercontent.com/nikholt1/HTasset/refs/heads/main/loginImage/loginImage.jpg" alt="R-Background" class="background-img">
+        <img src="https://raw.githubusercontent.com/nikholt1/HTasset/refs/heads/main/loginImage/logo.png" alt="" class="R-logo">
+        
+        <br><br>
+        Localized Streaming Service
+        <h2><i style="color: rgb(255, 209, 3);" class="fa-solid fa-lightbulb"></i> Reason</h2>
+        As streaming services grew more expensive and ad-heavy, I realized that much of the content I enjoyed was already in my personal collection. This led me to question the need to rely on traditional streaming platforms.
+
+        To solve this, I developed a local media server that exposed my folders for easy access across devices. Inspired by this idea, I decided to take it further and build a complete application "Refract" that enables anyone to do the same.
+
+        After completing the initial server setup, I explored the Spring Boot framework, which allowed me to transform the project into a fully featured application capable of serving and managing content efficiently.
+        
+        <br><br>
+        Many of my personal projects are not designed for public display, and therefore i also needed a solid project to showcase.
+        <br><br><br><br>
+        See the releases here: <a href="https://github.com/nikholt1/HT">Releases</a>
+        <br><br>
+        <i style="font-size: 20px;" class="fa-solid fa-microscope"></i> Take a look at the github <a href="https://github.com/nikholt1/HT">Repository</a>
+        <br><br>
+        </i> 🎯 How about the <a about="blank" href="https://github.com/users/nikholt1/projects/6">Scrum Board</a>
+        <br><br>
+        See the full <a href="https://github.com/nikholt1/HT/blob/master/analysis/wireframe.pdf">Wireframe</a>
+
+        <br><br><br><br>
+
+        <div style="background:rgba(17,49,22,0.58); border:1px solid #247624; color:#dfe7df; padding:12px 18px; border-radius:6px; font-family:Arial, sans-serif; font-size:12px;">
+        <strong>See the full wireframe <a href="https://github.com/nikholt1/HT/blob/master/analysis/wireframe.pdf" style="color:#dfe7df; text-decoration:underline;">here</a></strong>. 
+        Not all media elements are the final product in the wireframe.
+        </div>
+
+        <br><br>
+        <br><br>
+        <a href="https://github.com/nikholt1/HT" target="_blank">
+            <img src="images/R/readmeFront.png" alt="splineLogo" class="neuralimage">
+        </a>
+        <br>
+        </i> 🎯 How about the <a about="blank" href="https://github.com/users/nikholt1/projects/6">Scrum Board</a>
+
+        <br><br><br><br>
+        <h2>Table of Contents</h2>
+        <hr>
+        <br>
+        <div class="tableOfContents">
+        <ul>
+            <li><a href="#fulltechstack">Full Tech Stack</a></li>
+            <li><a href="#process">Process</a></li>
+            <li>
+            <a href="#backend">Backend</a>
+            <ul>
+                <li><a href="#sqlite">JSQLite</a></li>
+                <li><a href="#javasystem">Java System</a></li>
+                <li><a href="#devops">DevOps, DevSecOps and Code Inspection</a></li>
+            </ul>
+            </li>
+            <li><a href="#scrum">SCRUM Agile</a></li>
+            <li>
+            <a href="#frontend">Frontend</a>
+            <ul>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#uiux">UI / UX</a></li>
+            </ul>
+            </li>
+            <li><a href="#wireframeImplementation">Implementing the Wireframe in the application</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#discussion">Discussion</a></li>
+
+        </ul>
+        </div>
+        <br><br>
+        <div style="background:rgba(17,49,22,0.58); border:1px solid #247624; color:#dfe7df; padding:12px 18px; border-radius:6px; font-family:Arial, sans-serif; font-size:12px;">
+        <strong>Remember to visit the <a href="https://github.com/nikholt1/HT" style="color:#dfe7df; text-decoration:underline;">Repository</a> if you are interested in the system.</a>
+        </div>
+
+        <br><br><br><br>
+        <h2 id="fulltechstack">Full Tech Stack</h2>
+        <hr>
+        <br><br>
+        <a href="https://spring.io/projects/spring-boot" style="text-decoration:none;color:inherit;"><div class="profile" style="display:flex;align-items:center;font-family:sans-serif;">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAclBMVEVHcExzuhpzuhh2vB14vR93vB13vB9suBF2vBp3vBx2vB54vB1rtxR0uRt1uwSo03psuADX68Ht9uNyug222ZH////2+/F+wCt1uxdsuADF4aiPx0/F4aSAwDSi0HTf7s////6czWb5/PaJxT6u1Ynm89ZqpjpNAAAAJnRSTlMAOX665vT/Wc7ebAQnFova/d3u/+L/8aP/8ePl1+/w7fnc+cDvWGpsffIAAAE0SURBVHgBZZNVYsQgEEBjTLzBhoV40u39r1iIy/tjXoQx78APwohAFAa+9yRO4CDNchspdlWGcCMpbChfnU/gSfxTFauDN5Tx2LmSvJ2QqD5Ohi+lTY2Ilbvn0wjacLS0NqfkiGotBDVdP4zo4PFxG6G7ZpL1MHDcmAMv2P+yBg8z4vxZryOaGe8wxHHyUvdeMz4cXyWxjnB8UHEreyeFfLkWlzcjADo8XLv8Zv51F6L3P47SKHTy41IxN6cas15hCFwRKL+o2kTbcbLlS88LjUp2tFHrYUhs4TMAwp1hsjHU1OPqFFn6mbjiVSml1DS7wsGEnqPQTdvZuvetWtWshkmTcps8hrWImq9Dym/fRFTDMaB/rNGgxYbWAGR1C0UCN8LSu5BnKRwkyz1v2q0DkNs6/ANK2Ck1u+n5mgAAAABJRU5ErkJggg==" alt="Profile Photo" style="width:20px;height:20px;border-radius:50%;object-fit:cover;margin-right:10px;">
+        <span>Springboot</span></div></a>
+        <br>
+        <a href="https://www.thymeleaf.org/" style="text-decoration:none;color:inherit;"><div class="profile" style="display:flex;align-items:center;font-family:sans-serif;">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAV1BMVEUAXw+xqqEAVQB3nnj///8AXAEAXgkAXw8AXw8AXw+LmYERaB7Q4dM2djv2+/cmby1hhl6eopKvy7NNhlOTuZmBrYhhl2dCfUamxqtxj2zk7ua70b6+1sEicqDJAAAACXRSTlPr////////R+rOoES5AAAAyklEQVQokZ3S2RKDIAwFUIEklkUEd9v+/3cW92XEacvrmRuSTJI0kZGXpEnUgt5Y0N+RdEsxJC2yCJLM6oJflg3kasjxAknmrq9gCh6RMHdKdHYO7hEH8uJl4c1PoyBlvWJKGAAo8YjYKs+Yq5/BCk0HxJ4x5tsuEFg3B2fEMphqhhhAJemInnlR2dHM8uOKwV4jga1XW1A1ZjLolm5WpLybzWRbcOmWmwtbRynHbgq9t20J2FRCc5JXGJbOT/TXDX2Ft0edPqKWfgA4uRuTyt+fmwAAAABJRU5ErkJggg==" alt="Profile Photo" style="width:20px;height:20px;border-radius:50%;object-fit:cover;margin-right:10px;">
+        <span>Thymeleaf</span></div></a>     
+        <br>
+        <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/" style="text-decoration:none;color:inherit;"><div class="profile" style="display:flex;align-items:center;font-family:sans-serif;">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAh1BMVEXe5uzAztqxwtHc4OT09PT19fXw8PCqu8rn5+f8/Pzs0Lf6+vrnrXrleiugscLk5OT39/fs7OzkcR7lx6zh4eHhr4LhZRLhpW+Vp7fd3d3gYA6Knq3W1tbbbhzXoW1cepV6jZ6EmKdIZoJWc4vQ0NB8kJ6otb3Ly8twhZV1jqW5vcK9yM9ofY52NCXaAAAAr0lEQVR4AU3KhUIDMQwA0BwrWWftZWQSLrDq/P+/jxPsVaIAzcs/TV/PzOsI+2dmDcztYoTLVf/bed9YDXC9MX3oG863PVpv6c20rXfg2BiDuz0ftmgMOzgKItKe9nsiRDn2DSKyG3m3Vpj6RqfWq+rHp8opiHYQ1XNKub8dp1Ai1MIi554rJYVLhXAR0Zz6DU1BLwGCsmqZMGuAq7K7nSbe6hXqnf/4e4VHfP4TH1/dVRTdLcfq+gAAAABJRU5ErkJggg==" alt="Profile Photo" style="width:26px;height:26px;border-radius:50%;object-fit:cover;margin-right:10px;">
+        <span>JDBC</span></div></a>     
+        <br>
+        <a href="https://sqlite.org/" style="text-decoration:none;color:inherit;"><div class="profile" style="display:flex;align-items:center;font-family:sans-serif;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyAAAADFBMVEWoqKhQUHB4pJgAAABrHPlyAAAASUlEQVR4AWKQWrVqCUP9a0AHU20AMAzDdG9Pi2kun5Q1jIstThHJvoRummB+nuwn/al1OEcOTq953DrcpqG3Tu1u6zgc+sU9NQCdyC9md66v1AAAAABJRU5ErkJggg==" alt="Profile Photo" style="width:26px;height:26px;border-radius:50%;object-fit:cover;margin-right:10px;"><span>SQLite</span></div></a>
+        <br>
+        <!-- Technology Badges -->
+        <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white" alt="Java Badge">
+        <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5 Badge">
+        <img src="https://img.shields.io/badge/css-%231572B6.svg?style=for-the-badge&logo=css&logoColor=white" alt="CSS Badge">
+        <img src="https://img.shields.io/badge/Blender-%23E34F26.svg?style=for-the-badge&logo=blender&logoColor=white" alt="Blender Badge">
+        <img src="https://img.shields.io/badge/Spline-%236A0DAD.svg?style=for-the-badge&logo=spline&logoColor=white" alt="Spline Badge">
+        <img src="https://img.shields.io/badge/Canva-%23002C71.svg?style=for-the-badge&logo=canva&logoColor=white" alt="Canva Badge">
+        <img src="https://img.shields.io/badge/GitHub-%23181717.svg?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge">
+        <img src="https://img.shields.io/badge/GitHub_Actions-%232671E5.svg?style=for-the-badge&logo=github-actions&logoColor=white" alt="GitHub Actions Badge">
+        <img src="https://img.shields.io/badge/GitHub_Projects-%23181717.svg?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Projects Badge">
+        <img src="https://img.shields.io/badge/Qodana-Code%20Quality-0F63FF.svg?style=for-the-badge" alt="Qodana Badge">
+        
+        
+
+
+        
+            <br><br><br><br>
+        <h2 id="process">Process</h2>
+        <hr>
+        <br>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAclBMVEVHcExzuhpzuhh2vB14vR93vB13vB9suBF2vBp3vBx2vB54vB1rtxR0uRt1uwSo03psuADX68Ht9uNyug222ZH////2+/F+wCt1uxdsuADF4aiPx0/F4aSAwDSi0HTf7s////6czWb5/PaJxT6u1Ynm89ZqpjpNAAAAJnRSTlMAOX665vT/Wc7ebAQnFova/d3u/+L/8aP/8ePl1+/w7fnc+cDvWGpsffIAAAE0SURBVHgBZZNVYsQgEEBjTLzBhoV40u39r1iIy/tjXoQx78APwohAFAa+9yRO4CDNchspdlWGcCMpbChfnU/gSfxTFauDN5Tx2LmSvJ2QqD5Ohi+lTY2Ilbvn0wjacLS0NqfkiGotBDVdP4zo4PFxG6G7ZpL1MHDcmAMv2P+yBg8z4vxZryOaGe8wxHHyUvdeMz4cXyWxjnB8UHEreyeFfLkWlzcjADo8XLv8Zv51F6L3P47SKHTy41IxN6cas15hCFwRKL+o2kTbcbLlS88LjUp2tFHrYUhs4TMAwp1hsjHU1OPqFFn6mbjiVSml1DS7wsGEnqPQTdvZuvetWtWshkmTcps8hrWImq9Dym/fRFTDMaB/rNGgxYbWAGR1C0UCN8LSu5BnKRwkyz1v2q0DkNs6/ANK2Ck1u+n5mgAAAABJRU5ErkJggg==" alt="" class="springbootLogo">
+        Powered by the Springboot Framework
+        <br><br>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAVFBMVEVjsnZgsXNesHJzuYRcr3B5vInt9u+j0K293cT8/vz////G4syEwZLV6dmVyqGHwpX4/Pnd7uHj8eaezqnv9/Gv1riz2LvN5dJYrm2r1bV5vIhntHncMvS1AAAAnElEQVR4AdXQRxbDIAwEUCSEgXHv7f73TGAXxfbes/1P1bwi9GBs7W2ZuMLLFbAYFyI8X5DzZQHgAqWqY5IINBq57ZBS9EBFunJAzjihs4qoRc48AoMuZJ+tpAEIolCWZOs242KkzKlOqgj0yoi3HXHebDqzVYfYscfQbi7ZIr91BzB4Q77Dt1w/4BwrYqrWvl6cGB2mPJhFyLw1H2NzByAyQcIEAAAAAElFTkSuQmCC" alt="">
+        Thymeleaf       
+        <br><br>
+
+        <br><br><br>
+        <p>Studying at <a href="https://www.ek.dk/videregaaende-uddannelser/datamatiker">EK</a> i progressively learned about Springboot, Thymeleaf, MySQL and the general best practices of building a Java application.
+        I build the application using SCRUM agile iterations, using Github Projects to manage my Sprint, where i aligned it with a on going carriculum project and 
+        designing the application from the principles teached by EK, such as code design, DevOps and DevSecOps implementations, using Unit tests and Integration tests that are run on each push, pull and merge triggers through Github Workflows, to fully establish a well tested application.
+        I used further personal exploration to learn about the folder structure of a localized userbased SQLite database, that should work outside of the JAR file, aswell as placing different media within the same folder structure to allow the user to modify the content of the application as they wish.
+        Then i explored the process of installation processes and Version Control, to be able to dynamically update the project, so that i could at a minimum demonstrate a fully implemented DevOps foundation for the application.
+        Inspired by other applications that use online server side assets to manage application media, i likewise implemented a github repository for storing assets such as images and videos that the application uses, which allows me to dynamically style the application that fetches the content based on URL from the asset repository.
+        <br><br>
+        Before all this i made a <a href="https://github.com/nikholt1/HT/blob/master/analysis/HT%20Feasibility%20Study.pdf">Feasibility study</a> on the project, simply for understanding the marked, the scope of the project aswell as the potential of a scalable localized streaming service, wether the idea was organizationally impossible and which legal precautions i should take.
+        <br>
+        I established a <a href="https://github.com/nikholt1/HT/blob/master/analysis/HT%20SWOT%20analysis%20and%20Risk%20analysis.pdf">SWOT analysis</a> which gave me the foundation to make a <a href="https://github.com/nikholt1/HT/blob/master/analysis/HT%20SWOT%20analysis%20and%20Risk%20analysis.pdf">Risk analysis</a> of the project, to learn about the weaknesses and threats i might have as a single developer joining in on a marked with already well established competitors, as well as the strengths and opportunities such a project could present me.
+        <br><br>
+        The Feasibility study, SWOT analysis and Risk Analysis are made from the perspective of a single developer startup organization.
+        <br><br>
+        This project is made as open source to allow further insight in my process, the scrum board, github repository and analysis work are all public, to allow anyone to understand my work.
+        </p><br><br><br>
+        <h2 id="backend">Backend</h2>
+        <hr>
+        <br><br>
+        <h3 id="sqlite">SQLite</h3>
+        <br>
+        <p>
+        The backend is written in Java using the springboot framework. Springboot together with JDBC and thymeleaf lets me easily develop a webapplication that serves data from the SQLite database through the program implementing business logic and to the frontend where the enduser is.
+        <br>
+        The program is build with a SQLite database with three tables <br><br>
+        <img src="https://private-user-images.githubusercontent.com/140625263/496150451-7abfc66a-fee7-4b84-8419-050775face32.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjMwNTcyOTAsIm5iZiI6MTc2MzA1Njk5MCwicGF0aCI6Ii8xNDA2MjUyNjMvNDk2MTUwNDUxLTdhYmZjNjZhLWZlZTctNGI4NC04NDE5LTA1MDc3NWZhY2UzMi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTEzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTExM1QxODAzMTBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02NzZmYWZhYTAxMzBmMGI3MzM0NzBkY2M3OWM0YTFhOTM5ODg4NTY4NzRhOGU5OTM4N2Y3YTU1MWUxNWE2MDkxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.5Su0JU-kyWb2EZR8Edac2VujQjDyyZ4VRNoK8OptxrA" alt="">
+        <br>
+        One table for the main_user for the login feature, seperating the main user from the users (profiles). From here i wanted to add scalability in the functionality of the videos, so i added the unfinished_movies table to be able to resume and see what has been watched.
+        The database system follows 3rd Normal Form (3NF) since each table stores only relevant data to its own table.
+        <br><br>
+        So all columns are atomic, with Non-key data that depends on the entire primary key.
+        There are no transitive dependencies between non-key columns and this ensures minimal redundancy, clear relationships and consistent movie progress tracking per profile.
+        <br><br>
+        The movie progress feature is not yet implemented, since i first need to be able to log in, access profiles and be able to watch the movies, since these where the core functionalities of the system.
+        <br><br>
+        So since the MVP first implementation is in the sprint1, the movie progress tracking per profile functionality belongs in sprint2.
+        <br><br></p>
+        <img src="images/R/DBML.png" alt="splineLogo" class="neuralimage"> <br>
+        <br>
+ <!--       <pre><code>
+        CREATE TABLE main_user (
+            main_user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT NOT NULL,
+            password_hash TEXT NOT NULL
+        );
+
+
+        CREATE TABLE users (
+            user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            main_user_id INTEGER NOT NULL,
+            username TEXT NOT NULL,
+            profile_picture_path TEXT NOT NULL,
+            FOREIGN KEY (main_user_id) REFERENCES main_user(main_user_id) ON DELETE CASCADE
+        );
+
+
+        CREATE TABLE unfinished_movies (
+            user_id INTEGER NOT NULL,
+            video_path TEXT NOT NULL,
+            last_watched TIMESTAMP,
+            watched_seconds INTEGER,
+            PRIMARY KEY (user_id, video_path),
+            FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+        );
+    </code></pre><p>-->
+        <p>
+        The main_user stores the basic account info, username and password hash in a varchar together with the unique main_user_id.
+        <br><br>
+        The users table holds the users profiles that are linked to the main_user.
+        it includes extra info like profile picture path, username and the main user that its linked to.
+        <br><br>
+        The unfinished_movies links the users via the user_id to the movies they have watched, with information like the video_path to 
+        fetch the actual video from the repo and how far in the video the user got before exiting the video.
+        <br><br>
+        The system separates accounts, user profiles and the users activity into different tables, to avoid repetition and make management easier.
+        <br><br>
+        The system is in 3rd normal form, because all the tables have atomic columns, all non key colums fully depend on the primary key (users, username depends on user_id, and is just part of it) and Non key columns depend only
+        on the primary key, not on other non-key columns.
+        <br><br>
+        This makes the schema efficient, avoids duplicate data and prevents anomalies, wehn updating or deleting data.
+        
+        <br>
+        
+        <br><br></p>
+        <h3 id="javasystem">Java system</h3>
+        <hr>
+        <br><p>
+        Using JDBC, I can access data stored in the SQLite database. I’ve implemented a Java class called DAO (Data Access Object), whose sole purpose is to interact with the database through SQL queries.<br><br>
+
+        Since the database schema is known, I only need two core models for the main functionality: MainUser for login operations and ProfileUser for profile-related data. The DAO handles the SQL queries that fetch data and build these model objects.<br><br>
+
+        The repository layer acts as a central access point for fetching data, either from the DAO or from configuration files. This separation allows multiple repositories, each serving specific data needs for different controllers.<br><br>
+
+        The service layer contains the business logic, handling validations and combining data as needed before passing it to the controllers.<br><br>
+
+        The controllers act as the entry points of the application, mapping URL endpoints to specific methods. This setup ensures the system knows what to retrieve from the database and what to render on the Thymeleaf frontend.<br><br>
+
+        With Spring Boot, I can integrate Spring Security (via a Maven dependency) to configure a custom login form and restrict access to endpoints until the user logs in as a MainUser.<br><br>
+
+        Spring Boot also supports different configuration profiles (for example, application-dev.properties and application-prod.properties), allowing me to run the web application on localhost during development and on 0.0.0.0 for deployment or testing across the local network.<br><br>
+        <br><br></p>
+        <h3 id="devops">DevOps, DevSecOps and Code Inspection</h3>
+        <hr>
+        <br><p>
+        For DevSecOps I use Github workflows to reveiw the code, using Qodana code inspection. Here i check if i have missed something in the code, if there are parts that can be refined or specified even better.
+        After that i run a .yaml file triggered on each push, pull and merge, (this could be specified to only be on merge on pull request), where i run all the implemented unit tests and integration tests in the program.
+        Together with the constant implementation of tests, this setup allows me to secure my code before merging it into the master branch.
+        <br><br>
+        For DevOps i have implemented a updater script in Java that the program utilizes once it detects that its a version behind. The program searches for the latest version online, and if its older than the newest version, it automatically executes the 
+        updater script. 
+        <br><br>
+        For storing the versions i use Github releases to store the newest versions of the program. 
+        <br><br>
+        This allows me to continuously integrate new features securely and push the new version to the end user. DevOps and DevSecOps also include much more than these simple implementations, such as database security and more but since the program and all its content is installed on the 
+        users platform, there is no need for me to verify data security, like if i had used a PaaS to store the database and run the webapplication.
+        <br><br>
+        Qodana allows me to see problems with the code that i have missed, it inspects the code and returns a full review of the problems, the area of the problems and where i can find the problems.
+        here is a snippet of the detailed Qodana report, before i assessed the problems:
+        <br><br></p>
+        <img src="images/R/qodanabefore.png" alt="splineLogo" class="neuralimage">
+        <br><br><br><br>
+        <h2 id="scrum">SCRUM Agile</h2>
+        <hr> <br>
+        <p>
+        I worked using <a href="https://www.scrum.org/">SCRUM</a> sprints. Through Github projects I created a backlog with the User stories that where derived from the functionality that I wanted the system to be capable of. After creating the backlog, I made a <a href="https://github.com/nikholt1/HT/blob/master/analysis/HT%20Feasibility%20Study.pdf">Feasibility Study</a>, where i concluded that the project might definitely be a "No-go" if I made the application paid for. Therefore, made the application free to use, which was intenden from the beginning. With the application being free to use and open source the program was a "GO". <br><br>
+
+After the feasibility study I made a <a href="https://github.com/nikholt1/HT/blob/master/analysis/HT%20SWOT%20analysis%20and%20Risk%20analysis.pdf">SWOT Analysis</a> thereafter i made a <a href="https://github.com/nikholt1/HT/blob/master/analysis/HT%20SWOT%20analysis%20and%20Risk%20analysis.pdf">Risk Analysis</a> which gave me a good insight in the possible strength and opportunities this project could give me, while it forced me to determine the threads and weaknesses i had as a single developer.
+<br><br>
+I worked using Github projects where i used the <a href="https://github.com/users/nikholt1/projects/6">SCRUM Board</a> and <a href="https://github.com/users/nikholt1/projects/6/views/7">Issues</a> to keep track of the progress of the project and to give me an oversight of what needed to be done, and what had been completed.
+<br><br>
+<p>Since i had School and could not use all of my spare time on the project, i worked more SCRUM'ish than strictly after SCRUM Therefore the backlog sometimes runs up a bit, even though all of this has been one sprint. The second sprint will include more features or tweaks, but will most likely end up looking the same. Normally the backlog per sprint is frozen and cannot be touched, so i could have started a new sprint after concluding all of the features, but a lot of the backlog was updated with necessary implementations that i needed to actually make the features work. <br><br>
+Therefore its not strictly after SCRUM and could be called a merger of SCRUM and a planning or project-tracking service. <br><br>
+A lot of the time i did not have time to work on the project, so i wrote some of the things down as issues in the backlog, so that when i returned later i could simply read the issue and continue to work from there.</p>
+</p>
+<img src="images/R/scrumboard.png" alt="splineLogo" class="neuralimage">
+
+<br><br>
+<h2>Project Plan</h2>
+<p>
+<div class="projectPlan">
+  <ul>
+    <li><strong>Sprint 0: 1 week</strong>
+      <ul>
+        <li>Project Backlog – Define the project goal</li>
+        <li>Feasibility Study – Determine if the project is a "GO"</li>
+        <li>SWOT Analysis – Gather information to assess project status</li>
+        <li>Risk Analysis – Identify key threats and weaknesses, and plan how to address them</li>
+      </ul>
+    </li>
+    <li><strong>Sprint 1: 2 months</strong>
+      <ul>
+        <li>Prioritization – Define "need to have" vs. "nice to have"</li>
+        <li>Markup – Document the MVP (Minimum Viable Product)</li>
+        <li>User Stories – Write essential user stories and categorize into tasks and subtasks</li>
+        <li>Database Layout</li>
+        <li>Project Structure</li>
+        <li>Create Images – Use Blender, Spline, Canva, and GIMP</li>
+        <li>Data Access Object (DAO)</li>
+        <li>Repository and Service Implementation for MVP</li>
+        <li>Controller Implementation for Endpoints</li>
+        <li>Wireframe Frontend Layout</li>
+        <li>Frontend Development – HTML, CSS, minimal JS (Thymeleaf)</li>
+        <li>Spring Boot Security Configurations</li>
+        <li>Code Design Refinement</li>
+        <li>Cleanup</li>
+        <li>Installation Script</li>
+        <li>Updating Script</li>
+        <li>Version Control</li>
+        <li>Documentation</li>
+        <li>Deployment</li>
+      </ul>
+    </li>
+    <li><strong>Sprint 2</strong>
+      <ul>
+        <li>Future implementations – Will be documented once Sprint 2 backlog is complete</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</p>
+<br><br><br><br>
+
+
+
+        <h2 id="frontend">Frontend</h2>
+        <hr>
+        <br>
+        <h2 id="media">Media</h2>
+        <br>
+        <img src="data:image/png;base64,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" alt="splineLogo">
+        Utiziled Spline for 3D model creations and image creation
+        <br><br>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAZlBMVEVHcEzqdgDqdgDqdgDqdgDqdgDqdgDqdgDqdgDqdgDqdgDqdgDqdgDqdgD////pbgAmV4cBRH3yrn/++PP41L0bUoT2xKPh5+2+ydbrfRjshCxrh6aUp73vlVP759lEapPtiz2js8b9g4n7AAAADXRSTlMAFtYpYPA4alC9k33lqYsmOAAAAPVJREFUKJGtktuShCAMRNVBZJxNGFS8zvX/f3JpUFemloet2n6x9BCSTptl/yR1SrOC6JKENREVSVo5SsmrT6BVPEe1SVxAzwd2pk+V+Q6Pn7UTnmqDuXBSGFVT03X9HTjyJMAa9npMx9rQF2xcnsvALW7eL/7C28x8M9ZaM3Knd0cqzNLzYK6QZd4N1eugHY8BmoFfzg9Y4X17uFYa5tk3lb5KqjDPAmre3GpUinUhOKNbN5E115G50ehZbp1xaGqDT+6xBpE5D/VPWroHfvgVwWe1xVeE1U5zWC7JKLgyCiYONY5OZZ+SKy4Tv5lUQuW/oz/oG6CIFNDs6DTmAAAAAElFTkSuQmCC" alt="blenderLogo">
+        Used Blender for 3D model creations and image creation
+        <br><br>
+        <img src="data:image/png;base64,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" alt="canvaLogo">
+        Used canva for profile image creations
+        <br><br><br>
+        <p>
+            I spend many hours creating custom 3D scenery for background images and custom 3D models that i would use in the Spline or Blender environment. In the next iterations, i want to dynamically update the backgrounds and other media following DevOps. 
+            All of the content in the application is made by me, or by AI generated images that have been explicitely creatively defined and refined by me.
+            <br><br>
+            I used Canva to make different types of logos, default profile pictures and other content used in the application
+            <br><br>
+            Future plans for the 3D work, is 3D animated videos or rendered videos for background video content as well as more 3D scenery.
+            <br><br>
+            All media and content in the application is custom made.
+        </p>
+        <img class="neuralimage" src="images/R/blender.png" alt="R-GirlImage">
+        <p>Here we see the early form of the R-girl in blender</p>
+        <br><br>
+        <div style="background:rgba(17,49,22,0.58); border:1px solid #247624; color:#dfe7df; padding:12px 18px; border-radius:6px; font-family:Arial, sans-serif; font-size:12px;">
+        Take a look at <a href="https://blender.com" style="color:#dfe7df; text-decoration:underline;">Blender</a></a>
+        </div>
+        <br><br><br>
+        <h2 id="uiux">UI/UX</h2>
+        <hr><br>
+        <p>Trying to follow <a href="https://www.designprinciplesftw.com/collections/shneidermans-eight-golden-rules-of-interface-design">Shneidermans Eight Golden Rules of Interface Design</a>, and <a href="https://www.designprinciplesftw.com/collections/10-usability-heuristics-for-user-interface-design">Jacob Nielsens 10 Usability Heuristics for User Interface Design</a>, i implemented the UI layout, and tried to rethink the application. 
+            I aimed to optimize the entire application to be as user-friendly and intuitive as possible, while also creating a visually engaging and well-designed interface. My focus was on delivering a cohesive and thoughtful UI/UX that enhances both usability and aesthetic appeal.
+        <br><br><br>
+        To achieve this, I applied Gestalt principles, a cornerstone of user experience design based on how humans naturally perceive visual information as unified, meaningful wholes rather than isolated elements. I incorporated four key Gestalt principles throughout the UI design.
+        <br><br>
+        See the full wireframe <a href="https://github.com/nikholt1/HT/blob/master/analysis/wireframe.pdf">Here</a>
+        <img class="neuralimage" src="images/R/gestalt.png" alt="Four gestalt principles image">
+
+        Using proximity and continuity, I carefully adjusted spacing to divide functional sections of each page. For instance, on the “Manage Users” page, I separated the “Main User” section from the “Profiles” section using deliberate spacing. I also introduced subtle spacing and grouping further down the page to intuitively suggest that additional content is available by scrolling.
+
+        To enhance visual clarity, I applied similarity through color. All help-related buttons share a distinct color palette, differentiating them from functional buttons such as “Upload” or “Save”, which are found on the "add new profiles" page, while the "Delete" buttons have a vibrant red colour. <br><br> This intuitive visual cue helps users instantly distinguish between action-oriented and support-oriented elements.
+
+        Finally, I used a bold, colorful divider at the bottom of each page to clearly delineate the footer. This visually signals to users that the footer contains supplementary information rather than core page functionality, maintaining both structure and visual balance across the interface.  </p>
+        <br><br>
+        <div style="background:rgba(17,49,22,0.58); border:1px solid #247624; color:#dfe7df; padding:12px 18px; border-radius:6px; font-family:Arial, sans-serif; font-size:12px;">
+        <strong>See the full wireframe <a href="https://github.com/nikholt1/HT/blob/master/analysis/wireframe.pdf" style="color:#dfe7df; text-decoration:underline;">here</a></strong>. 
+        Not all media elements are the final product in the wireframe.
+        </div>
+        <br><br>
+        <img class="neuralimage" src="images\UIbreakdown.png" alt="UI breakdown of manage user page image">
+        <br><br>
+        <p>This was not necessarially the final product, such as the logos and images might be altered in newer versions of the program.</p> 
+        <br><br>
+        <p>On the Videos Browser page, the layout is structured to create a clear visual hierarchy and a sense of spaciousness through deliberate application of Gestalt principles.
+
+        At the top, a minimal navigation bar contains only essential elements — Settings, Search, the Help button, and the Profile icon. <br><br> This focused arrangement leverages the law of simplicity (Prägnanz), ensuring users can easily locate core controls without distraction.
+
+        Beneath the navigation, a hero section features a large, dynamic background image sourced from the assets library, accompanied by contextual text and iconography. The generous use of negative space here serves as a visual reset point, allowing users to orient themselves before diving into content.
+
+        Following this, the interface transitions smoothly into structured content groupings that apply proximity and continuity. <br><br>The categories—such as Sport, Cartoon, Sci-Fi, and others—are evenly spaced and visually aligned, guiding the user’s eye horizontally while maintaining a balanced rhythm. This spacing not only reinforces intuitive scanning but also prevents cognitive overload.
+
+        The “Recently Watched” section adopts the same visual grid and spacing system, using consistent image dimensions and alignment to create a cohesive flow. This repetition builds visual harmony (similarity) and reinforces familiarity, while the equal spacing subtly communicates abundance without appearing cluttered.
+
+        The grid system intentionally overflows slightly beyond the visible boundary on the right, creating a visual affordance that subtly suggests horizontal scrolling or additional content beyond the viewport. <br><br>
+
+        Overall, the page design balances open space and dense content areas, creating a natural rhythm that guides users from exploration to interaction — a direct reflection of Gestalt thinking in digital interface design.</p> 
+        <p>
+    
+        <img class="neuralimage" src="images\videosbrowserpageuilayout.png" alt="videos browser UI layout image">
+        <p>Like the manage users page, this might not be the final state of the page, but merely a first layout following the principles of UI design.</p>
+
+        <br><br><br>
+        <h2 id="wireframeImplementation">Implementing the Wireframe layout with the actual webapplication</h2>
+        <hr><br>
+        <p>
+            After the application is working, and i am able to fetch the data from the Springboot dependency injected Model attribute to the HTML frontend using Thymeleaf,
+            I am able to populate the frontend with the actual data, such as the profiles, videos, categories and more. <br><br>
+
+            The Model attribute lets me implement a key - value object, that i in Thymeleaf can fetch as the endpoint attaches the object that the value holds through the key.
+            <br><br>
+
+            After fetching the data from the backend i could start styling the HTML with CSS. I placed all of the styling in one main.css file containing the CSS code for the entire webapplication. The login 
+            HTML site is not able to fetch the CSS, since the whole application, including the main.css file is locked off until the user has logged in, therefore the login.html has its own style sheet.
+            <br><br>
+            <img class="neuralimage" src="images/R/applicationGif.gif" alt="">
+            <p>
+                As we can see in the short GIF, i followed the wireframe layout to design the page, and populated the assets with blender and spline designed scenery.
+                Overall the webapplication layout follows the principles that have been declared earlier and i am going to further implement more media and scenery in future versions of the application.
+            </p>
+        </p>
+        <br><br><br><br>
+        <h2 id="conclusion">🤝 Conclusion - Sprint 1</h2>
+                <hr>
+        <p>I am very satisfied with the features I implemented, both in terms of functionality and UI/UX, which I successfully replicated from the wireframes. I believe the background scenery, 3D models, and media were effectively integrated, and I am proud of the learning curve I achieved with Blender and Spline.
+
+        Although I did not have time to implement the installer and automatic updater as planned for Sprint 1, I will address these in the next sprint, alongside the OpenVPN implementation for global access, since the Backlog is now frozen.
+
+        To conclude Sprint 1, the first usable implementation of the core features for a locally stored streaming service includes:
+        <br><br>
+            So to conclude sprint 1 for the first usable implementation of the first features to make a Locally stored streaming service - <br><br>
+            -The Program is functional, and looks the way i want it to 
+            <br><br> -It actually allows me to stream videos from my host computer as long as i am on the same wifi 
+            <br><br> -The System allows me to successfully log in, change the admin (owner) password, make new profiles and log in the the different profiles.
+            <br><br>
+            These where the minimal acceptance criterias for the MVP of the system, so the program lives up the the Acceptance tests and allows me to release the first increment.
+            <br><br>
+            Sprint retrospective: 
+            <br><br>
+            What went well?
+            <hr>
+            <br>
+            - I Managed to make this program alongside schoolwork, and managed to use it to study and learn more about system development while effectively producing a functional program, this means the time management of the project seemed to be well structured with each increment from the schoolwork
+            although i did not conclude all the user stories i had in the backlog for sprint 1.
+            <br><br>
+            <p>What didnt go well?</p>
+            <hr>
+            <br>
+            - The sprint backlog and user stories are not nearly as descriptive as i hoped for, and some times i ended up using it as notes instead of a strict scrumboard. <br><br>
+            - Sometimes i spend long periods not developing on the system, given i did not have to for it because of school and work.
+            <br><br>
+            <p>What could be improved</p>
+            <hr>
+            <br>
+            - The backlog should be refined and more descriptive, aligning with actual user stories that benefits me and or a potential team in developing the system, it should actually be able to be informative to anyone even if they are not actually coding the project.
+        </p>
+
+        <!-- <br><br>
+        <h2 id="discussion">💬 Discussion</h2>
+        <hr>
+        <p></p> -->
+</section>
+
+
+<!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
+<!-- Firestore -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script> src="data.js"</script>
+
+
+
+
+
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('nav-links');
+        const overlay = document.getElementById('overlay');
+        const isOpen = menu.classList.contains('show');
+
+        if (isOpen) {
+            menu.classList.remove('show');
+            overlay.classList.remove('show');
+        } else {
+            menu.classList.add('show');
+            overlay.classList.add('show');
+        }
+    }
+
+    function closeMenu() {
+        document.getElementById('nav-links').classList.remove('show');
+        document.getElementById('overlay').classList.remove('show');
+    }
+</script>
+
+</body>
+</html>

@@ -4,261 +4,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#080D16">
-
-    <title>Niklas | Portfolio</title>
-    <meta name="description" content="Niklas — Full-stack developer interested in software engineering, system architecture, automation, and practical applications.">
-
-  <!-- 1. CesiumJS Stylesheets -->
-  <link href="https://cloudflare.com" rel="stylesheet">
-
-  <!-- 2. CesiumJS Core JavaScript Library -->
-  <script src="https://cloudflare.com"></script>
-
-
+    <meta name="theme-color" content="#0d1117">
+    <title>Niklas Holt — Software Developer</title>
+    <meta name="description" content="Niklas Holt — software developer focused on full-stack development, system architecture, automation and practical applications.">
     <link rel="stylesheet" href="./style.css">
     <script type="module" src="./app.js"></script>
+    <link
+        rel="stylesheet"
+        href="https://cesium.com/downloads/cesiumjs/releases/1.132/Build/Cesium/Widgets/widgets.css"
+    >
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/github-markdown-css@5/github-markdown.min.css"
+    >
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.132/Build/Cesium/Cesium.js"></script>
+    <script type="module" src="./app.js"></script>
 </head>
-
 <body>
     <nav class="navbar">
         <div class="container nav-inner">
-            <a class="brand" href="#home" data-page="home">
-                Niklas<span class="brand-dot">.</span>
-            </a>
-
+            <a class="brand" href="#home" data-page="home">Niklas</a>
             <div class="nav-links">
-                <a href="#home" data-page="home">Home</a>
-                <a href="#github" data-page="github">GitHub</a>
-                <a href="#projects" data-page="projects">Projects</a>
-
-                <a href="https://github.com/nikholt1"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    Repositories ↗
-                </a>
+                <a href="#home" data-page="home" aria-current="page">Overview</a>
+                <a href="#github" data-page="github">Repository inspector</a>
+                <a href="#projects" data-page="projects">Reports</a>
+                <a href="https://github.com/nikholt1?tab=repositories" target="_blank" rel="noopener noreferrer">Repositories ↗</a>
             </div>
         </div>
     </nav>
 
     <main class="container main-content">
 
-        <!-- HOME: ALL PORTFOLIO CONTENT -->
-        <section id="home" class="spa-page">
-            <div class="hero-layout">
-                <div class="hero-content">
-
-                    <h1>Hi, I'm Niklas<span class="brand-dot">.</span></h1>
-
-                    <p class="intro">
-                        Full-stack developer AP Computer science studen at Copenhagen Business Academy, working with
-                        system architecture, automation, and building practical
-                        applications. 
-                    </p>
-
-                    <div class="hero-links">
-                        <a class="button primary"
-                           href="https://github.com/nikholt1"
-                           target="_blank"
-                           rel="noopener noreferrer">
-                            View GitHub ↗
-                        </a>
-
-                        <a class="button secondary"
-                           href="#projects"
-                           data-page="projects">
-                            Explore projects →
-                        </a>
-                    </div>
-
-                    <div class="hero-meta">
-                        <span>Java · JavaScript · Python · HTML · CSS · React-Native · n8n</span>
-                    </div>
+        <!-- START PAGE / PROFILE -->
+        <section id="home" class="spa-page github-profile-layout">
+            <aside class="profile-sidebar">
+                <div class="profile-avatar-wrap">
+                    <img class="profile-avatar" src="https://github.com/nikholt1.png" alt="Niklas Holt's GitHub profile picture">
                 </div>
 
-                <!-- COPENHAGEN CLOCK AND WEATHER -->
-                <aside class="live-widgets" aria-label="Copenhagen live information">
-                    <div class="live-card">
-                        <div class="live-heading">
-                            LOCAL TIME
-                        </div>
+                <h1 class="profile-name">Niklas Holt Läu</h1>
+                
 
+                <p class="profile-bio">
+                    Junior Consultant at Systematic and AP Computer Science student at EK.
+                    Interested in software architecture, automation, and building practical applications.
+                </p>
+
+                <!-- <a class="button secondary profile-follow" href="https://github.com/nikholt1" target="_blank" rel="noopener noreferrer">View GitHub profile ↗</a> -->
+
+                <div class="profile-details">
+                    <div class="profile-detail"><span class="profile-detail-icon">⌘</span><span>Software Development</span></div>
+                    <div class="profile-detail"><span class="profile-detail-icon">◎</span><span>Copenhagen, Denmark</span></div>
+                    <div class="profile-detail"><span class="profile-detail-icon">◷</span><span>Java · JavaScript · Python · Docker · React Native · SQL</span></div>
+                    <a href="https://www.linkedin.com/in/niklas-holt-l-0b06542a4" target="_blank">LinkedIn ↗</a>
+                    <a href="https://github.com/nikholt1" target="_blank">Github ↗</a>
+                </div >
+                <div class="sidebar-section">
+                    <a id="contactTrigger" style="cursor: pointer;">Contact</a>
+
+
+                </div>
+                                    <div class="contact-container"> 
+
+                <div id="form-group" class="form-group hidden">
+                    <form action="https://formspree.io/f/xgvewkjq" method="POST" class="contact-form">
+                <div>
+                <input class="email-input" type="email" name="email" required placeholder="Your email">
+              </label>
+            </div>
+            <div class="messagediv">
+
+                <textarea class="texareamessage" name="message" rows="5" required placeholder="Your message to me"></textarea>
+              </label>
+            </div>
+            <div>
+              <input type="hidden" name="_subject" value="new query submitted" />
+              <input type="hidden" name="_next" value="https://www.facebook.com" />
+              <button class="sendBtn" type="submit">Send</button>
+            </div>
+          </form>
+          <p class="description-text-contact"><img style="width: 20px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACFklEQVR4AWKAAiYoTXc+IzLnhZC+3X8Ghj5A8eUAY1cQhtGzCtYbq7ZtN1Zju/GGddioVtywbmwbtW09xai9mG95kz/vTfbOm7uYp5kMzuB/Z3KFpkoghAABkskjSKmXSPK2PifYvfTX+5t2AgC1/fB2QUGoJYEDOICQwcPrv0pMX/77wze7FU5oqYVrRLhi4Uh0CBaXn0WtoN7C8XeO2XZffcKlPpmEBJTB8XbODEdm8bWAS9DOwEO2Pf5YSMLLmRjgl4FHrJxguNCvyhgQ9yU9it7WcPg94KnXA8X2ha2CTqGpkYOn1eeAs2v+fPqFTRNtQpv41LZgttDkKlblOX9/PVJh3d/cR4AKEwKuH34MOBC+7VH1hzf8zR0EnI0B+uEzgXdZ4YExMWPT33yh3ANTRw8uD9zkxWSfB8Zo2/15jwfGDy6g8i5AkB0e1hb57gIK8XBsfUpeIEoVMTD3x5v3Qsejoz28/vC2/8Wc1wMAr1rmBosoQlSF7f+LHxOe8cBEJM8OvGiZ0y7RCZoaqNc/kq726/Ux4Kzrw8rmLuiH1wN3Ja2o8q/WLdjcr9e7RCTrgdXpcPDUNwjtjL0NrQeaM3igOfZKth4IW7m8bgdw5hNWth4IvljAmy9LLrBsY0A9HnjqyoUQ9GSOAeCp4KdQS/V65XpsDNQDDqjtf1b78rBp5g7BGYmpgYb7I7gInI/0wMSnPsoQcs9u5zqxAAAAAElFTkSuQmCC" alt=""> <br>This form sends a email to me through formspree, allowing me to receive emails from a webpage text input. </p>
+        
+
+
+
+                    </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-heading">COPENHAGEN</div>
+
+                    <div class="sidebar-live-card">
+                        <div class="sidebar-live-label">LOCAL TIME</div>
                         <div class="clock-time" id="copenhagen-time">--:--:--</div>
                         <div class="clock-date" id="copenhagen-date">Loading local time...</div>
-
-                        <div class="card-location">
-                            Copenhagen, Denmark
-                        </div>
                     </div>
 
-                    <div class="live-card">
-                        <div class="live-heading">
-                            CPH
-                        </div>
-
+                    <div class="sidebar-live-card">
+                        <div class="sidebar-live-label">CURRENT WEATHER</div>
                         <div class="weather-main">
                             <div class="weather-icon" id="weather-icon">🌤️</div>
-
                             <div>
                                 <div class="weather-temp" id="weather-temp">--°C</div>
-                                <div class="weather-description" id="weather-description">
-                                    Loading weather...
-                                </div>
+                                <div class="weather-description" id="weather-description">Loading weather...</div>
                             </div>
                         </div>
 
                         <div class="weather-details">
-                            <div class="weather-detail">
-                                <span class="weather-detail-label">Feels like</span>
-                                <span class="weather-detail-value" id="weather-feels">--°C</span>
-                            </div>
-
-                            <div class="weather-detail">
-                                <span class="weather-detail-label">Wind</span>
-                                <span class="weather-detail-value" id="weather-wind">-- km/h</span>
-                            </div>
-
-                            <div class="weather-detail">
-                                <span class="weather-detail-label">Humidity</span>
-                                <span class="weather-detail-value" id="weather-humidity">--%</span>
-                            </div>
-
-                            <div class="weather-detail">
-                                <span class="weather-detail-label">Updated</span>
-                                <span class="weather-detail-value" id="weather-updated">--:--</span>
-                            </div>
+                            <div class="weather-detail"><span class="weather-detail-label">Feels like</span><span class="weather-detail-value" id="weather-feels">--°C</span></div>
+                            <div class="weather-detail"><span class="weather-detail-label">Wind</span><span class="weather-detail-value" id="weather-wind">-- km/h</span></div>
+                            <div class="weather-detail"><span class="weather-detail-label">Humidity</span><span class="weather-detail-value" id="weather-humidity">--%</span></div>
+                            <div class="weather-detail"><span class="weather-detail-label">Updated</span><span class="weather-detail-value" id="weather-updated">--:--</span></div>
                         </div>
 
-                        <div class="weather-status" id="weather-status" role="status">
-                            Connecting to weather service...
-                        </div>
+                        <div class="weather-status" id="weather-status" role="status">Connecting to weather service...</div>
                     </div>
-                </aside>
+                </div>
+            </aside>
+
+            <div class="profile-main">
+                <div class="profile-mobile-heading">
+                    <h1>Hi, I'm Niklas<span class="brand-dot">.</span></h1>
+                    <p>Software development · System architecture · Automation</p>
+                </div>
+
+                
+                <div class="profile-tabs" role="tablist" aria-label="Profile sections">
+                    <a href="#overview" class="profile-tab active" data-tab="overview" role="tab" aria-selected="true">
+                        <span class="tab-icon">▤</span> Overview
+                    </a>
+                    <a href="#tab-interests"
+                    class="profile-tab"
+                    data-tab="tab-interests"
+                    role="tab"
+                    aria-selected="false">
+                        <span class="tab-icon">⦿</span> Interests
+                    </a>
+                    <a href="#tab-projects" class="profile-tab" data-tab="tab-projects" role="tab" aria-selected="false">
+                        <span class="tab-icon">▣</span> Projects
+                    </a>
+                    <a href="#tab-focus" class="profile-tab" data-tab="tab-focus" role="tab" aria-selected="false">
+                        <span class="tab-icon">⌘</span> Development focus
+                    </a>
+                </div>
+
+                <!-- OVERVIEW TAB -->
+                <div id="overview" class="profile-tab-content">
+                    <section class="profile-section">
+                        <div class="section-heading">
+                            <h2>GitHub activity</h2>
+                            <a class="section-link" href="https://github.com/nikholt1" target="_blank" rel="noopener noreferrer">View profile ↗</a>
+                        </div>
+                        <div class="github-stats-grid">
+                            <div class="github-stat-card">
+                                <span class="github-stat-label">CONTRIBUTIONS & STATS</span>
+                                <img src="https://github-readme-stats.vercel.app/api?username=nikholt1&show_icons=true&hide_border=true&bg_color=00000000&title_color=38BDF8&text_color=94A3B8&icon_color=38BDF8&ring_color=38BDF8" alt="GitHub profile statistics" loading="lazy">
+                            </div>
+                            <div class="github-stat-card">
+                                <span class="github-stat-label">LANGUAGES</span>
+                                <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=nikholt1&layout=compact&hide_border=true&bg_color=00000000&title_color=38BDF8&text_color=94A3B8" alt="Most-used programming languages" loading="lazy">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="profile-section journey-section">
+                        <div class="section-heading">
+                            <h2>Timeline</h2>
+                            <span class="section-index">BACKGROUND</span>
+                        </div>
+
+                        <p class="profile-about journey-intro">
+                            A journey shaped by analytical thinking, structured problem-solving,
+                            collaboration, and a passion for technology.
+                        </p>
+
+                        <div class="career-timeline">
+                            <article class="timeline-item">
+                                <div class="timeline-marker"><span class="timeline-icon">⌘</span></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-meta"><span class="timeline-period">2013</span><span class="timeline-type">EDUCATION</span></div>
+                                    <h3>Ludwig Andresen Schule (German Private School)</h3>
+                                    <p>German-language private school in Denmark.<br><a href="https://las-tondern.dk/da/home-dansk" target="_blank" rel="noopener noreferrer">https://las-tondern.dk/da/home-dansk↗</a></p>
+                                    <div class="timeline-tags"><span>German</span><span>Language adaptability</span></div>
+                                </div>
+                            </article>
+
+                            <article class="timeline-item">
+                                <div class="timeline-marker"><span class="timeline-icon">⌘</span></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-meta"><span class="timeline-period">2014</span><span class="timeline-type">EDUCATION</span></div>
+                                    <h3>Rejsby European Boarding School</h3>
+                                    <p>International integrated studies.<br><a href="https://www.rejsby-efterskole.dk/undervisning/9-10-klasse/" target="_blank" rel="noopener noreferrer">https://www.rejsby-efterskole.dk/undervisning/9-10-klasse/ ↗</a></p>
+                                    <div class="timeline-tags"><span>Cross-cultural communication</span><span>Teamwork</span><span>International mindset</span></div>
+                                </div>
+                            </article>
+
+                            <article class="timeline-item">
+                                <div class="timeline-marker"><span class="timeline-icon">⌘</span></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-meta"><span class="timeline-period">2017</span><span class="timeline-type">EDUCATION</span></div>
+                                    <h3>Tønder Gymnasium (High School)</h3>
+                                    <p>Focused on social sciences and advanced German, developing analytical thinking, societal understanding, and cross-cultural communication.<br><a href="https://toender-gym.dk/stx/samfundsvidenskab/" target="_blank" rel="noopener noreferrer">https://toender-gym.dk/stx/samfundsvidenskab/ ↗</a></p>
+                                    <div class="timeline-tags"><span>Social studies</span><span>German C1/C2</span><span>Cross-cultural communication</span></div>
+                                </div>
+                            </article>
+
+                            <article class="timeline-item">
+                                <div class="timeline-marker"><span class="timeline-icon">◈</span></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-meta"><span class="timeline-period">2017–2024</span><span class="timeline-type">PROFESSIONAL EXPERIENCE</span></div>
+                                    <h3>Military Service</h3>
+                                    <p>Held leadership responsibilities, provided medical support during missions, and trained groups in reconnaissance, building skills in team leadership, communication, and knowledge sharing.</p>
+                                    <div class="timeline-tags"><span>Reconnaissance</span><span>Initiative</span><span>Teamwork</span><span>Leadership under pressure</span></div>
+                                </div>
+                            </article>
+
+                            <article class="timeline-item timeline-current">
+                                <div class="timeline-marker"><span class="timeline-icon">⌁</span></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-meta"><span class="timeline-period">Current</span><span class="timeline-type">EDUCATION</span></div>
+                                    <h3>Academy Profession in Computer Science — EK</h3>
+                                    <p>Developing expertise in system development, software architecture, databases, distributed systems, and full-stack application design through practical projects.<br><a href="https://www.ek.dk/videregaaende-uddannelser/datamatiker" target="_blank" rel="noopener noreferrer">https://www.ek.dk/videregaaende-uddannelser/datamatiker ↗</a></p>
+                                    <div class="timeline-tags"><span>System development</span><span>Software architecture</span><span>AI integration</span></div>
+                                </div>
+                            </article>
+
+                            <article class="timeline-item timeline-current">
+                                <div class="timeline-marker"><span class="timeline-icon">⌘</span></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-meta"><span class="timeline-period">Alongside my studies</span><span class="timeline-type">SOFTWARE DEVELOPMENT</span></div>
+                                    <h3>Systematic A/S</h3>
+                                    <p>Working as a Junior Consultant alongside my studies, developing full-stack internal applications in a professional engineering environment.<br><a href="https://systematic.com/int/" target="_blank" rel="noopener noreferrer">https://systematic.com/int/ ↗</a></p>
+                                    <div class="timeline-tags"><span>Java</span><span>Full-stack</span><span>Application development</span></div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+
+                </div>
+                <!-- INTERESTS PROFILE TAB -->
+                <div id="tab-interests"
+                    class="profile-tab-content"
+                    style="display: none;">
+
+                    <section class="profile-section">
+                        <div class="section-heading">
+                            <h2>Travel</h2>
+                            <span class="section-index">BEYOND DEVELOPMENT</span>
+                        </div>
+
+                        <p class="profile-about">
+                            Outside software development, I enjoy travelling the world, particularly exploring the Nordic regions. I’m fascinated by wildlife and the wonders of nature, from watching whales in their natural habitats to experiencing the northern lights and witnessing volcanic landscapes.
+                        </p>
+
+                        <div id="cesium-globe" style="width: 100%; height: 500px;"></div>
+                    </section>
+                    <section class="profile-section">
+                        <div class="section-heading">
+                            <h2></h2>
+                            <span class="section-index">BEYOND DEVELOPMENT</span>
+                        </div>
+
+                        <p class="profile-about">
+                            Outside software development, I enjoy travelling the world, particularly exploring the Nordic regions. I’m fascinated by wildlife and the wonders of nature, from watching whales in their natural habitats to experiencing the northern lights and witnessing volcanic landscapes.
+                        </p>
+                        <div id="cd-stats"></div>
+                        
+                    </section>
+                </div>
+                <!-- PROJECTS PROFILE TAB -->
+                <div id="tab-projects" class="profile-tab-content" style="display: none;">
+                    <section class="profile-section">
+                        <div class="section-heading">
+                            <h2>Featured projects</h2>
+                            <a class="section-link" href="https://github.com/nikholt1?tab=repositories" target="_blank" rel="noopener noreferrer">All repositories ↗</a>
+                        </div>
+
+
+
+
+                <div class="pinned-repositories">
+
+                    <!-- PERSONAL PROJECT: REFRACT -->
+                    <article class="repo-card" data-owner="nikholt1" data-repo="Refract">
+                        <div class="repo-card-heading">
+                            <img src="images/refractIcon.png" alt="" class="repo-icon" loading="lazy">
+                            <a href="https://github.com/nikholt1/Refract" target="_blank" rel="noopener noreferrer">Refract</a>
+                            <span class="repo-visibility">Public</span>
+                        </div>
+
+                        <p class="repo-description">Loading description...</p>
+                        <div class="repo-languages"></div>
+
+                        <div class="repo-card-footer">
+                            <span class="repo-language-label">Loading languages...</span>
+                            
+                            <a href="/projects/refract/R.html" class="details-link" target="_blank">
+                                Details ↗
+                            </a>
+
+                        </div>
+                    </article>
+
+                    <!-- PERSONAL PROJECT: TRACEAI -->
+                    <article class="repo-card" data-owner="nikholt1" data-repo="TraceAI">
+                        <div class="repo-card-heading">
+                            <img src="images/buildBall.gif" alt="" class="repo-icon" loading="lazy">
+                            <a href="https://github.com/nikholt1/TraceAI" target="_blank" rel="noopener noreferrer">TraceAI</a>
+                            <span class="repo-visibility">Public</span>
+                        </div>
+
+                        <p class="repo-description">Loading description...</p>
+                        <div class="repo-languages"></div>
+
+                        <div class="repo-card-footer">
+                            <span class="repo-language-label">Loading languages...</span>
+                            <a href="https://github.com/nikholt1/TraceAI" target="_blank" rel="noopener noreferrer">Source ↗</a>
+                        </div>
+                    </article>
+
+                    <!-- PERSONAL PROJECT: SIMPLEFASTPOST -->
+                    <article class="repo-card" data-owner="nikholt1" data-repo="SimpleFastPost">
+                        <div class="repo-card-heading">
+                            <img src="images/simplefastpostIcon.png" alt="" class="repo-icon" loading="lazy">
+                            <a href="https://github.com/nikholt1/SimpleFastPost" target="_blank" rel="noopener noreferrer">SimpleFastPost</a>
+                            <span class="repo-visibility">Public</span>
+                        </div>
+
+                        <p class="repo-description">Loading description...</p>
+                        <div class="repo-languages"></div>
+
+                        <div class="repo-card-footer">
+                            <span class="repo-language-label">Loading languages...</span>
+                            <a href="https://github.com/nikholt1/SimpleFastPost" target="_blank" rel="noopener noreferrer">Source ↗</a>
+                        </div>
+                    </article>
+
+                    <!-- TEAM PROJECT: KINOGRAF -->
+                    <article class="repo-card" data-owner="TeamJabbaTheHutt" data-repo="kinograf">
+                        <div class="repo-card-heading">
+                            <a href="https://github.com/TeamJabbaTheHutt/kinograf" target="_blank" rel="noopener noreferrer">kinograf</a>
+                            <span class="repo-visibility">Public</span>
+                        </div>
+
+                        <p class="repo-description" data-custom-description="true">Full-stack team project developed at EK, focused on building a cinema application. Involved frontend and backend development, UI/UX design, application architecture, and integrating components into a cohesive, user-friendly solution.</p>
+
+                        <div class="repo-languages"></div>
+
+                        <div class="repo-card-footer">
+                            <span class="repo-language-label">Loading languages...</span>
+                            <a href="https://github.com/TeamJabbaTheHutt/kinograf" target="_blank" rel="noopener noreferrer">Source ↗</a>
+                        </div>
+                    </article>
+
+                    <!-- TEAM PROJECT: BOOK RESERVATION API -->
+                    <article class="repo-card" data-owner="TeamJabbaTheHutt" data-repo="bookReservationAPI">
+                        <div class="repo-card-heading">
+                            <a href="https://github.com/TeamJabbaTheHutt/bookReservationAPI" target="_blank" rel="noopener noreferrer">bookReservationAPI</a>
+                            <span class="repo-visibility">Public</span>
+                        </div>
+
+                        <p class="repo-description" data-custom-description="true">Full-stack examination project developed at EK: a reservation and calendar management system for a beauty salon, with separate frontend and backend applications. The project focuses on appointment scheduling, API integration, containerisation with Docker, and package releases.</p>
+
+                        <div class="repo-languages"></div>
+
+                        <div class="repo-card-footer">
+                            <span class="repo-language-label">Loading languages...</span>
+                            <a href="https://github.com/TeamJabbaTheHutt/bookReservationAPI" target="_blank" rel="noopener noreferrer">Source ↗</a>
+                        </div>
+                    </article>
+
+                    <!-- TEAM PROJECT: PROJECT WIZARD -->
+                    <article class="repo-card" data-owner="TeamJabbaTheHutt" data-repo="ProjectWizard">
+                        <div class="repo-card-heading">
+                            <a href="https://github.com/TeamJabbaTheHutt/ProjectWizard" target="_blank" rel="noopener noreferrer">ProjectWizard</a>
+                            <span class="repo-visibility">Public</span>
+                        </div>
+
+                        <p class="repo-description" data-custom-description="true">Full-stack team project at EK. ProjectWizard is a web-based project management system built with Spring Boot, Thymeleaf, MySQL, and Spring JDBC. It allows teams to organize projects, subprojects, tasks, subtasks, and assign users to work items.</p>
+
+                        <div class="repo-languages"></div>
+
+                        <div class="repo-card-footer">
+                            <span class="repo-language-label">Loading languages...</span>
+                            <a href="https://github.com/TeamJabbaTheHutt/ProjectWizard" target="_blank" rel="noopener noreferrer">Source ↗</a>
+                        </div>
+                    </article>
+
+                </div>
+
+
+
+
+                        <a class="text-link" href="#projects" data-page="projects">EXPLORE PROJECTS PAGE →</a>
+                    </section>
+                </div>
+
+                <!-- DEVELOPMENT FOCUS PROFILE TAB -->
+                <div id="tab-focus" class="profile-tab-content" style="display: none;">
+                    <section class="profile-section">
+                        <div class="section-heading"><h2>Development focus</h2><span class="section-index">ENGINEERING</span></div>
+                        <div class="focus-list">
+                            <article class="focus-item"><span class="focus-icon">⌘</span><div><h3>Full-stack development</h3><p>Building applications across frontend, backend, databases, and APIs.</p></div></article>
+                            <article class="focus-item"><span class="focus-icon">⌬</span><div><h3>System architecture</h3><p>Exploring service boundaries, software design, integration, and maintainability.</p></div></article>
+                            <article class="focus-item"><span class="focus-icon">⚙</span><div><h3>Automation and AI</h3><p>Developing automation workflows and experimenting with locally hosted AI.</p></div></article>
+                        </div>
+                    </section>
+                    <section class="profile-section">
+                        <div class="section-heading"><h2>Technologies</h2><span class="section-index">TOOLKIT</span></div>
+                        <div class="profile-tech-list">
+                            <span>Java</span><span>JavaScript</span><span>Python</span><span>SQL</span>
+                            <span>Spring Boot</span><span>React Native</span><span>Docker</span><span>HTML</span>
+                            <span>CSS</span><span>Git</span><span>Linux</span><span>REST APIs</span>
+                        </div>
+                    </section>
+                </div>
             </div>
-
-            <!-- GITHUB STATISTICS ON HOME -->
-            
-
-            <!-- FEATURED PROJECT ALSO ON HOME -->
-            <section class="content-section" aria-labelledby="projects-heading">
-                <div class="eyebrow">SELECTED PROJECTS</div>
-                <h2 id="projects-heading">Featured work</h2>
-
-                <article class="project-card">
-                    <div class="project-content">
-                        <div class="project-label">FEATURED REPOSITORY</div>
-
-                        <h3>Refract</h3>
-
-                        <p>
-                            A selected software project showcasing my work and
-                            approach to development during my studies. This project was made during the first part of my
-                            semester learning leaflet, before javaScript
-                        </p>
-
-                        <div class="project-links">
-                            <a href="https://github.com/nikholt1/Refract"
-                               target="_blank"
-                               rel="noopener noreferrer">
-                                GitHub repository ↗
-                            </a>
-
-                            <a href="https://niklasholtlau.web.app/R.html"
-                               target="_blank"
-                               rel="noopener noreferrer">
-                                Project details ↗
-                            </a>
-                        </div>
-                    </div>
-
-                    <a class="project-preview"
-                       href="https://github.com/nikholt1/Refract"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="View Refract repository">
-                        <img
-                            src="https://github-readme-stats.vercel.app/api/pin/?username=nikholt1&repo=Refract&hide_border=true&bg_color=080D16&title_color=38BDF8&text_color=CBD5E1&icon_color=38BDF8"
-                            alt="Refract repository card"
-                            loading="lazy">
-                    </a>
-                    <br>
-
-                    
-                </article>
-                <br>
-                                <article class="project-card">
-                    <div class="project-content">
-                        <div class="project-label">FEATURED REPOSITORY</div>
-
-                        <h3>SimpleFastPost</h3>
-
-                        <p>
-                            This project is a showcased software project that demonstrates my work and approach to development during my studies. It was created during the first part of my semester
-                            first time learning and touching JavaScript during my studies.
-                        </p>
-
-                        <div class="project-links">
-                            <a href="https://github.com/nikholt1/SimpleFastPost"
-                               target="_blank"
-                               rel="noopener noreferrer">
-                                GitHub repository ↗
-                            </a>
-
-
-                        </div>
-                    </div>
-
-                    <a class="project-preview"
-                       href="https://github.com/nikholt1/SimpleFastPost"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="View SimpleFastPost repository">
-                    <img
-                        src="https://github-readme-stats.vercel.app/api/pin/?username=nikholt1&repo=SimpleFastPost&hide_border=true&bg_color=080D16&title_color=38BDF8&text_color=CBD5E1&icon_color=38BDF8"
-                        alt="SimpleFastPost repository card"
-                        loading="lazy">
-                    </a>
-                    <br>
-
-                    
-                </article>
-                <a class="text-link"
-                   href="#projects" data-page="projects">
-                    BROWSE ALL PROJECTS →
-                </a>
-            </section>
         </section>
 
-        <!-- GITHUB: HEADER ONLY FOR NOW -->
+        <!-- SEPARATE REPOSITORY INSPECTOR PAGE -->
         <section id="github" class="spa-page page-hidden" aria-hidden="true">
-            <div class="eyebrow">GITHUB</div>
-            <h1>GitHub<span class="brand-dot">.</span></h1>
-
+            <div class="page-header">
+                <div>
+                    <div class="eyebrow">GITHUB / ANALYSIS</div>
+                    <h1>Repository inspector</h1>
+                    <p>Explore repository structure, source files, dependencies, and code metrics.</p>
+                </div>
+                <a class="button secondary" href="https://github.com/nikholt1" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a>
+            </div>
             <div id="inspector-container">
-        <div id="cesiumContainer" style="width: 100%; height: 100%; background: transparent;"></div>
+                <div id="cesiumContainer" style="width:100%;height:100%;background:transparent"></div>
             </div>
         </section>
 
-        <!-- PROJECTS: HEADER ONLY FOR NOW -->
-        <section id="projects" class="spa-page page-hidden" aria-hidden="true">
-            <div class="eyebrow">PROJECTS</div>
-            <h1>Projects<span class="brand-dot">.</span></h1>
+        <!-- SEPARATE PROJECTS PAGE -->
 
-            <ul id="projects-list" class="projects-list"></ul>
+        <section id="projects" class="spa-page page-hidden" aria-hidden="true">
+            <div class="page-header">
+                <div>
+                    <div class="eyebrow">PORTFOLIO / SELECTED WORK</div>
+                    <h1>Reports</h1>
+                    <p>Selected applications, experiments, and software engineering projects.</p>
+                </div>
+            </div>
+
+            <div id="projects-list" class="projects-list">
+                <!-- Project tabs are rendered here -->
+            </div>
+
+            <div id="project-content" class="project-content">
+                <!-- Selected project content is rendered here -->
+            </div>
         </section>
 
     </main>
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <span>© 2026 Niklas</span>
-
-
-            <a href="https://github.com/nikholt1"
-               target="_blank"
-               rel="noopener noreferrer">
-                GitHub ↗
-            </a>
+            <span>© 2026 Niklas Holt</span>
+            
+            <a href="https://github.com/nikholt1" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </div>
     </footer>
 </body>
