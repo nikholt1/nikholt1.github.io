@@ -52,44 +52,7 @@
             
         }
 
-        .burger {
-            font-size: 2rem;
-            cursor: pointer;
-            color: white;
-            background: none;
-            border: none;
-        }
 
-        .nav-links {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 70px;
-            right: 0px;
-            height: 100vh;
-            background-color: #161b22;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            z-index: 1002;
-        }
-
-        .nav-links a {
-            padding: 1rem;
-            text-align: left;
-            text-decoration: none;
-            color: white;
-            display: block;
-            width: 300px;
-        }
-
-        .nav-links a:hover {
-            background-color: #334155;
-        }
-
-        .nav-links.show {
-            display: flex;
-        }
 
         .overlay {
             position: fixed;
@@ -395,7 +358,7 @@
         <br><br>
         <br><br>
         <a href="https://github.com/nikholt1/HT" target="_blank">
-            <img src="images/R/readmeFront.png" alt="splineLogo" class="neuralimage">
+            <img src="/projects/refract/readmeFront.png" alt="splineLogo" class="neuralimage">
         </a>
         <br>
         </i> 🎯 How about the <a about="blank" href="https://github.com/users/nikholt1/projects/6">Scrum Board</a>
@@ -517,7 +480,7 @@
         <br><br>
         So since the MVP first implementation is in the sprint1, the movie progress tracking per profile functionality belongs in sprint2.
         <br><br></p>
-        <img src="images/R/DBML.png" alt="splineLogo" class="neuralimage"> <br>
+        <img src="/projects/refract/DBML.png" alt="splineLogo" class="neuralimage"> <br>
         <br>
  <!--       <pre><code>
         CREATE TABLE main_user (
@@ -599,7 +562,7 @@
         Qodana allows me to see problems with the code that i have missed, it inspects the code and returns a full review of the problems, the area of the problems and where i can find the problems.
         here is a snippet of the detailed Qodana report, before i assessed the problems:
         <br><br></p>
-        <img src="images/R/qodanabefore.png" alt="splineLogo" class="neuralimage">
+        <img src="/projects/refract/qodanabefore.png" alt="splineLogo" class="neuralimage">
         <br><br><br><br>
         <h2 id="scrum">SCRUM Agile</h2>
         <hr> <br>
@@ -614,7 +577,7 @@ I worked using Github projects where i used the <a href="https://github.com/user
 Therefore its not strictly after SCRUM and could be called a merger of SCRUM and a planning or project-tracking service. <br><br>
 A lot of the time i did not have time to work on the project, so i wrote some of the things down as issues in the backlog, so that when i returned later i could simply read the issue and continue to work from there.</p>
 </p>
-<img src="images/R/scrumboard.png" alt="splineLogo" class="neuralimage">
+<img src="/projects/refract/scrumboard.png" alt="splineLogo" class="neuralimage">
 
 <br><br>
 <h2>Project Plan</h2>
@@ -688,7 +651,7 @@ A lot of the time i did not have time to work on the project, so i wrote some of
             <br><br>
             All media and content in the application is custom made.
         </p>
-        <img class="neuralimage" src="images/R/blender.png" alt="R-GirlImage">
+        <img class="neuralimage" src="/projects/refract/blender.png" alt="R-GirlImage">
         <p>Here we see the early form of the R-girl in blender</p>
         <br><br>
         <div style="background:rgba(17,49,22,0.58); border:1px solid #247624; color:#dfe7df; padding:12px 18px; border-radius:6px; font-family:Arial, sans-serif; font-size:12px;">
@@ -703,7 +666,7 @@ A lot of the time i did not have time to work on the project, so i wrote some of
         To achieve this, I applied Gestalt principles, a cornerstone of user experience design based on how humans naturally perceive visual information as unified, meaningful wholes rather than isolated elements. I incorporated four key Gestalt principles throughout the UI design.
         <br><br>
         See the full wireframe <a href="https://github.com/nikholt1/HT/blob/master/analysis/wireframe.pdf">Here</a>
-        <img class="neuralimage" src="images/R/gestalt.png" alt="Four gestalt principles image">
+        <img class="neuralimage" src="/projects/refract/gestalt.png" alt="Four gestalt principles image">
 
         Using proximity and continuity, I carefully adjusted spacing to divide functional sections of each page. For instance, on the “Manage Users” page, I separated the “Main User” section from the “Profiles” section using deliberate spacing. I also introduced subtle spacing and grouping further down the page to intuitively suggest that additional content is available by scrolling.
 
@@ -716,7 +679,7 @@ A lot of the time i did not have time to work on the project, so i wrote some of
         Not all media elements are the final product in the wireframe.
         </div>
         <br><br>
-        <img class="neuralimage" src="images\UIbreakdown.png" alt="UI breakdown of manage user page image">
+        <img class="neuralimage" src="/projects/refract/UIbreakdown.png" alt="UI breakdown of manage user page image">
         <br><br>
         <p>This was not necessarially the final product, such as the logos and images might be altered in newer versions of the program.</p> 
         <br><br>
@@ -735,7 +698,7 @@ A lot of the time i did not have time to work on the project, so i wrote some of
         Overall, the page design balances open space and dense content areas, creating a natural rhythm that guides users from exploration to interaction — a direct reflection of Gestalt thinking in digital interface design.</p> 
         <p>
     
-        <img class="neuralimage" src="images\videosbrowserpageuilayout.png" alt="videos browser UI layout image">
+        <img class="neuralimage" src="/projects/refract/videosbrowserpageuilayout.png" alt="videos browser UI layout image">
         <p>Like the manage users page, this might not be the final state of the page, but merely a first layout following the principles of UI design.</p>
 
         <br><br><br>
@@ -751,7 +714,7 @@ A lot of the time i did not have time to work on the project, so i wrote some of
             After fetching the data from the backend i could start styling the HTML with CSS. I placed all of the styling in one main.css file containing the CSS code for the entire webapplication. The login 
             HTML site is not able to fetch the CSS, since the whole application, including the main.css file is locked off until the user has logged in, therefore the login.html has its own style sheet.
             <br><br>
-            <img class="neuralimage" src="images/R/applicationGif.gif" alt="">
+            <img class="neuralimage" src="/projects/refract/applicationGif.gif" alt="">
             <p>
                 As we can see in the short GIF, i followed the wireframe layout to design the page, and populated the assets with blender and spline designed scenery.
                 Overall the webapplication layout follows the principles that have been declared earlier and i am going to further implement more media and scenery in future versions of the application.
@@ -800,11 +763,7 @@ A lot of the time i did not have time to work on the project, so i wrote some of
 </section>
 
 
-<!-- Firebase App (core) -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 
-<!-- Firestore -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script> src="data.js"</script>
 

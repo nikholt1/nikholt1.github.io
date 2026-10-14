@@ -1,0 +1,1755 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111820">
+
+    <title>NWISP | Wireless Signal Profiling</title>
+
+    <link rel="icon" href="images/blop.gif" type="image/gif">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #111820;
+            --panel: #19232d;
+            --panel-dark: #131c25;
+            --border: #2c3a47;
+            --text: #e4ebf0;
+            --muted: #9cabb7;
+            --blue: #39a9e8;
+            --blue-dark: #1976b9;
+            --amber: #f3b63f;
+            --green: #65c995;
+            --red: #e66e6e;
+            --width: 1100px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            background:
+                linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px),
+                var(--bg);
+            background-size: 30px 30px;
+            color: var(--text);
+            font-family: "Segoe UI", Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        ::selection {
+            background: var(--blue);
+            color: #fff;
+        }
+
+        /* NAVIGATION */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 66px;
+            padding: 0 5%;
+            background: #10171e;
+            border-bottom: 2px solid var(--blue-dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,.24);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            letter-spacing: .3px;
+        }
+
+        .brand img {
+            width: 37px;
+            height: 37px;
+            border: 2px solid var(--blue);
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        .brand-name {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .brand-name span {
+            color: var(--blue);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .home-link {
+            color: var(--muted);
+            font-size: .88rem;
+        }
+
+        .home-link:hover {
+            color: var(--blue);
+        }
+
+        .menu-button {
+            width: 41px;
+            height: 39px;
+            color: var(--text);
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .menu-button:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 66px 0 0;
+            z-index: 1001;
+            background: rgba(0,0,0,.65);
+            opacity: 0;
+            visibility: hidden;
+            transition: .2s;
+        }
+
+        .overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-menu {
+            position: fixed;
+            z-index: 1002;
+            top: 76px;
+            right: 18px;
+            width: min(310px, calc(100vw - 36px));
+            max-height: calc(100vh - 95px);
+            overflow-y: auto;
+            padding: 12px;
+            background: #17212b;
+            border: 1px solid var(--border);
+            border-top: 2px solid var(--blue);
+            box-shadow: 0 15px 40px rgba(0,0,0,.5);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-5px);
+            transition: .2s;
+        }
+
+        .nav-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-heading {
+            padding: 9px 11px;
+            color: var(--amber);
+            font-size: .72rem;
+            font-family: Consolas, monospace;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 11px;
+            color: var(--muted);
+            font-size: .88rem;
+            border-left: 2px solid transparent;
+        }
+
+        .nav-menu a i {
+            width: 17px;
+            color: var(--blue);
+            text-align: center;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.current {
+            color: white;
+            background: #202e3b;
+            border-left-color: var(--blue);
+        }
+
+        .menu-divider {
+            height: 1px;
+            margin: 8px 0;
+            background: var(--border);
+        }
+
+        /* MAIN */
+
+        main {
+            width: min(var(--width), calc(100% - 36px));
+            margin: 0 auto;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin-top: 32px;
+            padding: clamp(26px, 5vw, 54px);
+            background:
+                linear-gradient(110deg, rgba(25,118,185,.2), transparent 68%),
+                #18232d;
+            border: 1px solid #354653;
+            border-top: 3px solid var(--blue);
+            box-shadow: 0 12px 35px rgba(0,0,0,.2);
+        }
+
+        .hero::after {
+            content: "2.4 GHz";
+            position: absolute;
+            right: 25px;
+            bottom: 8px;
+            color: rgba(255,255,255,.035);
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 800;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .hero-label {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 18px;
+            color: var(--amber);
+            font: .75rem Consolas, monospace;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .status-light {
+            width: 8px;
+            height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(101,201,149,.5);
+        }
+
+        .hero h1 {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 8px;
+            font-size: clamp(2.1rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -1.2px;
+        }
+
+        .hero h1 span {
+            color: var(--blue);
+        }
+
+        .hero-subtitle {
+            margin-bottom: 22px;
+            color: #b4c2cd;
+            font-size: clamp(.95rem, 2vw, 1.13rem);
+        }
+
+        .hero-description {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            color: var(--muted);
+        }
+
+        .hero-meta {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 26px;
+        }
+
+        .meta-tag {
+            padding: 5px 10px;
+            color: #b9d9ee;
+            background: rgba(9,20,30,.6);
+            border: 1px solid #344c5d;
+            border-radius: 3px;
+            font: .75rem Consolas, monospace;
+        }
+
+        /* REPORT STRIP */
+
+        .report-strip {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin: 18px 0 46px;
+            background: var(--panel-dark);
+            border: 1px solid var(--border);
+        }
+
+        .report-stat {
+            padding: 17px 18px;
+            border-right: 1px solid var(--border);
+        }
+
+        .report-stat:last-child {
+            border-right: 0;
+        }
+
+        .stat-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #8295a5;
+            font: .7rem Consolas, monospace;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            color: var(--text);
+            font-size: 1.02rem;
+            font-weight: 700;
+        }
+
+        .stat-value.blue {
+            color: var(--blue);
+        }
+
+        .stat-value.amber {
+            color: var(--amber);
+        }
+
+        /* SECTIONS */
+
+        .section {
+            margin-bottom: 55px;
+            scroll-margin-top: 90px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 22px;
+            padding-bottom: 13px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-icon {
+            display: grid;
+            place-items: center;
+            flex: 0 0 42px;
+            height: 42px;
+            color: var(--blue);
+            background: #1b2c3a;
+            border: 1px solid #314b5d;
+            border-radius: 4px;
+            font-size: 1.1rem;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(1.25rem, 3vw, 1.65rem);
+            line-height: 1.3;
+        }
+
+        .section-heading p {
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: .82rem;
+        }
+
+        .prose {
+            color: #bac5cf;
+        }
+
+        .prose p {
+            margin-bottom: 16px;
+        }
+
+        .prose strong {
+            color: #eef4f8;
+        }
+
+        .prose a {
+            color: var(--blue);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* CALLOUT */
+
+        .callout {
+            margin: 22px 0;
+            padding: 17px 20px;
+            color: #c4d0d9;
+            background: #192733;
+            border-left: 3px solid var(--amber);
+        }
+
+        .callout-title {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--amber);
+            font: 700 .76rem Consolas, monospace;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+        }
+
+        /* HARDWARE */
+
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 23px;
+        }
+
+        .hardware-card {
+            padding: 18px 12px;
+            text-align: center;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            transition: border-color .2s;
+        }
+
+        .hardware-card:hover {
+            border-color: var(--blue);
+        }
+
+        .hardware-card i {
+            margin-bottom: 12px;
+            color: var(--blue);
+            font-size: 1.45rem;
+        }
+
+        .hardware-card strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: .83rem;
+        }
+
+        .hardware-card span {
+            display: block;
+            color: var(--muted);
+            font-size: .74rem;
+            line-height: 1.5;
+        }
+
+        /* TECHNICAL IMAGE */
+
+        .figure {
+            margin: 24px 0;
+            padding: 12px;
+            background: #101820;
+            border: 1px solid var(--border);
+        }
+
+        .figure img {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+
+        .figure figcaption {
+            padding: 11px 5px 2px;
+            color: #8fa2b1;
+            font-size: .78rem;
+            text-align: center;
+        }
+
+        .figure.narrow img {
+            max-width: 80%;
+        }
+
+        .figure-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            color: var(--blue);
+            border-bottom: 1px solid var(--border);
+            font: .76rem Consolas, monospace;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+
+        /* FORMULA */
+
+        .formula-box {
+            margin: 22px 0;
+            padding: 22px;
+            background: #0e151c;
+            border: 1px solid #304351;
+            border-left: 3px solid var(--blue);
+        }
+
+        .formula-label {
+            margin-bottom: 12px;
+            color: var(--amber);
+            font: .75rem Consolas, monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .formula {
+            overflow-x: auto;
+            padding: 7px 0;
+            color: #f1f6fa;
+            font: clamp(.95rem, 2.5vw, 1.2rem) Consolas, monospace;
+            white-space: nowrap;
+        }
+
+        .formula-note {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: .83rem;
+        }
+
+        /* FLOW */
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin: 22px 0;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 17px 14px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+        }
+
+        .process-step:not(:last-child)::after {
+            content: "›";
+            position: absolute;
+            top: 50%;
+            right: -9px;
+            z-index: 2;
+            transform: translateY(-50%);
+            color: var(--amber);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .process-number {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--blue);
+            font: .75rem Consolas, monospace;
+        }
+
+        .process-step strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: .86rem;
+        }
+
+        .process-step p {
+            color: var(--muted);
+            font-size: .77rem;
+            line-height: 1.6;
+        }
+
+        /* VIDEO */
+
+        .video-panel {
+            overflow: hidden;
+            background: #101820;
+            border: 1px solid var(--border);
+        }
+
+        .panel-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #1c2934;
+            border-bottom: 1px solid var(--border);
+            color: #aabac7;
+            font: .76rem Consolas, monospace;
+        }
+
+        .panel-bar span:first-child {
+            color: var(--blue);
+        }
+
+        .video-frame {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: #080d12;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .panel-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 16px;
+            color: var(--muted);
+            font-size: .82rem;
+        }
+
+        .text-link {
+            color: var(--blue);
+            white-space: nowrap;
+        }
+
+        .text-link:hover {
+            color: var(--amber);
+        }
+
+        /* RESULTS */
+
+        .result-label {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 4px 9px;
+            color: var(--green);
+            background: rgba(101,201,149,.08);
+            border: 1px solid rgba(101,201,149,.25);
+            font: .72rem Consolas, monospace;
+            text-transform: uppercase;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .result-card {
+            padding: 19px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-top: 2px solid var(--blue-dark);
+        }
+
+        .result-card h3 {
+            margin-bottom: 8px;
+            font-size: .9rem;
+        }
+
+        .result-card p {
+            color: var(--muted);
+            font-size: .83rem;
+        }
+
+        /* ERROR TABLE */
+
+        .table-wrap {
+            overflow-x: auto;
+            margin-top: 20px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 13px 15px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        th {
+            color: var(--blue);
+            background: #1b2833;
+            font: .75rem Consolas, monospace;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+
+        td {
+            color: #bac5cf;
+            font-size: .84rem;
+        }
+
+        td strong {
+            color: var(--text);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(255,255,255,.018);
+        }
+
+        /* FUTURE WORK */
+
+        .future-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .future-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+        }
+
+        .future-list i {
+            margin-top: 5px;
+            color: var(--amber);
+        }
+
+        .future-list strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: .87rem;
+        }
+
+        .future-list span {
+            display: block;
+            color: var(--muted);
+            font-size: .81rem;
+        }
+
+        /* REFERENCES */
+
+        .references {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .reference {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            min-width: 0;
+            padding: 15px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            transition: border-color .2s, background .2s;
+        }
+
+        .reference:hover {
+            background: #1d2b37;
+            border-color: var(--blue-dark);
+        }
+
+        .reference-icon {
+            display: grid;
+            place-items: center;
+            flex: 0 0 37px;
+            height: 37px;
+            color: var(--blue);
+            background: #102a3a;
+            border: 1px solid #294759;
+        }
+
+        .reference-copy {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .reference-copy strong {
+            display: block;
+            margin-bottom: 3px;
+            font-size: .85rem;
+            font-weight: 600;
+        }
+
+        .reference-copy span {
+            display: block;
+            color: var(--muted);
+            font-size: .75rem;
+            overflow-wrap: anywhere;
+        }
+
+        .reference-arrow {
+            color: #718696;
+            font-size: .8rem;
+        }
+
+        /* CONCLUSION + FOOTER */
+
+        .conclusion {
+            padding: 24px;
+            background: #172630;
+            border: 1px solid #304654;
+            border-left: 3px solid var(--green);
+        }
+
+        .conclusion h3 {
+            margin-bottom: 10px;
+            color: var(--green);
+            font-size: 1.1rem;
+        }
+
+        .conclusion p {
+            color: #bdc9d2;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-top: 65px;
+            padding: 23px 0 30px;
+            color: #8293a0;
+            border-top: 1px solid var(--border);
+            font-size: .78rem;
+        }
+
+        footer strong {
+            color: var(--text);
+        }
+
+        .footer-code {
+            color: var(--blue);
+            font-family: Consolas, monospace;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+            .report-strip {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .report-stat:nth-child(2) {
+                border-right: 0;
+            }
+
+            .report-stat:nth-child(-n+2) {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .hardware-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .process-step::after {
+                display: none;
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 0 16px;
+            }
+
+            .home-link {
+                display: none;
+            }
+
+            main {
+                width: calc(100% - 24px);
+            }
+
+            .hero {
+                margin-top: 18px;
+                padding: 27px 20px;
+            }
+
+            .hero h1 {
+                letter-spacing: -.7px;
+            }
+
+            .hero::after {
+                right: 10px;
+                bottom: 10px;
+                font-size: 3.5rem;
+            }
+
+            .hardware-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .future-list,
+            .references {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                margin-bottom: 42px;
+            }
+
+            .panel-footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .figure.narrow img {
+                max-width: 100%;
+            }
+
+            footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+<div class="overlay" id="overlay"></div>
+
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+        <div class="hero-label">
+            <span class="status-light"></span>
+            Wireless research / Proof of concept
+        </div>
+
+        <h1>NW<span>ISP</span></h1>
+
+        <p class="hero-subtitle">
+            Networked Wireless Imaging &amp; Signal Profiling
+        </p>
+
+        <p class="hero-description">
+            An experimental Wi-Fi signal visualization project exploring
+            how received signal strength changes across a physical space.
+            Built with low-cost hardware, Linux and Python, NWISP translates
+            wireless measurements into a spatial representation of a room.
+        </p>
+
+        <div class="hero-meta">
+            <span class="meta-tag">IEEE 802.11 / Wi-Fi</span>
+            <span class="meta-tag">RSSI MEASUREMENTS</span>
+            <span class="meta-tag">LINUX + PYTHON</span>
+            <span class="meta-tag">UDP POSITION DATA</span>
+        </div>
+    </section>
+
+    <!-- QUICK FACTS -->
+
+    <div class="report-strip">
+        <div class="report-stat">
+            <span class="stat-label">Frequency band</span>
+            <span class="stat-value blue">2.4 GHz</span>
+        </div>
+        <div class="report-stat">
+            <span class="stat-label">Measurement</span>
+            <span class="stat-value">RSSI / dBm</span>
+        </div>
+        <div class="report-stat">
+            <span class="stat-label">Visual output</span>
+            <span class="stat-value">Grayscale map</span>
+        </div>
+        <div class="report-stat">
+            <span class="stat-label">Project type</span>
+            <span class="stat-value amber">Proof of concept</span>
+        </div>
+    </div>
+
+    <!-- MOTIVATION -->
+
+    <section class="section" id="motivation">
+        <div class="section-heading">
+            <div class="section-icon"><i class="fas fa-lightbulb"></i></div>
+            <div>
+                <h2>01. Motivation &amp; research</h2>
+                <p>From wireless sensing research to a low-cost experiment</p>
+            </div>
+        </div>
+
+        <div class="prose">
+            <p>
+                The idea for NWISP originated from research into Wi-Fi-based
+                motion detection and radio-frequency sensing. In June 2013,
+                <strong>MIT News covered Wi-Vi</strong>, a system designed to
+                detect moving people using low-power wireless signals and
+                specialized signal processing.
+            </p>
+
+            <p>
+                Further exploration of MIT Media Lab research into seeing
+                through walls raised a broader question: could ordinary
+                wireless measurements be used to visualize changes in a room,
+                even with inexpensive equipment?
+            </p>
+
+            <p>
+                NWISP was my attempt to investigate that question. Rather than
+                reproducing the specialized hardware and algorithms used in
+                advanced research, I built a basic experiment around a Wi-Fi
+                receiver, RSSI readings, spatial coordinates and a custom
+                visualizer.
+            </p>
+        </div>
+
+        <div class="callout">
+            <span class="callout-title">Research objective</span>
+            Investigate whether changes in Wi-Fi signal strength, combined
+            with position data, can produce a useful spatial visualization
+            of signal variation within a room.
+        </div>
+
+        <div class="prose">
+            <p>
+                The aim was to keep the hardware budget low and make the
+                experiment accessible using equipment already available.
+                NWISP is inspired by wireless sensing research, but its
+                RSSI-based approach is substantially simpler than systems
+                that use multiple antennas, channel-state information or
+                dedicated radar processing.
+            </p>
+        </div>
+    </section>
+
+    <!-- HARDWARE -->
+
+    <section class="section" id="hardware">
+        <div class="section-heading">
+            <div class="section-icon"><i class="fas fa-microchip"></i></div>
+            <div>
+                <h2>02. Hardware &amp; setup</h2>
+                <p>Low-cost equipment used in the experiment</p>
+            </div>
+        </div>
+
+        <div class="hardware-grid">
+            <div class="hardware-card">
+                <i class="fas fa-wifi"></i>
+                <strong>Wi-Fi adapter</strong>
+                <span>Receiver for wireless signal measurements</span>
+            </div>
+
+            <div class="hardware-card">
+                <i class="fas fa-laptop"></i>
+                <strong>Linux PC</strong>
+                <span>Python processing and visualization</span>
+            </div>
+
+            <div class="hardware-card">
+                <i class="fas fa-mobile-alt"></i>
+                <strong>Android phone</strong>
+                <span>Position tracking and movement</span>
+            </div>
+
+            <div class="hardware-card">
+                <i class="fas fa-broadcast-tower"></i>
+                <strong>iPhone hotspot</strong>
+                <span>Wireless signal source</span>
+            </div>
+
+            <div class="hardware-card">
+                <i class="fas fa-tools"></i>
+                <strong>DIY materials</strong>
+                <span>Aluminium foil and antenna experiments</span>
+            </div>
+        </div>
+
+        <div class="prose" style="margin-top: 22px;">
+            <p>
+                The hotspot provides the wireless transmission, while the
+                Wi-Fi adapter and Linux PC collect signal measurements.
+                Position information is sent separately over UDP and associated
+                with the recorded signal strength in the Python application.
+            </p>
+        </div>
+    </section>
+
+    <!-- WIFI THEORY -->
+
+    <section class="section" id="wifi">
+        <div class="section-heading">
+            <div class="section-icon"><i class="fas fa-broadcast-tower"></i></div>
+            <div>
+                <h2>03. Wi-Fi &amp; radio propagation</h2>
+                <p>The physical principles behind the measurements</p>
+            </div>
+        </div>
+
+        <figure class="figure narrow">
+            <div class="figure-header">
+                <i class="fas fa-wave-square"></i> Radio-frequency propagation
+            </div>
+            <img src="wifi.gif" alt="Illustration of Wi-Fi radio wave propagation" loading="lazy">
+            <figcaption>
+                Conceptual illustration of wireless signals propagating
+                through an environment.
+            </figcaption>
+        </figure>
+
+        <div class="prose">
+            <p>
+                Wi-Fi communicates using <strong>electromagnetic radio waves</strong>.
+                As a signal propagates through a room, it can interact with
+                walls, furniture, people and other objects. These interactions
+                include reflection, diffraction and scattering.
+            </p>
+
+            <p>
+                The receiver measures the combined signal arriving at its
+                antenna. Its received signal strength, commonly expressed as
+                <strong>RSSI in dBm</strong>, can vary with distance, obstacles,
+                antenna orientation, interference and multipath propagation.
+            </p>
+
+            <p>
+                A stronger RSSI reading generally means the receiver is
+                detecting a stronger signal, but it does not uniquely identify
+                the distance to the transmitter or the location of a reflecting
+                object. Different physical environments can produce similar
+                readings.
+            </p>
+        </div>
+
+        <div class="callout">
+            <span class="callout-title">Important distinction</span>
+            RSSI is a received signal-strength measurement, not a direct
+            measurement of distance or an image of the surrounding room.
+            NWISP uses RSSI as an input to an approximate visualization model.
+        </div>
+    </section>
+
+    <!-- PATH LOSS -->
+
+    <section class="section" id="path-loss">
+        <div class="section-heading">
+            <div class="section-icon"><i class="fas fa-ruler-combined"></i></div>
+            <div>
+                <h2>04. Calibration &amp; path-loss model</h2>
+                <p>Mapping received signal strength to approximate distance</p>
+            </div>
+        </div>
+
+        <div class="prose">
+            <p>
+                To establish a baseline, the transmitter is placed one metre
+                from the receiver and multiple RSSI readings are collected.
+                Their average provides a reference measurement for the
+                experiment. Additional measurements are taken at known
+                distances to observe how the signal changes.
+            </p>
+
+            <p>
+                These measurements can be used to estimate the path-loss
+                exponent, which describes how quickly signal strength tends
+                to decrease with distance in a particular environment.
+            </p>
+        </div>
+
+        <div class="formula-box">
+            <div class="formula-label">Log-distance path-loss model</div>
+            <div class="formula">
+                d = d₀ × 10^((P₀ − RSSI) / (10n))
+            </div>
+            <p class="formula-note">
+                d = estimated distance · d₀ = reference distance · P₀ = mean
+                RSSI at d₀ · n = path-loss exponent
+            </p>
+        </div>
+
+        <div class="prose">
+            <p>
+                In the implementation, the model provides an approximate
+                distance estimate based on the measured RSSI and calibrated
+                reference values. The experiment then uses the estimate in
+                its distance visualization.
+            </p>
+
+            <p>
+                The original approach also divides the estimated transmitter
+                distance by two to approximate a reflected-object distance.
+                This is a simplifying assumption rather than a general
+                property of RSSI measurements: the receiver does not directly
+                measure a round-trip path or isolate a particular reflection.
+                The result should therefore be treated as an experimental
+                estimate, not a precise range measurement.
+            </p>
+        </div>
+    </section>
+
+    <!-- DATA PIPELINE -->
+
+    <section class="section" id="processing">
+        <div class="section-heading">
+            <div class="section-icon"><i class="fas fa-project-diagram"></i></div>
+            <div>
+                <h2>05. Data processing &amp; visualization</h2>
+                <p>From measurements to a visual representation</p>
+            </div>
+        </div>
+
+        <div class="process-grid">
+            <div class="process-step">
+                <span class="process-number">STEP 01</span>
+                <strong>Transmit</strong>
+                <p>A hotspot emits Wi-Fi signals into the environment.</p>
+            </div>
+
+            <div class="process-step">
+                <span class="process-number">STEP 02</span>
+                <strong>Measure</strong>
+                <p>The receiver records signal strength as RSSI.</p>
+            </div>
+
+            <div class="process-step">
+                <span class="process-number">STEP 03</span>
+                <strong>Associate</strong>
+                <p>Position data arrives through UDP and is paired with readings.</p>
+            </div>
+
+            <div class="process-step">
+                <span class="process-number">STEP 04</span>
+                <strong>Visualize</strong>
+                <p>Python renders the measurements as spatial dots and estimates.</p>
+            </div>
+        </div>
+
+        <div class="prose">
+            <p>
+                The linear visualizer plots readings using the Android phone's
+                current XY position. Signal strength is normalized and mapped
+                to a grayscale colour, ranging from dark for weaker readings
+                to brighter shades for stronger readings.
+            </p>
+
+            <p>
+                A separate distance visualization displays a vertical series
+                of blue reference dots. A red dot represents the current
+                estimated distance within the visualization's range.
+            </p>
+        </div>
+
+        <figure class="figure">
+            <div class="figure-header">
+                <i class="fas fa-map"></i> Test environment / room layout
+            </div>
+            <img src="roomNWISP.png"
+                 alt="Room layout used for the NWISP wireless experiment"
+                 loading="lazy">
+            <figcaption>
+                The room layout provides a reference for comparing measured
+                signal variation with the physical environment.
+            </figcaption>
+        </figure>
+
+        <figure class="figure">
+            <div class="figure-header">
+                <i class="fas fa-chart-area"></i> Linear signal visualization
+            </div>
+            <img src="visualizerNWISP2.png"
+                 alt="NWISP linear grayscale signal visualization"
+                 loading="lazy">
+            <figcaption>
+                Grayscale visualization produced by the experimental system.
+            </figcaption>
+        </figure>
+
+        <figure class="figure narrow">
+            <div class="figure-header">
+                <i class="fas fa-crosshairs"></i> Distance estimate visualization
+            </div>
+            <img src="distanceNWISP.PNG"
+                 alt="NWISP estimated distance visualization"
+                 loading="lazy">
+            <figcaption>
+                The red marker represents the model's current estimated
+                distance in the visualization.
+            </figcaption>
+        </figure>
+    </section>
+
+    <!-- DEMO -->
+
+    <section class="section" id="demonstration">
+        <div class="section-heading">
+            <div class="section-icon"><i class="fas fa-play"></i></div>
+            <div>
+                <h2>06. Experimental demonstration</h2>
+                <p>NWISP in operation</p>
+            </div>
+        </div>
+
+        <div class="video-panel">
+            <div class="panel-bar">
+                <span><i class="fas fa-circle"></i> NWISP / LIVE DEMONSTRATION</span>
+                <span>VIDEO REPORT</span>
+            </div>
+
+            <div class="video-frame">
+                <iframe
+                    src="https://www.youtube.com/embed/SAi24ctpyZQ"
+                    title="NWISP Wi-Fi signal profiling demonstration"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="panel-footer">
+                <span>Experimental test and visualization</span>
+                <a class="text-link"
+                   href="https://www.youtube.com/watch?v=SAi24ctpyZQ"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Open on YouTube <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPECTED RESULTS -->
+
+    <section class="section" id="results">
+        <div class="section-heading">
+            <div class="section-icon"><i class="fas fa-chart-line"></i></div>
+            <div>
+                <h2>07. Expected output &amp; observations</h2>
+                <p>Comparing the model with the room layout</p>
+            </div>
+        </div>
+
+        <div class="prose">
+            <p>
+                Based on the room dimensions, the initial expectation was
+                that the visualizer would reveal stronger signal readings
+                near some boundaries and weaker readings in other areas.
+                The approximate distances used for comparison were 1.5 metres
+                to the left wall, 1.2 metres to the right wall and 5.5 metres
+                to the door at the furthest point.
+            </p>
+
+            <p>
+                These expectations provided a baseline for evaluating the
+                output, but RSSI does not necessarily increase near walls.
+                Reflections and interference can either increase or decrease
+                the measured signal strength depending on the geometry and
+                phase of the arriving signals.
+            </p>
+        </div>
+
+        <div class="result-grid">
+            <article class="result-card">
+                <span class="result-label">Distance view</span>
+                <h3>Approximate range</h3>
+                <p>
+                    The test produced a maximum displayed distance of around
+                    11 metres, while the reported average was approximately
+                    5.5 metres.
+                </p>
+            </article>
+
+            <article class="result-card">
+                <span class="result-label">Room comparison</span>
+                <h3>Near-wall estimates</h3>
+                <p>
+                    Estimates around 1.5 metres and 1.2 metres were observed
+                    for the left and right wall respectively, broadly matching
+                    the approximate room measurements.
+                </p>
+            </article>
+
+            <article class="result-card">
+                <span class="result-label">Visual output</span>
+                <h3>Limited contrast</h3>
+                <p>
+                    The linear heatmap showed less colour variation than
+                    expected, making the shape of the room difficult to
+                    interpret reliably.
+                </p>
+            </article>
+        </div>
+
+        <figure class="figure">
+            <div class="figure-header">
+                <i class="fas fa-vial"></i> Final experimental test
+            </div>
+            <img src="testNWISP.gif"
+                 alt="Animated view of the NWISP final experiment"
+                 loading="lazy">
+            <figcaption>
+                Final proof-of-concept test using the experimental setup.
+            </figcaption>
+        </figure>
+    </section>
+
+    <!-- ERRORS -->
+
+    <section class="section" id="limitations">
+        <div class="section-heading">
+            <div class="section-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div>
+                <h2>08. Sources of error &amp; limitations</h2>
+                <p>Factors affecting reliability and repeatability</p>
+            </div>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Factor</th>
+                        <th>Effect on the experiment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Multipath propagation</strong></td>
+                        <td>
+                            Reflections can combine constructively or
+                            destructively, changing RSSI even when the
+                            transmitter and receiver have not moved far.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Walls and materials</strong></td>
+                        <td>
+                            Different materials attenuate and reflect radio
+                            waves differently. The resulting measurements
+                            depend on both material and geometry.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Antenna orientation</strong></td>
+                        <td>
+                            The orientation of the transmitter, receiver
+                            and any directional antenna can alter received
+                            signal strength.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interference</strong></td>
+                        <td>
+                            Other Wi-Fi devices and radio sources can
+                            contribute to fluctuating readings.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Path-loss exponent</strong></td>
+                        <td>
+                            A model calibrated for one environment may not
+                            represent another area or measurement geometry.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>RSSI-based ranging</strong></td>
+                        <td>
+                            Similar RSSI values can occur at different
+                            distances, so the calculated range is inherently
+                            approximate.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Limited spatial sampling</strong></td>
+                        <td>
+                            A small number of readings or restricted movement
+                            can produce an incomplete, low-contrast map.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FUTURE WORK -->
+
+    <section class="section" id="future">
+        <div class="section-heading">
+            <div class="section-icon"><i class="fas fa-tools"></i></div>
+            <div>
+                <h2>09. Future improvements</h2>
+                <p>Potential next steps beyond the initial proof of concept</p>
+            </div>
+        </div>
+
+        <ul class="future-list">
+            <li>
+                <i class="fas fa-sliders-h"></i>
+                <div>
+                    <strong>Environmental calibration</strong>
+                    <span>Collect repeated reference measurements and recalibrate the model for each room.</span>
+                </div>
+            </li>
+
+            <li>
+                <i class="fas fa-broadcast-tower"></i>
+                <div>
+                    <strong>Improved antenna hardware</strong>
+                    <span>Investigate antenna placement, directionality and multiple receiver positions.</span>
+                </div>
+            </li>
+
+            <li>
+                <i class="fas fa-ruler-horizontal"></i>
+                <div>
+                    <strong>More precise ranging</strong>
+                    <span>Explore hardware and methods that expose timing or channel measurements, where supported.</span>
+                </div>
+            </li>
+
+            <li>
+                <i class="fas fa-layer-group"></i>
+                <div>
+                    <strong>Better visualization</strong>
+                    <span>Collect denser spatial samples, retain previous scans and compare them against a baseline.</span>
+                </div>
+            </li>
+        </ul>
+
+        <div class="prose" style="margin-top: 22px;">
+            <p>
+                More advanced techniques such as time-of-flight ranging,
+                angle-of-arrival estimation or Wi-Fi channel-state-information
+                analysis could be investigated in future iterations. These
+                approaches require compatible hardware and suitable signal
+                processing; they cannot be obtained reliably from ordinary
+                RSSI values alone.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONCLUSION -->
+
+    <section class="section" id="conclusion">
+        <div class="section-heading">
+            <div class="section-icon"><i class="fas fa-flag-checkered"></i></div>
+            <div>
+                <h2>10. Final conclusion</h2>
+                <p>Evaluation of the NWISP proof of concept</p>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h3>Proof of concept: completed</h3>
+
+            <p>
+                NWISP demonstrated a basic pipeline for combining wireless
+                signal-strength measurements with position data to produce
+                real-time visual output. The distance display provided
+                approximate values that could be compared with the physical
+                room, while the linear grayscale visualization was less
+                successful at representing the expected room structure.
+            </p>
+
+            <br>
+
+            <p>
+                The experiment highlighted the limitations of RSSI-based
+                ranging and the influence of multipath propagation, antenna
+                orientation and environmental conditions. Overall, NWISP
+                was a useful proof of concept for exploring wireless
+                measurements, signal processing and spatial visualization.
+                More reliable environmental calibration, denser measurements
+                and more advanced radio hardware would be needed to move
+                towards a more precise sensing system.
+            </p>
+        </div>
+    </section>
+
+    <!-- REFERENCES -->
+
+    <section class="section" id="references">
+        <div class="section-heading">
+            <div class="section-icon"><i class="fas fa-book"></i></div>
+            <div>
+                <h2>11. References &amp; research</h2>
+                <p>Background material and related wireless sensing research</p>
+            </div>
+        </div>
+
+        <div class="references">
+            <a class="reference"
+               href="https://news.mit.edu/2013/new-system-uses-low-power-wi-fi-signal-to-track-moving-humans-0628"
+               target="_blank" rel="noopener noreferrer">
+                <div class="reference-icon"><i class="fas fa-university"></i></div>
+                <div class="reference-copy">
+                    <strong>MIT News — Wi-Vi</strong>
+                    <span>Low-power Wi-Fi motion detection research</span>
+                </div>
+                <i class="fas fa-external-link-alt reference-arrow"></i>
+            </a>
+
+            <a class="reference"
+               href="https://www.media.mit.edu/projects/seeing-through-walls-computer-vision/overview/"
+               target="_blank" rel="noopener noreferrer">
+                <div class="reference-icon"><i class="fas fa-eye"></i></div>
+                <div class="reference-copy">
+                    <strong>MIT Media Lab</strong>
+                    <span>Seeing Through Walls project</span>
+                </div>
+                <i class="fas fa-external-link-alt reference-arrow"></i>
+            </a>
+
+            <a class="reference"
+               href="https://science.nasa.gov/ems/02_anatomy/"
+               target="_blank" rel="noopener noreferrer">
+                <div class="reference-icon"><i class="fas fa-wave-square"></i></div>
+                <div class="reference-copy">
+                    <strong>NASA — Electromagnetic waves</strong>
+                    <span>Introduction to electromagnetic radiation</span>
+                </div>
+                <i class="fas fa-external-link-alt reference-arrow"></i>
+            </a>
+
+            <a class="reference"
+               href="https://www.proofpoint.com/us/threat-reference/wifi"
+               target="_blank" rel="noopener noreferrer">
+                <div class="reference-icon"><i class="fas fa-wifi"></i></div>
+                <div class="reference-copy">
+                    <strong>Proofpoint — Wi-Fi</strong>
+                    <span>Wi-Fi overview and wireless networking</span>
+                </div>
+                <i class="fas fa-external-link-alt reference-arrow"></i>
+            </a>
+
+            <a class="reference"
+               href="https://en.wikipedia.org/wiki/Log-distance_path_loss_model"
+               target="_blank" rel="noopener noreferrer">
+                <div class="reference-icon"><i class="fas fa-ruler"></i></div>
+                <div class="reference-copy">
+                    <strong>Log-distance path-loss model</strong>
+                    <span>Propagation model background</span>
+                </div>
+                <i class="fas fa-external-link-alt reference-arrow"></i>
+            </a>
+
+            <a class="reference"
+               href="https://gigazine.net/gsc_news/en/20241022-wifi-solver"
+               target="_blank" rel="noopener noreferrer">
+                <div class="reference-icon"><i class="fas fa-chart-area"></i></div>
+                <div class="reference-copy">
+                    <strong>GIGAZINE — Wi-Fi Solver</strong>
+                    <span>Related wireless signal visualization</span>
+                </div>
+                <i class="fas fa-external-link-alt reference-arrow"></i>
+            </a>
+
+            <a class="reference"
+               href="https://gigazine.net/gsc_news/en/20140906-wi-fi-dead-zone"
+               target="_blank" rel="noopener noreferrer">
+                <div class="reference-icon"><i class="fas fa-signal"></i></div>
+                <div class="reference-copy">
+                    <strong>GIGAZINE — Wi-Fi dead zones</strong>
+                    <span>Wireless coverage and signal variation</span>
+                </div>
+                <i class="fas fa-external-link-alt reference-arrow"></i>
+            </a>
+        </div>
+    </section>
+
+
+</main>
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const navMenu = document.getElementById("navMenu");
+    const overlay = document.getElementById("overlay");
+    const menuIcon = menuButton.querySelector("i");
+
+    function setMenu(open) {
+        navMenu.classList.toggle("show", open);
+        overlay.classList.toggle("show", open);
+        navMenu.inert = !open;
+
+        menuButton.setAttribute("aria-expanded", String(open));
+        menuButton.setAttribute(
+            "aria-label",
+            open ? "Close navigation" : "Open navigation"
+        );
+
+        menuIcon.classList.toggle("fa-bars", !open);
+        menuIcon.classList.toggle("fa-times", open);
+    }
+
+    menuButton.addEventListener("click", () => {
+        setMenu(menuButton.getAttribute("aria-expanded") !== "true");
+    });
+
+    overlay.addEventListener("click", () => setMenu(false));
+
+    navMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => setMenu(false));
+    });
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") setMenu(false);
+    });
+</script>
+
+</body>
+</html>

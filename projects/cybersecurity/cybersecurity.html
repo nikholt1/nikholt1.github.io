@@ -1,0 +1,924 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" href="images/blop.gif" type="image/gif">
+
+    <title>Harvard CyberSecurity Project</title>
+
+    <style>
+        /* Page-specific styling */
+        .cyber-page {
+            --cyber-bg: #080d16;
+            --cyber-panel: #0d1522;
+            --cyber-border: #263448;
+            --cyber-text: #e2e8f0;
+            --cyber-muted: #94a3b8;
+            --cyber-accent: #38bdf8;
+            --cyber-green: #4ade80;
+
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 40px 28px 80px;
+            color: var(--cyber-text);
+        }
+
+        .cyber-page * {
+            box-sizing: border-box;
+        }
+
+        .cyber-hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 42px;
+            margin-bottom: 32px;
+            border: 1px solid var(--cyber-border);
+            border-radius: 16px;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(8, 13, 22, 0.98) 0%,
+                    rgba(8, 13, 22, 0.88) 55%,
+                    rgba(8, 13, 22, 0.55) 100%
+                ),
+                url("images/cyberSecurityPic.webp") center / cover no-repeat;
+        }
+
+        .cyber-hero::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0;
+            height: 4px;
+            background: linear-gradient(
+                90deg,
+                var(--cyber-accent),
+                #818cf8,
+                transparent
+            );
+            z-index: -1;
+        }
+
+        .cyber-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            margin-bottom: 18px;
+            color: var(--cyber-accent);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .cyber-status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--cyber-green);
+            box-shadow: 0 0 12px rgba(74, 222, 128, 0.5);
+        }
+
+        .cyber-hero h1 {
+            max-width: 720px;
+            margin: 0 0 14px;
+            color: #f8fafc;
+            font-size: clamp(30px, 5vw, 48px);
+            line-height: 1.12;
+            letter-spacing: -1.5px;
+        }
+
+        .cyber-hero-description {
+            max-width: 680px;
+            margin: 0;
+            color: #b7c4d5;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .cyber-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .cyber-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px 16px;
+            border: 1px solid var(--cyber-border);
+            border-radius: 7px;
+            background: rgba(13, 21, 34, 0.9);
+            color: var(--cyber-text);
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: border-color 0.2s ease,
+                        background 0.2s ease,
+                        transform 0.2s ease;
+        }
+
+        .cyber-button:hover {
+            border-color: var(--cyber-accent);
+            background: #142238;
+            color: #7dd3fc;
+            transform: translateY(-2px);
+        }
+
+        .cyber-button-primary {
+            border-color: #0284c7;
+            background: #075985;
+            color: #f0f9ff;
+        }
+
+        .cyber-button-primary:hover {
+            background: #0369a1;
+            color: white;
+        }
+
+        .cyber-section {
+            margin-bottom: 26px;
+            padding: 28px;
+            border: 1px solid var(--cyber-border);
+            border-radius: 12px;
+            background: var(--cyber-panel);
+        }
+
+        .cyber-section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--cyber-border);
+        }
+
+        .cyber-section-heading h2 {
+            margin: 0;
+            color: #f1f5f9;
+            font-size: 21px;
+            letter-spacing: -0.4px;
+        }
+
+        .cyber-section-index {
+            color: #64748b;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            white-space: nowrap;
+        }
+
+        .cyber-section p {
+            margin: 0 0 15px;
+            color: #b6c2d2;
+            font-size: 14px;
+            line-height: 1.85;
+        }
+
+        .cyber-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .cyber-topic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .cyber-topic {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            padding: 17px;
+            border: 1px solid #263448;
+            border-radius: 9px;
+            background: #09111e;
+            transition: border-color 0.2s ease,
+                        transform 0.2s ease;
+        }
+
+        .cyber-topic:hover {
+            border-color: #39739b;
+            transform: translateY(-2px);
+        }
+
+        .cyber-topic-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            flex-shrink: 0;
+            border: 1px solid #28465d;
+            border-radius: 7px;
+            background: #10243a;
+            color: var(--cyber-accent);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .cyber-topic h3 {
+            margin: 3px 0 6px;
+            color: #e2e8f0;
+            font-size: 14px;
+        }
+
+        .cyber-topic p {
+            margin: 0;
+            color: var(--cyber-muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .cyber-callout {
+            margin-top: 20px;
+            padding: 17px 19px;
+            border-left: 3px solid var(--cyber-accent);
+            border-radius: 0 7px 7px 0;
+            background: #0a1a2b;
+        }
+
+        .cyber-callout p {
+            margin: 0;
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        .cyber-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 20px;
+        }
+
+        .cyber-tag {
+            padding: 7px 11px;
+            border: 1px solid #2b3b50;
+            border-radius: 6px;
+            background: #09111e;
+            color: #b9c8d9;
+            font-size: 11px;
+        }
+
+        .cyber-case-title {
+            margin: 0 0 14px;
+            color: #f1f5f9;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .cyber-case-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .cyber-case-meta span {
+            padding: 6px 9px;
+            border: 1px solid #344256;
+            border-radius: 5px;
+            background: #111c2b;
+            color: #cbd5e1;
+            font-size: 11px;
+        }
+
+        .cyber-case-meta .cyber-cve {
+            border-color: #713f46;
+            background: #2b151b;
+            color: #fda4af;
+        }
+
+        .cyber-video {
+            position: relative;
+            width: 100%;
+            margin-top: 22px;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            border: 1px solid #344256;
+            border-radius: 9px;
+            background: #000;
+        }
+
+        .cyber-video iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .cyber-video-caption {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 13px;
+        }
+
+        .cyber-video-caption span {
+            color: var(--cyber-muted);
+            font-size: 12px;
+        }
+
+        .cyber-video-caption a,
+        .cyber-inline-link {
+            color: var(--cyber-accent);
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .cyber-video-caption a:hover,
+        .cyber-inline-link:hover {
+            text-decoration: underline;
+        }
+
+        .cyber-cert-image {
+            display: block;
+            width: 100%;
+            max-width: 560px;
+            height: auto;
+            margin: 24px auto;
+            border: 1px solid #344256;
+            border-radius: 7px;
+            background: #fff;
+        }
+
+        .cyber-pdf-viewer {
+            overflow: hidden;
+            margin-top: 22px;
+            border: 1px solid var(--cyber-border);
+            border-radius: 9px;
+            background: #080d16;
+        }
+
+        .cyber-pdf-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 13px 16px;
+            border-bottom: 1px solid var(--cyber-border);
+            background: #111b2a;
+        }
+
+        .cyber-pdf-title {
+            color: #e2e8f0;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .cyber-pdf-header a {
+            color: var(--cyber-accent);
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .cyber-pdf-header a:hover {
+            text-decoration: underline;
+        }
+
+        .cyber-pdf-frame {
+            display: block;
+            width: 100%;
+            height: 600px;
+            border: 0;
+            background: #161b22;
+        }
+
+        .cyber-reference-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .cyber-reference {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 15px 16px;
+            border: 1px solid var(--cyber-border);
+            border-radius: 8px;
+            background: #09111e;
+            color: #cbd5e1;
+            font-size: 13px;
+            line-height: 1.6;
+            text-decoration: none;
+            transition: border-color 0.2s ease,
+                        background 0.2s ease;
+        }
+
+        .cyber-reference:hover {
+            border-color: #39739b;
+            background: #101e30;
+        }
+
+        .cyber-reference span:last-child {
+            flex-shrink: 0;
+            color: var(--cyber-accent);
+        }
+
+        .cyber-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 20px 4px 0;
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        .cyber-footer a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+
+        .cyber-footer a:hover {
+            color: var(--cyber-accent);
+        }
+
+        @media (max-width: 650px) {
+            .cyber-page {
+                padding: 20px 12px 50px;
+            }
+
+            .cyber-hero {
+                min-height: 280px;
+                padding: 25px 20px;
+            }
+
+            .cyber-section {
+                padding: 20px 16px;
+            }
+
+            .cyber-section-heading h2 {
+                font-size: 18px;
+            }
+
+            .cyber-topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cyber-pdf-frame {
+                height: 450px;
+            }
+
+            .cyber-reference {
+                align-items: flex-start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cyber-topic,
+            .cyber-button,
+            .cyber-reference {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="report-content">
+
+<main class="main-content project-documentation cyber-page">
+
+    <!-- HERO -->
+    <header class="cyber-hero">
+        <span class="cyber-eyebrow">
+            <span class="cyber-status-dot"></span>
+            CERTIFICATION / CYBERSECURITY
+        </span>
+
+        <h1>Harvard CyberSecurity Project</h1>
+
+        <p class="cyber-hero-description">
+            Final project for Harvard CS50's Introduction to Cybersecurity.
+            A security analysis of Microsoft's discovery of the HM Surf
+            vulnerability in Apple's macOS Safari configuration.
+        </p>
+
+        <div class="cyber-actions">
+            <a class="cyber-button cyber-button-primary"
+               href="https://certificates.cs50.io/b8671b9d-0791-4a80-8c5b-33aa7745fb72.pdf?size=letter"
+               target="_blank"
+               rel="noopener noreferrer">
+                View Certificate ↗
+            </a>
+
+            <a class="cyber-button"
+               href="https://www.youtube.com/watch?v=5vvWcyBq_Z0"
+               target="_blank"
+               rel="noopener noreferrer">
+                Watch Final Project ↗
+            </a>
+
+            <a class="cyber-button"
+               href="https://cs50.harvard.edu/cybersecurity/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Official Course ↗
+            </a>
+        </div>
+    </header>
+
+    <!-- 01 / ABOUT -->
+    <section class="cyber-section">
+        <div class="cyber-section-heading">
+            <h2>About the Program</h2>
+            <span class="cyber-section-index">01 / OVERVIEW</span>
+        </div>
+
+        <p>
+            Harvard University's CS50 Introduction to Cybersecurity
+            course explores the principles and practices involved in
+            protecting accounts, information, computer systems, software,
+            and personal privacy.
+        </p>
+
+        <p>
+            The course covered five main topics, providing a foundation
+            for understanding security risks and applying appropriate
+            protective measures.
+        </p>
+
+        <div class="cyber-topic-grid">
+            <article class="cyber-topic">
+                <span class="cyber-topic-number">01</span>
+                <div>
+                    <h3>Securing Accounts</h3>
+                    <p>
+                        Protecting accounts, authentication credentials,
+                        and access to online services.
+                    </p>
+                </div>
+            </article>
+
+            <article class="cyber-topic">
+                <span class="cyber-topic-number">02</span>
+                <div>
+                    <h3>Securing Data</h3>
+                    <p>
+                        Understanding how sensitive information can be
+                        protected against unauthorized access.
+                    </p>
+                </div>
+            </article>
+
+            <article class="cyber-topic">
+                <span class="cyber-topic-number">03</span>
+                <div>
+                    <h3>Securing Systems</h3>
+                    <p>
+                        Identifying system-level risks and improving
+                        the security of computing environments.
+                    </p>
+                </div>
+            </article>
+
+            <article class="cyber-topic">
+                <span class="cyber-topic-number">04</span>
+                <div>
+                    <h3>Securing Software</h3>
+                    <p>
+                        Understanding software vulnerabilities and the
+                        importance of secure implementation.
+                    </p>
+                </div>
+            </article>
+
+            <article class="cyber-topic">
+                <span class="cyber-topic-number">05</span>
+                <div>
+                    <h3>Preserving Privacy</h3>
+                    <p>
+                        Protecting personal information and limiting
+                        unnecessary access to sensitive data.
+                    </p>
+                </div>
+            </article>
+        </div>
+
+        <div class="cyber-callout">
+            <p>
+                <strong>Course assessment:</strong> Reports and assignments
+                were reviewed by Harvard University staff. The final project
+                required applying the course concepts to a cybersecurity
+                subject.
+            </p>
+        </div>
+    </section>
+
+    <!-- 02 / FINAL PROJECT -->
+    <section class="cyber-section">
+        <div class="cyber-section-heading">
+            <h2>Final Project</h2>
+            <span class="cyber-section-index">02 / PROJECT SCOPE</span>
+        </div>
+
+        <p>
+            As part of Harvard University's CS50 Introduction to Cybersecurity
+            course, I was required to complete a final project investigating
+            a cybersecurity issue and applying the concepts covered during
+            the course.
+        </p>
+
+        <p>
+            I chose to analyze Microsoft's discovery of a macOS vulnerability
+            affecting Apple's Safari privacy protections, known as
+            <strong>HM Surf</strong> and tracked as
+            <strong>CVE-2024-44133</strong>.
+        </p>
+
+        <p>
+            The project involved documenting the vulnerability, analyzing
+            the response, and proposing measures that could help prevent
+            similar attacks in the future. I also produced a video report
+            explaining the vulnerability and discussing its discovery
+            and mitigation.
+        </p>
+
+        <div class="cyber-tags">
+            <span class="cyber-tag">Cybersecurity Research</span>
+            <span class="cyber-tag">Vulnerability Analysis</span>
+            <span class="cyber-tag">Technical Documentation</span>
+            <span class="cyber-tag">Risk Mitigation</span>
+            <span class="cyber-tag">Security Reporting</span>
+        </div>
+    </section>
+
+    <!-- 03 / CASE STUDY -->
+    <section class="cyber-section">
+        <div class="cyber-section-heading">
+            <h2>HM Surf — Vulnerability Analysis</h2>
+            <span class="cyber-section-index">03 / CASE STUDY</span>
+        </div>
+
+        <h3 class="cyber-case-title">
+            macOS Safari Privacy Protection Bypass
+        </h3>
+
+        <div class="cyber-case-meta">
+            <span class="cyber-cve">CVE-2024-44133</span>
+            <span>Apple macOS</span>
+            <span>Safari</span>
+            <span>Privacy & Security</span>
+        </div>
+
+        <p>
+            Microsoft Threat Intelligence identified a macOS vulnerability
+            called HM Surf that could bypass Apple's Transparency, Consent,
+            and Control (TCC) privacy protections under certain conditions.
+            TCC is designed to help ensure that applications obtain the
+            appropriate permissions before accessing sensitive user data
+            and hardware.
+        </p>
+
+        <p>
+            The vulnerability involved manipulating Safari configuration
+            files to circumvent privacy protections. Depending on the
+            circumstances, exploitation could expose sensitive information,
+            including browsing history and data associated with camera
+            and microphone access.
+        </p>
+
+        <p>
+            Microsoft disclosed the issue to Apple. Apple addressed the
+            vulnerability in macOS Sequoia under CVE-2024-44133. Microsoft
+            also described detection capabilities in Microsoft Defender
+            for Endpoint to help identify exploitation attempts through
+            behavioral monitoring.
+        </p>
+
+        <p>
+            The case highlights the risks associated with permission models,
+            application entitlements, and trusted system components.
+            It also demonstrates the importance of coordinated vulnerability
+            disclosure and cooperation between technology vendors.
+        </p>
+
+        <div class="cyber-callout">
+            <p>
+                <strong>Key takeaway:</strong> Security mechanisms are only
+                effective when their permission boundaries cannot be
+                circumvented by manipulating trusted application
+                configurations. Defense requires secure design, timely
+                patching, monitoring, and collaboration between vendors.
+            </p>
+        </div>
+
+        <div class="cyber-actions">
+            <a class="cyber-button"
+               href="https://www.microsoft.com/en-us/security/blog/2024/10/17/new-macos-vulnerability-hm-surf-could-lead-to-unauthorized-data-access/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Read Microsoft's Analysis ↗
+            </a>
+        </div>
+    </section>
+
+    <!-- 04 / VIDEO PRESENTATION -->
+    <section class="cyber-section">
+        <div class="cyber-section-heading">
+            <h2>Video Report</h2>
+            <span class="cyber-section-index">04 / PRESENTATION</span>
+        </div>
+
+        <p>
+            The final project included a video presentation explaining
+            the HM Surf vulnerability, its implications, and the security
+            considerations involved in understanding and mitigating
+            the issue.
+        </p>
+
+        <div class="cyber-video">
+            <iframe
+                src="https://www.youtube.com/embed/5vvWcyBq_Z0"
+                title="CS50 Cybersecurity Final Project — HM Surf"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="cyber-video-caption">
+            <span>CS50 Introduction to Cybersecurity · Final Project</span>
+
+            <a href="https://www.youtube.com/watch?v=5vvWcyBq_Z0"
+               target="_blank"
+               rel="noopener noreferrer">
+                Watch on YouTube ↗
+            </a>
+        </div>
+    </section>
+
+    <!-- 05 / CERTIFICATION -->
+    <section class="cyber-section">
+        <div class="cyber-section-heading">
+            <h2>Certification</h2>
+            <span class="cyber-section-index">05 / COMPLETION</span>
+        </div>
+
+        <p>
+            Successful completion of the course requirements is recognized
+            with a CS50 certificate. The certification represents completion
+            of the course and its required assessments.
+        </p>
+
+        <img
+            class="cyber-cert-image"
+            src="Cyber.PNG"
+            alt="Harvard CS50 Introduction to Cybersecurity certificate"
+            loading="lazy">
+
+        <div class="cyber-actions">
+            <a class="cyber-button cyber-button-primary"
+               href="https://certificates.cs50.io/b8671b9d-0791-4a80-8c5b-33aa7745fb72.pdf?size=letter"
+               target="_blank"
+               rel="noopener noreferrer">
+                Open Official Certificate ↗
+            </a>
+
+            <a class="cyber-button"
+               href="https://cs50.harvard.edu/cybersecurity/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Course Information ↗
+            </a>
+        </div>
+
+        <div class="cyber-pdf-viewer">
+            <div class="cyber-pdf-header">
+                <span class="cyber-pdf-title">
+                    CS50 — Introduction to Cybersecurity Certificate
+                </span>
+
+                <a href="https://certificates.cs50.io/b8671b9d-0791-4a80-8c5b-33aa7745fb72.pdf?size=letter"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Open PDF ↗
+                </a>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- 06 / CONCLUSION -->
+    <section class="cyber-section">
+        <div class="cyber-section-heading">
+            <h2>Conclusion</h2>
+            <span class="cyber-section-index">06 / REFLECTION</span>
+        </div>
+
+        <p>
+            Taking the course provided me with a deeper understanding of
+            the cybersecurity landscape and its critical role in today's
+            digital environment. It enhanced my ability to think analytically
+            about risk, system integrity, and the importance of proactive
+            defense strategies.
+        </p>
+
+        <p>
+            Analyzing HM Surf also demonstrated how weaknesses in trusted
+            system components can undermine privacy protections, even
+            within mature operating systems. Investigating the vulnerability
+            reinforced the importance of understanding attack surfaces,
+            documenting technical findings, and considering practical
+            mitigation strategies.
+        </p>
+
+        <p>
+            This experience strengthened my commitment to contributing
+            to secure, resilient technologies that protect both individuals
+            and organizations from evolving cyber threats.
+        </p>
+    </section>
+
+    <!-- 07 / REFERENCES -->
+    <section class="cyber-section">
+        <div class="cyber-section-heading">
+            <h2>References & Resources</h2>
+            <span class="cyber-section-index">07 / SOURCES</span>
+        </div>
+
+        <p>
+            The following resources provide additional information about
+            the course, the certification, and the HM Surf vulnerability.
+        </p>
+
+        <div class="cyber-reference-list">
+            <a class="cyber-reference"
+               href="https://www.youtube.com/watch?v=5vvWcyBq_Z0"
+               target="_blank"
+               rel="noopener noreferrer">
+                <span>Final Project Video — HM Surf</span>
+                <span>↗</span>
+            </a>
+
+            <a class="cyber-reference"
+               href="https://certificates.cs50.io/b8671b9d-0791-4a80-8c5b-33aa7745fb72.pdf?size=letter"
+               target="_blank"
+               rel="noopener noreferrer">
+                <span>Official CS50 Cybersecurity Certificate</span>
+                <span>↗</span>
+            </a>
+
+            <a class="cyber-reference"
+               href="https://www.microsoft.com/en-us/security/blog/2024/10/17/new-macos-vulnerability-hm-surf-could-lead-to-unauthorized-data-access/"
+               target="_blank"
+               rel="noopener noreferrer">
+                <span>Microsoft — HM Surf Vulnerability Analysis</span>
+                <span>↗</span>
+            </a>
+
+            <a class="cyber-reference"
+               href="https://thehackernews.com/2025/01/microsoft-uncovers-macos-vulnerability.html"
+               target="_blank"
+               rel="noopener noreferrer">
+                <span>The Hacker News — HM Surf Coverage</span>
+                <span>↗</span>
+            </a>
+
+            <a class="cyber-reference"
+               href="https://cs50.harvard.edu/cybersecurity/"
+               target="_blank"
+               rel="noopener noreferrer">
+                <span>Harvard CS50 — Introduction to Cybersecurity</span>
+                <span>↗</span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="cyber-footer">
+        <span>HARVARD CS50 / CYBERSECURITY PROJECT</span>
+        <a href="https://github.com/nikholt1"
+           target="_blank"
+           rel="noopener noreferrer">
+            GitHub Profile ↗
+        </a>
+    </footer>
+
+</main>
+
+</body>
+</html>
