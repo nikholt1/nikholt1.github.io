@@ -12,7 +12,7 @@ const CONFIG = {
     resumeRotationDelay: 1500,
 
     markerSize: 5,
-    markerColor: "#22c55e",
+    markerColor: "#5eff99",
     markerOpacity: 0.65
 };
 
@@ -139,21 +139,24 @@ export function initializeCesium() {
         .fromCssColorString(CONFIG.markerColor)
         .withAlpha(CONFIG.markerOpacity);
 
-    LOCATIONS.forEach((location) => {
-        viewer.entities.add({
-            position: Cesium.Cartesian3.fromDegrees(
-                location.longitude,
-                location.latitude
-            ),
+        LOCATIONS.forEach((location) => {
+            // Randomly vary the radius while keeping markers consistent
+            const sizeVariation = 1 + Math.random() * 1.0;
 
-            point: {
-                pixelSize: CONFIG.markerSize,
-                color: markerColor,
-                outlineWidth: 0,
-                disableDepthTestDistance: Number.POSITIVE_INFINITY
-            }
+            viewer.entities.add({
+                position: Cesium.Cartesian3.fromDegrees(
+                    location.longitude,
+                    location.latitude
+                ),
+
+                point: {
+                    pixelSize: CONFIG.markerSize * sizeVariation,
+                    color: markerColor,
+                    outlineWidth: 0,
+                    disableDepthTestDistance: Number.POSITIVE_INFINITY
+                }
+            });
         });
-    });
 
 
     let isDragging = false;
