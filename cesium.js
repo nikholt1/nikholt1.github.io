@@ -139,24 +139,66 @@ export function initializeCesium() {
         .fromCssColorString(CONFIG.markerColor)
         .withAlpha(CONFIG.markerOpacity);
 
-        LOCATIONS.forEach((location) => {
-            
-            const sizeVariation = 1 + Math.random() * 1.0;
+
+    const columnBaseColor = Cesium.Color.fromCssColorString("#ff8c32");
+
+    LOCATIONS.forEach((location) => {
+        const sizeVariation = 1 + Math.random() * 2;
+        const columnHeight = 500000 + Math.random() * 400000;
+        const columnWidth = 5;
+
+        const groundPosition = Cesium.Cartesian3.fromDegrees(
+            location.longitude,
+            location.latitude
+        );
+
+        
+        for (let i = 0; i < 12; i++) {
+            const startFraction = i / 12;
+            const endFraction = (i + 1) / 12;
+            const midpoint = (startFraction + endFraction) / 2;
+
+            const alpha = midpoint <= 0.5
+                ? 0.85
+                : 0.85 * (1 - (midpoint - 0.5) / 0.5);
+
+            const start = Cesium.Cartesian3.fromDegrees(
+                location.longitude,
+                location.latitude,
+                columnHeight * startFraction
+            );
+
+            const end = Cesium.Cartesian3.fromDegrees(
+                location.longitude,
+                location.latitude,
+                columnHeight * endFraction
+            );
 
             viewer.entities.add({
-                position: Cesium.Cartesian3.fromDegrees(
-                    location.longitude,
-                    location.latitude
-                ),
-
-                point: {
-                    pixelSize: CONFIG.markerSize * sizeVariation,
-                    color: markerColor,
-                    outlineWidth: 0,
-                    disableDepthTestDistance: Number.POSITIVE_INFINITY
+                name: `${location.name} Column ${i}`,
+                polyline: {
+                    positions: [start, end],
+                    width: columnWidth,
+                    material: columnBaseColor.withAlpha(alpha),
+                    arcType: Cesium.ArcType.NONE,
+                    clampToGround: false
                 }
             });
+        }
+
+        
+        viewer.entities.add({
+            name: location.name,
+            position: groundPosition,
+            point: {
+                pixelSize: CONFIG.markerSize * sizeVariation,
+                color: markerColor,
+                outlineWidth: 0,
+                disableDepthTestDistance: Number.POSITIVE_INFINITY
+            }
         });
+    });
+
 
 
     let isDragging = false;
