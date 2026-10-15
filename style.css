@@ -74,15 +74,22 @@ select {
     width: 100%;
 }
 .sendBtn {
-    color: var(--text-secondary);
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 7px 11px;
+    color: var(--text-secondary);
+    border: 1px solid transparent;
     border-radius: var(--radius);
-    padding: 10px;
-    border: none;
-    background-color: var(--surface);
+    font-size: 13px;
+    white-space: nowrap;
+    background: var(--bg);
 }
 .sendBtn:hover {
-
+    color: var(--text);
+    background: var(--surface);
+    border-color: var(--border);
     color: var(--text);
 }
 .description-text-contact {
@@ -169,7 +176,22 @@ html {
         background-color 160ms ease;
 }
 
-
+.certification-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: #8b949e;
+    background: #161b22;
+    border: 1px solid #484f58;
+    border-radius: 20%;
+    font-size: 16px;
+    transition:
+        color 160ms ease,
+        border-color 160ms ease,
+        background-color 160ms ease;
+}
 
 .timeline-current .timeline-icon {
     color: #58a6ff;
@@ -183,7 +205,28 @@ html {
     min-width: 0;
     padding: 2px 0 0;
 }
+.certification-content {
+    
+    min-width: 0;
+    padding: 2px 0 0;
+}
 
+.certification-content h3 {
+    margin: 0 0 8px;
+    color: #e6edf3;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.certification-content p {
+    margin: 0;
+    color: #8b949e;
+    font-size: 12px;
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+}
 .timeline-meta {
     display: flex;
     align-items: center;

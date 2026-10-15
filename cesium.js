@@ -6,7 +6,7 @@ const CONFIG = {
     initialLongitude: 10,
     initialLatitude: 15,
 
-    background: "#080d16",
+    background: "#050505",
 
     rotationSpeed: 1.5, // Degrees per second
     resumeRotationDelay: 1500,
