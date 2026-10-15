@@ -140,7 +140,7 @@ export function initializeCesium() {
         .withAlpha(CONFIG.markerOpacity);
 
         LOCATIONS.forEach((location) => {
-            // Randomly vary the radius while keeping markers consistent
+            
             const sizeVariation = 1 + Math.random() * 1.0;
 
             viewer.entities.add({
