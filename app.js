@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeProfileTabs();
     contactTrigger();
 
-    
     initializePageNavigation({
         onPageChange(pageId) {
             if (pageId === "github") {
@@ -21,16 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+
     initializeCesium();
     initializeRepositoryCards();
     initializeClock();
     initializeWeather();
-    
-    
-    
 });
-
-
 
 function contactTrigger() {
     const trigger = document.getElementById("contactTrigger");

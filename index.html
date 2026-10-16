@@ -19,7 +19,7 @@
         href="https://cdn.jsdelivr.net/npm/github-markdown-css@5/github-markdown.min.css"
     >
     <script src="https://cesium.com/downloads/cesiumjs/releases/1.132/Build/Cesium/Cesium.js"></script>
-    <script type="module" src="./app.js"></script>
+    
 </head>
 <body>
     <nav class="navbar">
@@ -27,7 +27,7 @@
             <a class="brand" href="#home" data-page="home"></a>
             <div class="nav-links">
                 <a href="#home" data-page="home" aria-current="page">Overview</a>
-                <a href="#github" data-page="github">Repository inspector</a>
+                <a href="#github" data-page="github">Dev log</a>
                 <a href="#projects" data-page="projects">Reports</a>
                 <a href="https://github.com/nikholt1?tab=repositories" target="_blank" rel="noopener noreferrer">Repositories ↗</a>
             </div>
@@ -41,7 +41,7 @@
             <aside class="profile-sidebar">
                  <div class="profile-avatar-wrap">
                     <!-- <img class="profile-avatar" src="https://github.com/nikholt1.png" alt="Niklas Holt's GitHub profile picture"> -->
-                     <img src="images/face.gif" alt="">
+                     <!--<img src="images/face.gif" alt=""> --> 
                 </div> 
 
                 <h1 class="profile-name">Niklas Holt Läu</h1>
@@ -527,12 +527,12 @@
         </section>
 
         <!-- SEPARATE REPOSITORY INSPECTOR PAGE -->
-        <section id="github" class="spa-page page-hidden" aria-hidden="true">
+        <section id="github" class="spa-page hidden" aria-hidden="true">
             <div class="page-header">
                 <div>
                     <div class="eyebrow">ANALYSIS</div>
-                    <h1>Repository inspector</h1>
-                    <p>Explore repository structure, source files, dependencies, and code metrics.</p>
+                    <h1>Dev log</h1>
+                    <p>See my latest updates on what I’m currently working on.</p>
                 </div>
             </div>
             <div id="inspector-container">
@@ -542,7 +542,7 @@
 
         <!-- SEPARATE PROJECTS PAGE -->
 
-        <section id="projects" class="spa-page page-hidden" aria-hidden="true">
+        <section id="projects" class="spa-page hidden" aria-hidden="true">
             <div class="page-header">
                 <div>
                     <div class="eyebrow">PORTFOLIO / SELECTED WORK</div>

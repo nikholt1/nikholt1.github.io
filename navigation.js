@@ -1,4 +1,3 @@
-
 const PAGE_IDS = ["home", "github", "projects"];
 
 export function initializePageNavigation({ onPageChange } = {}) {
@@ -19,7 +18,7 @@ export function initializePageNavigation({ onPageChange } = {}) {
         pages.forEach(page => {
             const selected = page.id === pageId;
 
-            page.classList.toggle("page-hidden", !selected);
+            page.classList.toggle("hidden", !selected);
             page.setAttribute("aria-hidden", String(!selected));
         });
 
