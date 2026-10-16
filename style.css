@@ -944,6 +944,9 @@ main { min-width: 0; }
 }
 
 @media (max-width: 760px) {
+    .sidebar-section{
+        display: none !important;
+    }
     .container, .main-content { width: calc(100% - 36px); }
     .nav-inner { min-height: 60px; gap: 12px; }
     .nav-links { overflow-x: auto; scrollbar-width: none; }
