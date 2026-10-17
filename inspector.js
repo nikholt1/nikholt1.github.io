@@ -17,7 +17,7 @@ let panOffsetX = 0;
 let panOffsetY = 0;
 let zoom = 5;
 
-let labelMode = "selected";
+let labelMode = "always";
 
 let simulationTime = 0;
 let lastFrameTime = 0;
