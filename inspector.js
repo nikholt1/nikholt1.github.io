@@ -832,9 +832,6 @@ export function initializeInspector() {
                     <span class="obsidian-counter"></span>
                 </div>
 
-                <div class="obsidian-help">
-                    Drag notes · Space + drag to pan · Scroll to zoom
-                </div>
             </div>
 
             <div class="obsidian-footer">
@@ -1063,14 +1060,7 @@ style.textContent = `
         background: var(--graph-blue);
     }
 
-    .obsidian-help {
-        position: absolute;
-        bottom: 12px;
-        left: 13px;
-        color: var(--graph-muted);
-        font-size: 10px;
-        pointer-events: none;
-    }
+
 
     .obsidian-footer {
         min-height: 38px;
@@ -1104,10 +1094,7 @@ style.textContent = `
             height: 470px;
         }
 
-        .obsidian-help {
-            max-width: calc(100% - 24px);
-            line-height: 1.6;
-        }
+
     }
 `;
 
