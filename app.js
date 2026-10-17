@@ -10,9 +10,6 @@ import { initializeInspector } from "./inspector.js";
 import { initializeCesium } from "./cesium.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    initializeProfileTabs();
-    contactTrigger();
-
     initializePageNavigation({
         onPageChange(pageId) {
             if (pageId === "github") {
@@ -20,6 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+    initializeProfileTabs();
+    contactTrigger();
+
+
 
     initializeCesium();
     initializeRepositoryCards();
