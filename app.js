@@ -11,6 +11,7 @@ import { initializeCesium } from "./cesium.js";
 
 import {initializeProjectDataGraph} from "./projectGraph.js";
 document.addEventListener("DOMContentLoaded", () => {
+    initializeProjectDataGraph();
     initializePageNavigation({
         onPageChange(pageId) {
             if (pageId === "github") {
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
-    initializeProjectDataGraph();
+    
     initializeProfileTabs();
     contactTrigger();
 
