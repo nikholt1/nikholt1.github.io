@@ -8,7 +8,8 @@ import { initializeRepositoryCards } from "./projects.js";
 
 import { initializeInspector } from "./inspector.js";
 import { initializeCesium } from "./cesium.js";
-
+import XYGraph from "./XYGraph.js";
+import {initializeProjectDataGraph} from "./projectGraph.js";
 document.addEventListener("DOMContentLoaded", () => {
     initializePageNavigation({
         onPageChange(pageId) {
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+    initializeProjectDataGraph();
     initializeProfileTabs();
     contactTrigger();
 
@@ -26,6 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeRepositoryCards();
     initializeClock();
     initializeWeather();
+
+
+
 });
 
 function contactTrigger() {
