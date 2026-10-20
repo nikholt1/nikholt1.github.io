@@ -8,7 +8,7 @@ import { initializeRepositoryCards } from "./projects.js";
 
 import { initializeInspector } from "./inspector.js";
 import { initializeCesium } from "./cesium.js";
-import XYGraph from "./XYGraph.js";
+
 import {initializeProjectDataGraph} from "./projectGraph.js";
 document.addEventListener("DOMContentLoaded", () => {
     initializePageNavigation({
